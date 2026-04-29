@@ -5,17 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HMS Digital | Votre site web est déjà prêt à Lille</title>
     
-    <meta name="google-site-verification" content="lYK7gMTxWAgI98N33lB5nQpykf2hYn6JahlSeKUEaDk" />
-    
-    <meta name="description" content="HMS Digital : Sites internet rapides pour commerçants, artisans, indépendants et beauty artists à Lille. Votre site personnalisé et en ligne en quelques jours.">
-    <meta name="geo.region" content="FR-59" />
-    <meta name="geo.placename" content="Lille" />
-    <meta name="robots" content="index, follow">
-    
-    <link rel="icon" type="image/png" href="favicon.png">
-
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap');
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
@@ -27,8 +19,12 @@
             padding-right: 0.2em; 
         }
         .glass { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(12px); }
-        .step-card { transition: all 0.3s ease; border: 2px solid transparent; }
-        .step-card:hover { border-color: #3b82f6; transform: translateY(-5px); }
+        .geo-bold { font-weight: 800; color: #0f172a; }
+        .step-number {
+            background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
     </style>
 </head>
 <body class="bg-white text-slate-900">
@@ -42,7 +38,7 @@
             </div>
             <div class="flex items-center space-x-10">
                 <div class="hidden md:flex space-x-8 font-bold text-sm uppercase tracking-widest text-slate-700">
-                    <a href="#concept" class="hover:text-blue-600 transition">Le Concept</a>
+                    <a href="#how-it-works" class="hover:text-blue-600 transition">Le Concept</a>
                     <a href="#templates" class="hover:text-blue-600 transition">Nos Modèles</a>
                 </div>
                 <a href="#contact" class="hms-gradient text-white px-8 py-3 rounded-full font-bold hover:opacity-90 transition-all text-sm">
@@ -54,14 +50,15 @@
 
     <header class="pt-48 pb-20 px-6 text-center">
         <div class="max-w-5xl mx-auto">
+            <p class="text-blue-600 font-bold tracking-widest uppercase text-[11px] mb-4 italic">La solution pour digitaliser un business local en 7 jours</p>
             <h1 class="text-5xl md:text-8xl font-extrabold mt-8 mb-6 leading-tight text-slate-900 tracking-tighter">
                 Votre site web est <br><span class="gradient-text italic">déjà prêt.</span>
             </h1>
             <p class="text-xl md:text-2xl text-slate-500 max-w-3xl mx-auto mb-12 font-medium">
-                Simple et rapide pour les commerçants et indépendants de la <span class="text-slate-900 font-bold">Métropole Lilloise</span>. Choisissez une structure, on la personnalise, et c'est en ligne.
+                Simple et rapide pour les commerçants de la <span class="geo-bold">Métropole Lilloise</span>. Choisissez votre structure, nous la personnalisons, et votre activité décolle.
             </p>
             <div class="flex flex-col md:flex-row justify-center gap-4">
-                <a href="#templates" class="bg-slate-900 text-white px-10 py-5 rounded-2xl font-bold text-lg hover:bg-slate-800 transition-all text-center">
+                <a href="#templates" class="bg-slate-900 text-white px-10 py-5 rounded-2xl font-bold text-lg hover:bg-slate-800 transition-all text-center shadow-xl">
                     Choisir mon modèle de site
                 </a>
                 <a href="#contact" class="bg-white text-slate-900 border-2 border-slate-200 px-10 py-5 rounded-2xl font-bold text-lg hover:border-blue-500 transition-all text-center">
@@ -71,97 +68,135 @@
         </div>
     </header>
 
-    <section id="templates" class="py-24 px-6">
+    <section id="concept" class="py-24 px-6 bg-slate-50">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-3 gap-12 text-center">
+                <div class="p-10 bg-white rounded-[2.5rem] shadow-sm border border-slate-100">
+                    <div class="w-16 h-16 hms-gradient rounded-2xl flex items-center justify-center text-white text-2xl mx-auto mb-6 shadow-lg">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 italic">Vitesse Absolute</h3>
+                    <p class="text-slate-500 font-medium leading-relaxed">Ne perdez plus 3 mois en développement. Votre site est en ligne en 7 jours chrono.</p>
+                </div>
+                <div class="p-10 bg-white rounded-[2.5rem] shadow-sm border border-slate-100">
+                    <div class="w-16 h-16 hms-gradient rounded-2xl flex items-center justify-center text-white text-2xl mx-auto mb-6 shadow-lg">
+                        <i class="fas fa-search-location"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 italic">SEO & GEO Local</h3>
+                    <p class="text-slate-500 font-medium leading-relaxed">Optimisé nativement pour apparaître sur Google sur la Métropole Lilloise.</p>
+                </div>
+                <div class="p-10 bg-white rounded-[2.5rem] shadow-sm border border-slate-100">
+                    <div class="w-16 h-16 hms-gradient rounded-2xl flex items-center justify-center text-white text-2xl mx-auto mb-6 shadow-lg">
+                        <i class="fas fa-magic"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 italic">Sur-Mesure</h3>
+                    <p class="text-slate-500 font-medium leading-relaxed">On adapte à 100% à votre identité : logos, couleurs, photos et textes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="how-it-works" class="py-24 px-6 bg-white">
+        <div class="max-w-7xl mx-auto text-center">
+            <h2 class="text-4xl md:text-5xl font-extrabold mb-16 italic tracking-tight">Comment ça marche ?</h2>
+            <div class="relative grid md:grid-cols-3 gap-12">
+                <div class="relative">
+                    <span class="step-number text-7xl font-black opacity-20 absolute -top-10 left-1/2 -translate-x-1/2">01</span>
+                    <div class="bg-slate-50 p-8 rounded-3xl border border-slate-100">
+                        <h4 class="text-xl font-bold mb-3 italic">Choisissez votre modèle</h4>
+                        <p class="text-slate-500 font-medium text-sm">Sélectionnez la structure qui correspond le mieux à votre activité.</p>
+                    </div>
+                </div>
+                <div class="relative">
+                    <span class="step-number text-7xl font-black opacity-20 absolute -top-10 left-1/2 -translate-x-1/2">02</span>
+                    <div class="bg-slate-50 p-8 rounded-3xl border border-slate-100">
+                        <h4 class="text-xl font-bold mb-3 italic">On personnalise tout</h4>
+                        <p class="text-slate-500 font-medium text-sm">On ajuste logo, couleurs, textes et images pour votre business.</p>
+                    </div>
+                </div>
+                <div class="relative">
+                    <span class="step-number text-7xl font-black opacity-20 absolute -top-10 left-1/2 -translate-x-1/2">03</span>
+                    <div class="bg-slate-50 p-8 rounded-3xl border border-slate-100">
+                        <h4 class="text-xl font-bold mb-3 italic">Mise en ligne J+7</h4>
+                        <p class="text-slate-500 font-medium text-sm">Indexé et prêt à accueillir vos clients immédiatement.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="templates" class="py-24 px-6 bg-slate-50">
         <div class="max-w-7xl mx-auto text-center">
             <h3 class="text-4xl font-extrabold mb-4 italic text-slate-900">Structures disponibles</h3>
-            
-            <div class="inline-flex items-center gap-3 bg-blue-50 border border-blue-100 text-blue-700 px-6 py-3 rounded-2xl mb-12 animate-pulse">
+            <div class="inline-flex items-center gap-3 bg-blue-50 border border-blue-100 text-blue-700 px-6 py-3 rounded-2xl mb-12">
                 <i class="fas fa-info-circle"></i>
-                <p class="text-sm font-bold italic">Chaque modèle est 100% personnalisable (couleurs, textes, photos...)</p>
+                <p class="text-sm font-bold italic">Chaque modèle est 100% personnalisable</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-left">
-                
-                <a href="https://hugomolletstivala.github.io/TemplateArtisant/" target="_blank" class="group bg-white rounded-[2rem] overflow-hidden border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-                    <div class="h-56 bg-gradient-to-br from-orange-400 to-red-500 flex flex-col items-center justify-center">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-left">
+                <a href="https://hugomolletstivala.github.io/TemplateArtisant/" target="_blank" class="group bg-white rounded-[2.5rem] overflow-hidden border border-slate-100 shadow-sm hover:shadow-xl transition-all">
+                    <div class="h-60 bg-gradient-to-br from-orange-400 to-red-500 flex flex-col items-center justify-center relative">
                         <i class="fas fa-hammer text-white text-6xl mb-4"></i>
-                        <span class="bg-white/20 text-white px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-tighter">Artisan & Indépendant</span>
+                        <span class="bg-white/20 text-white px-3 py-1 rounded-full text-[10px] font-bold uppercase absolute bottom-6">Artisan & Indépendant</span>
                     </div>
                     <div class="p-8">
-                        <h4 class="text-xl font-bold mb-1 italic leading-tight">Services & Proximité</h4>
+                        <h4 class="text-xl font-bold mb-1 italic">Services & Proximité</h4>
                         <span class="text-blue-600 text-sm font-bold flex items-center gap-2">Démo <i class="fas fa-arrow-right"></i></span>
                     </div>
                 </a>
 
-                <a href="https://hugomolletstivala.github.io/TemplateBoutique/" target="_blank" class="group bg-white rounded-[2rem] overflow-hidden border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-                    <div class="h-56 bg-gradient-to-br from-purple-500 to-pink-500 flex flex-col items-center justify-center">
-                        <i class="fas fa-shopping-bag text-white text-6xl mb-4"></i>
-                        <span class="bg-white/20 text-white px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-tighter">Boutique</span>
-                    </div>
-                    <div class="p-8">
-                        <h4 class="text-xl font-bold mb-1 italic leading-tight">Commerce de détail</h4>
-                        <span class="text-purple-600 text-sm font-bold flex items-center gap-2">Démo <i class="fas fa-arrow-right"></i></span>
-                    </div>
-                </a>
-
-                <a href="https://hugomolletstivala.github.io/TemplateRestaurant/" target="_blank" class="group bg-white rounded-[2rem] overflow-hidden border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-                    <div class="h-56 bg-gradient-to-br from-green-400 to-emerald-600 flex flex-col items-center justify-center">
-                        <i class="fas fa-utensils text-white text-6xl mb-4"></i>
-                        <span class="bg-white/20 text-white px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-tighter">Restaurant</span>
-                    </div>
-                    <div class="p-8">
-                        <h4 class="text-xl font-bold mb-1 italic leading-tight">Restauration & Bar</h4>
-                        <span class="text-emerald-600 text-sm font-bold flex items-center gap-2">Démo <i class="fas fa-arrow-right"></i></span>
-                    </div>
-                </a>
-
-                <a href="https://hugomolletstivala.github.io/templateBeautyArtist/" target="_blank" class="group bg-white rounded-[2rem] overflow-hidden border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-                    <div class="h-56 bg-gradient-to-br from-pink-400 to-rose-500 flex flex-col items-center justify-center relative">
+                <a href="https://hugomolletstivala.github.io/templateBeautyArtist/" target="_blank" class="group bg-white rounded-[2.5rem] overflow-hidden border border-slate-100 shadow-sm hover:shadow-xl transition-all">
+                    <div class="h-60 bg-gradient-to-br from-pink-400 to-rose-500 flex flex-col items-center justify-center relative">
                         <i class="fas fa-wand-magic-sparkles text-white text-6xl mb-4"></i>
-                        <span class="bg-white/20 text-white px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-tighter">Beauty Artist</span>
+                        <span class="bg-white/20 text-white px-3 py-1 rounded-full text-[10px] font-bold uppercase absolute bottom-6">Beauty Artist</span>
                     </div>
                     <div class="p-8">
-                        <h4 class="text-xl font-bold mb-1 italic leading-tight">Soin & Esthétique</h4>
+                        <h4 class="text-xl font-bold mb-1 italic">Soin & Esthétique</h4>
                         <span class="text-rose-600 text-sm font-bold flex items-center gap-2">Démo <i class="fas fa-arrow-right"></i></span>
                     </div>
                 </a>
 
+                <a href="https://hugomolletstivala.github.io/TemplateBoutique/" target="_blank" class="group bg-white rounded-[2.5rem] overflow-hidden border border-slate-100 shadow-sm hover:shadow-xl transition-all">
+                    <div class="h-60 bg-gradient-to-br from-purple-500 to-pink-500 flex flex-col items-center justify-center relative">
+                        <i class="fas fa-shopping-bag text-white text-6xl mb-4"></i>
+                        <span class="bg-white/20 text-white px-3 py-1 rounded-full text-[10px] font-bold uppercase absolute bottom-6">Boutique</span>
+                    </div>
+                    <div class="p-8">
+                        <h4 class="text-xl font-bold mb-1 italic">Commerce de détail</h4>
+                        <span class="text-purple-600 text-sm font-bold flex items-center gap-2">Démo <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+
+                <a href="https://hugomolletstivala.github.io/TemplateRestaurant/" target="_blank" class="group bg-white rounded-[2.5rem] overflow-hidden border border-slate-100 shadow-sm hover:shadow-xl transition-all">
+                    <div class="h-60 bg-gradient-to-br from-green-400 to-emerald-600 flex flex-col items-center justify-center relative">
+                        <i class="fas fa-utensils text-white text-6xl mb-4"></i>
+                        <span class="bg-white/20 text-white px-3 py-1 rounded-full text-[10px] font-bold uppercase absolute bottom-6">Restaurant</span>
+                    </div>
+                    <div class="p-8">
+                        <h4 class="text-xl font-bold mb-1 italic">Restauration & Bar</h4>
+                        <span class="text-emerald-600 text-sm font-bold flex items-center gap-2">Démo <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
             </div>
         </div>
     </section>
 
     <section id="contact" class="py-24 px-6 bg-slate-900 text-white">
         <div class="max-w-2xl mx-auto text-center">
-            <h3 class="text-3xl font-bold mb-4 italic">On en discute ?</h3>
-            <p class="text-slate-400 mb-10">Laissez vos coordonnées, je vous recontacte rapidement.</p>
+            <h3 class="text-3xl font-bold mb-10 italic">On lance votre projet ?</h3>
             <form class="space-y-4 text-slate-900 font-bold text-left">
                 <div class="grid md:grid-cols-2 gap-4">
-                    <input type="text" placeholder="Votre entreprise / Nom" class="w-full p-4 rounded-2xl bg-white outline-none">
-                    <input type="tel" placeholder="N° de téléphone" class="w-full p-4 rounded-2xl bg-white outline-none">
+                    <input type="text" placeholder="Nom / Entreprise" class="w-full p-4 rounded-2xl bg-white outline-none">
+                    <input type="tel" placeholder="Téléphone" class="w-full p-4 rounded-2xl bg-white outline-none">
                 </div>
-                <input type="email" placeholder="Adresse e-mail" class="w-full p-4 rounded-2xl bg-white outline-none">
-                <select class="w-full p-4 rounded-2xl bg-white text-slate-500 outline-none">
-                    <option disabled selected>Un modèle vous intéresse ?</option>
-                    <option>Modèle Artisan / Indépendant</option>
-                    <option>Modèle Beauty Artist</option>
-                    <option>Modèle Boutique</option>
-                    <option>Modèle Restaurant</option>
-                    <option>Autre chose / Question</option>
-                </select>
-                <textarea placeholder="Dites-moi en deux mots ce qu'il vous faut..." rows="4" class="w-full p-4 rounded-2xl bg-white outline-none"></textarea>
-                <button type="button" class="w-full hms-gradient text-white font-black py-5 rounded-2xl hover:scale-[1.01] transition-all shadow-xl text-lg uppercase tracking-widest">
+                <input type="email" placeholder="E-mail" class="w-full p-4 rounded-2xl bg-white outline-none">
+                <textarea placeholder="Votre projet en quelques mots..." rows="4" class="w-full p-4 rounded-2xl bg-white outline-none"></textarea>
+                <button type="button" class="w-full hms-gradient text-white font-black py-5 rounded-2xl shadow-xl text-lg uppercase tracking-widest hover:scale-[1.01] transition-all">
                     Envoyer ma demande
                 </button>
             </form>
         </div>
     </section>
-
-    <footer class="py-12 text-center text-slate-400 text-sm">
-        <div class="mb-4 font-bold text-slate-900 tracking-tighter italic">
-            <span class="gradient-text">HMS</span> DIGITAL LILLE
-        </div>
-        <p>© 2026 — Simple. Rapide. Déjà prêt.</p>
-    </footer>
 
 </body>
 </html>
