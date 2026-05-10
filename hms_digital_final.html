@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Création de site web à Lille en 7 jours | HMS Digital – Agence web Métropole Lilloise</title>
+    <meta name="description" content="HMS Digital crée votre site web professionnel en 7 jours. Solution simple, rapide et abordable pour commerçants et indépendants de la Métropole Lilloise. Optimisé SEO local. Devis gratuit.">
+    <meta name="keywords" content="création site web Lille, freelance web Lille, site internet commerçant Lille, site web artisan Lille, site internet Roubaix, site web Tourcoing, création site Villeneuve-d'Ascq, site web métropole lilloise, SEO local Lille">
+    <meta name="author" content="Hugo Mollet-Stivala – HMS Digital">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://hms-digital.fr/">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hms-digital.fr/">
+    <meta property="og:title" content="Création de site web à Lille en 7 jours | HMS Digital">
+    <meta property="og:description" content="Site web pro en 7 jours pour commerçants et indépendants. Simple, rapide, abordable. SEO local inclus. Devis gratuit.">
+    <meta property="og:image" content="https://hms-digital.fr/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:site_name" content="HMS Digital">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Création de site web à Lille en 7 jours | HMS Digital">
+    <meta name="twitter:description" content="Site web pro en 7 jours pour commerçants et indépendants de la Métropole Lilloise.">
+    <meta name="twitter:image" content="https://hms-digital.fr/og-image.jpg">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":["LocalBusiness","ProfessionalService"],"name":"HMS Digital","legalName":"HMS Digital","description":"Création de sites web rapides, simples et optimisés SEO pour commerçants et indépendants. Solution clé en main livrée en 7 jours.","url":"https://hms-digital.fr","telephone":"+33615101256","email":"hmsdigital.lille@gmail.com","priceRange":"€","address":{"@type":"PostalAddress","addressLocality":"Lille","addressRegion":"Hauts-de-France","postalCode":"59000","addressCountry":"FR"},"geo":{"@type":"GeoCoordinates","latitude":50.6292,"longitude":3.0573},"areaServed":[{"@type":"City","name":"Lille"},{"@type":"City","name":"Roubaix"},{"@type":"City","name":"Tourcoing"},{"@type":"City","name":"Villeneuve-d'Ascq"},{"@type":"City","name":"Marcq-en-Barœul"},{"@type":"Country","name":"France"}],"identifier":{"@type":"PropertyValue","name":"SIRET","value":"10385513600018"},"founder":{"@type":"Person","name":"Hugo Mollet-Stivala","jobTitle":"Fondateur & Développeur web freelance"}}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Combien de temps faut-il pour créer un site web avec HMS Digital ?","acceptedAnswer":{"@type":"Answer","text":"Grâce à des templates prêts à personnaliser, votre site est en ligne en 7 jours ouvrés."}},{"@type":"Question","name":"Combien coûte la création d'un site web ?","acceptedAnswer":{"@type":"Answer","text":"Le tarif est établi sur devis selon votre activité. HMS Digital propose des prix accessibles grâce à son approche par templates. Contactez-nous pour un devis gratuit."}},{"@type":"Question","name":"Intervenez-vous uniquement à Lille ?","acceptedAnswer":{"@type":"Answer","text":"HMS Digital intervient partout en France. Le travail se fait à distance. Pour les clients de la Métropole Lilloise, des rencontres physiques sont possibles."}},{"@type":"Question","name":"Qui héberge mon site ?","acceptedAnswer":{"@type":"Answer","text":"Les sites sont hébergés sur Vercel, plateforme performante et fiable. L'hébergement est gratuit. Vous payez uniquement votre nom de domaine (environ 10 à 15 € par an)."}},{"@type":"Question","name":"Puis-je modifier mon site après livraison ?","acceptedAnswer":{"@type":"Answer","text":"Oui. Un accompagnement est inclus après la livraison pour les petites modifications (textes, horaires, photos)."}}]}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"HowTo","name":"Comment créer votre site web avec HMS Digital en 7 jours","totalTime":"P7D","step":[{"@type":"HowToStep","position":1,"name":"Choisissez votre modèle","text":"Sélectionnez parmi les templates disponibles celui qui correspond à votre activité."},{"@type":"HowToStep","position":2,"name":"Je personnalise tout","text":"Logo, couleurs, textes et photos sont adaptés à votre identité et votre zone géographique."},{"@type":"HowToStep","position":3,"name":"Mise en ligne en J+7","text":"Votre site est déployé sur Vercel, indexé sur Google et prêt à accueillir vos clients."}]}</script>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap');
+        *,*::before,*::after{box-sizing:border-box}
+        body{font-family:'Plus Jakarta Sans',sans-serif}
+        .hms-gradient{background:linear-gradient(90deg,#3b82f6,#8b5cf6,#ec4899)}
+        .gradient-text{background:linear-gradient(90deg,#3b82f6,#8b5cf6,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent;padding-right:.2em}
+        .glass{background:rgba(255,255,255,.88);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+        .geo-bold{font-weight:800;color:#0f172a}
+        .step-number{background:linear-gradient(135deg,#6366f1,#a855f7);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+        @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+        .fade-up{animation:fadeUp .65s ease both}
+        .d1{animation-delay:.1s}.d2{animation-delay:.22s}.d3{animation-delay:.34s}.d4{animation-delay:.46s}
+        .trust-badge{display:inline-flex;align-items:center;gap:8px;background:#eff6ff;border:1px solid #bfdbfe;color:#1d4ed8;border-radius:999px;padding:6px 18px;font-size:12px;font-weight:700}
+        .card-feat{background:#fff;border-radius:2rem;border:1.5px solid #e2e8f0;padding:2.5rem;transition:box-shadow .25s,border-color .25s}
+        .card-feat:hover{box-shadow:0 8px 32px rgba(59,130,246,.09);border-color:#bfdbfe}
+        .tmpl-card{transition:transform .25s,box-shadow .25s}
+        .tmpl-card:hover{transform:translateY(-5px);box-shadow:0 20px 48px rgba(0,0,0,.1)}
+        .city-tag{display:inline-block;background:#f8fafc;border:1.5px solid #e2e8f0;color:#334155;border-radius:999px;padding:5px 14px;font-size:12px;font-weight:600}
+        .faq-item{border-bottom:1.5px solid #e2e8f0}
+        .faq-btn{width:100%;text-align:left;background:none;border:none;cursor:pointer;padding:1.25rem 0;display:flex;justify-content:space-between;align-items:center;font-weight:700;font-size:1rem;color:#0f172a;gap:1rem}
+        .faq-ico{width:28px;height:28px;border-radius:50%;background:#f1f5f9;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .3s,background .3s}
+        .faq-btn[aria-expanded="true"] .faq-ico{transform:rotate(45deg);background:#3b82f6;color:#fff}
+        .faq-ans{max-height:0;overflow:hidden;transition:max-height .4s ease,padding-bottom .3s;color:#475569;line-height:1.75;font-size:.95rem}
+        .faq-ans.open{max-height:300px;padding-bottom:1.25rem}
+        .sticky-cta{position:fixed;bottom:0;left:0;right:0;padding:12px 16px;z-index:100;background:rgba(15,23,42,.95);backdrop-filter:blur(8px);display:none}
+        @media(max-width:768px){.sticky-cta{display:block}}
+        #prog{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,#3b82f6,#8b5cf6,#ec4899);z-index:9999;width:0%}
+        .hlbox{background:linear-gradient(135deg,#eff6ff,#faf5ff);border:1.5px solid #c7d2fe;border-radius:1.5rem;padding:1.5rem 2rem}
+    </style>
+</head>
+<body class="bg-white text-slate-900">
+<div id="prog" role="progressbar" aria-label="Progression de lecture"></div>
+
+<!-- NAV -->
+<nav class="fixed top-0 w-full z-50 glass border-b border-slate-100" role="navigation" aria-label="Navigation principale">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+        <a href="/" aria-label="HMS Digital – Accueil">
+            <span class="text-2xl font-extrabold tracking-tighter italic"><span class="gradient-text">HMS</span> DIGITAL</span>
+        </a>
+        <div class="flex items-center space-x-10">
+            <div class="hidden md:flex space-x-8 font-bold text-sm uppercase tracking-widest text-slate-700">
+                <a href="#comment" class="hover:text-blue-600 transition">Comment ça marche</a>
+                <a href="#templates" class="hover:text-blue-600 transition">Modèles</a>
+                <a href="#faq" class="hover:text-blue-600 transition">FAQ</a>
+                <a href="#about" class="hover:text-blue-600 transition">À propos</a>
+            </div>
+            <a href="#contact" class="hms-gradient text-white px-8 py-3 rounded-full font-bold hover:opacity-90 transition-all text-sm shadow-lg shadow-blue-500/20">Devis gratuit</a>
+        </div>
+    </div>
+</nav>
+
+<!-- HERO -->
+<header class="pt-48 pb-20 px-6 text-center" role="banner">
+    <div class="max-w-5xl mx-auto">
+        <div class="mb-6 fade-up d1">
+            <span class="trust-badge"><i class="fas fa-map-marker-alt" aria-hidden="true"></i>Focus Métropole Lilloise · Interventions partout en France</span>
+        </div>
+        <p class="text-blue-600 font-bold tracking-widest uppercase text-[11px] mb-4 italic fade-up d2">La solution pour digitaliser votre business local en 7 jours</p>
+        <h1 class="text-5xl md:text-8xl font-extrabold mt-6 mb-6 leading-tight text-slate-900 tracking-tighter fade-up d3">
+            Votre site web est<br><span class="gradient-text italic">déjà prêt.</span>
+        </h1>
+        <p class="text-xl md:text-2xl text-slate-500 max-w-3xl mx-auto mb-10 font-medium fade-up d4">
+            Simple, rapide et abordable pour les commerçants et indépendants de la <span class="geo-bold">Métropole Lilloise</span>. Choisissez votre modèle, je personnalise tout, et votre activité décolle en ligne.
+        </p>
+        <div class="flex flex-col md:flex-row justify-center gap-4 mb-10 fade-up d4">
+            <a href="#templates" class="bg-slate-900 text-white px-10 py-5 rounded-2xl font-bold text-lg hover:bg-slate-800 transition-all text-center shadow-xl"><i class="fas fa-eye mr-2" aria-hidden="true"></i>Voir les modèles</a>
+            <a href="#contact" class="bg-white text-slate-900 border-2 border-slate-200 px-10 py-5 rounded-2xl font-bold text-lg hover:border-blue-500 transition-all text-center"><i class="fas fa-comments mr-2" aria-hidden="true"></i>Discuter de mon projet</a>
+        </div>
+        <div class="fade-up d4">
+            <p class="text-xs text-slate-400 uppercase tracking-widest font-bold mb-3">Zones prioritaires</p>
+            <div class="flex flex-wrap justify-center gap-2">
+                <span class="city-tag">Lille</span><span class="city-tag">Roubaix</span><span class="city-tag">Tourcoing</span><span class="city-tag">Villeneuve-d'Ascq</span><span class="city-tag">Marcq-en-Barœul</span><span class="city-tag">Wasquehal</span><span class="city-tag">Croix</span><span class="city-tag">Hem</span><span class="city-tag">Wattrelos</span><span class="city-tag">+ toute la France 🇫🇷</span>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- POURQUOI -->
+<section class="py-24 px-6 bg-slate-50" aria-labelledby="why-title">
+    <div class="max-w-7xl mx-auto">
+        <h2 id="why-title" class="text-3xl md:text-4xl font-extrabold text-center mb-4 italic tracking-tight">Pourquoi choisir HMS Digital ?</h2>
+        <p class="text-slate-500 text-center font-medium mb-16 max-w-2xl mx-auto">Une solution pensée pour les indépendants qui veulent une présence en ligne sérieuse, sans se ruiner ni attendre des mois.</p>
+        <div class="grid md:grid-cols-3 gap-8">
+            <article class="card-feat text-center">
+                <div class="w-16 h-16 hms-gradient rounded-2xl flex items-center justify-center text-white text-2xl mx-auto mb-6 shadow-lg" aria-hidden="true"><i class="fas fa-bolt"></i></div>
+                <h3 class="text-2xl font-bold mb-4 italic">Rapide</h3>
+                <p class="text-slate-500 font-medium leading-relaxed"><strong>7 jours</strong> de la validation du modèle à la mise en ligne. C'est possible grâce à des templates déjà construits que je personnalise entièrement à votre image.</p>
+            </article>
+            <article class="card-feat text-center">
+                <div class="w-16 h-16 hms-gradient rounded-2xl flex items-center justify-center text-white text-2xl mx-auto mb-6 shadow-lg" aria-hidden="true"><i class="fas fa-hand-holding-heart"></i></div>
+                <h3 class="text-2xl font-bold mb-4 italic">Simple</h3>
+                <p class="text-slate-500 font-medium leading-relaxed">Pas de back-office compliqué, pas de formation de 3 heures. Vous recevez un site <strong>facile à prendre en main</strong> et je reste disponible pour les modifications après livraison.</p>
+            </article>
+            <article class="card-feat text-center">
+                <div class="w-16 h-16 hms-gradient rounded-2xl flex items-center justify-center text-white text-2xl mx-auto mb-6 shadow-lg" aria-hidden="true"><i class="fas fa-tag"></i></div>
+                <h3 class="text-2xl font-bold mb-4 italic">Abordable</h3>
+                <p class="text-slate-500 font-medium leading-relaxed">Grâce aux templates, le temps de travail par projet est réduit, ce qui se répercute directement sur le <strong>prix final</strong>. Un site pro n'a pas à coûter une fortune.</p>
+            </article>
+        </div>
+        <div class="mt-16 hlbox">
+            <h3 class="text-xl font-bold mb-6 text-slate-800 text-center italic">Ce qui est inclus dans chaque projet</h3>
+            <div class="grid md:grid-cols-2 gap-4 max-w-3xl mx-auto">
+                <div class="flex items-center gap-3"><span class="w-6 h-6 hms-gradient rounded-full flex items-center justify-center flex-shrink-0" aria-hidden="true"><i class="fas fa-check text-white text-[10px]"></i></span><span class="text-slate-700 font-medium text-sm">Design personnalisé (logo, couleurs, textes, photos)</span></div>
+                <div class="flex items-center gap-3"><span class="w-6 h-6 hms-gradient rounded-full flex items-center justify-center flex-shrink-0" aria-hidden="true"><i class="fas fa-check text-white text-[10px]"></i></span><span class="text-slate-700 font-medium text-sm">Hébergement Vercel (performant, gratuit)</span></div>
+                <div class="flex items-center gap-3"><span class="w-6 h-6 hms-gradient rounded-full flex items-center justify-center flex-shrink-0" aria-hidden="true"><i class="fas fa-check text-white text-[10px]"></i></span><span class="text-slate-700 font-medium text-sm">Nom de domaine (à votre charge, ~10–15 €/an)</span></div>
+                <div class="flex items-center gap-3"><span class="w-6 h-6 hms-gradient rounded-full flex items-center justify-center flex-shrink-0" aria-hidden="true"><i class="fas fa-check text-white text-[10px]"></i></span><span class="text-slate-700 font-medium text-sm">Site responsive mobile, tablette, desktop</span></div>
+                <div class="flex items-center gap-3"><span class="w-6 h-6 hms-gradient rounded-full flex items-center justify-center flex-shrink-0" aria-hidden="true"><i class="fas fa-check text-white text-[10px]"></i></span><span class="text-slate-700 font-medium text-sm">Optimisation SEO local (Lille &amp; Métropole)</span></div>
+                <div class="flex items-center gap-3"><span class="w-6 h-6 hms-gradient rounded-full flex items-center justify-center flex-shrink-0" aria-hidden="true"><i class="fas fa-check text-white text-[10px]"></i></span><span class="text-slate-700 font-medium text-sm">Formulaire de contact + intégration Google Maps</span></div>
+                <div class="flex items-center gap-3"><span class="w-6 h-6 hms-gradient rounded-full flex items-center justify-center flex-shrink-0" aria-hidden="true"><i class="fas fa-check text-white text-[10px]"></i></span><span class="text-slate-700 font-medium text-sm">Accompagnement post-livraison pour les modifications</span></div>
+                <div class="flex items-center gap-3"><span class="w-6 h-6 hms-gradient rounded-full flex items-center justify-center flex-shrink-0" aria-hidden="true"><i class="fas fa-check text-white text-[10px]"></i></span><span class="text-slate-700 font-medium text-sm">Conformité RGPD + mentions légales</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- COMMENT ÇA MARCHE -->
+<section id="comment" class="py-24 px-6 bg-white" aria-labelledby="process-title">
+    <div class="max-w-7xl mx-auto text-center">
+        <h2 id="process-title" class="text-4xl md:text-5xl font-extrabold mb-4 italic tracking-tight">Comment ça marche ?</h2>
+        <p class="text-slate-500 text-lg font-medium mb-16 max-w-xl mx-auto">Un process simple en 3 étapes, pensé pour les entrepreneurs qui n'ont pas de temps à perdre.</p>
+        <div class="relative grid md:grid-cols-3 gap-12">
+            <article class="relative">
+                <span class="step-number text-7xl font-black opacity-20 absolute -top-10 left-1/2 -translate-x-1/2" aria-hidden="true">01</span>
+                <div class="bg-slate-50 p-8 rounded-3xl border border-slate-100">
+                    <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center text-blue-600 text-xl mx-auto mb-4" aria-hidden="true"><i class="fas fa-mouse-pointer"></i></div>
+                    <h3 class="text-xl font-bold mb-3 italic">Choisissez votre modèle</h3>
+                    <p class="text-slate-500 font-medium text-sm leading-relaxed">Parcourez les templates disponibles et choisissez celui qui correspond à votre activité. Pas sûr ? On en discute ensemble.</p>
+                </div>
+            </article>
+            <article class="relative">
+                <span class="step-number text-7xl font-black opacity-20 absolute -top-10 left-1/2 -translate-x-1/2" aria-hidden="true">02</span>
+                <div class="bg-slate-50 p-8 rounded-3xl border border-slate-100">
+                    <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center text-purple-600 text-xl mx-auto mb-4" aria-hidden="true"><i class="fas fa-paint-brush"></i></div>
+                    <h3 class="text-xl font-bold mb-3 italic">Je personnalise tout</h3>
+                    <p class="text-slate-500 font-medium text-sm leading-relaxed">Logo, couleurs, textes, horaires, photos — j'adapte chaque détail à votre identité et à votre zone géographique.</p>
+                </div>
+            </article>
+            <article class="relative">
+                <span class="step-number text-7xl font-black opacity-20 absolute -top-10 left-1/2 -translate-x-1/2" aria-hidden="true">03</span>
+                <div class="bg-slate-50 p-8 rounded-3xl border border-slate-100">
+                    <div class="w-12 h-12 bg-pink-100 rounded-xl flex items-center justify-center text-pink-600 text-xl mx-auto mb-4" aria-hidden="true"><i class="fas fa-rocket"></i></div>
+                    <h3 class="text-xl font-bold mb-3 italic">Mise en ligne J+7</h3>
+                    <p class="text-slate-500 font-medium text-sm leading-relaxed">Déployé sur Vercel, indexé sur Google, et je reste disponible pour les ajustements après la livraison.</p>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- TEMPLATES -->
+<section id="templates" class="py-24 px-6 bg-slate-50" aria-labelledby="templates-title">
+    <div class="max-w-7xl mx-auto text-center">
+        <h2 id="templates-title" class="text-4xl font-extrabold mb-2 italic text-slate-900 tracking-tight">Modèles disponibles</h2>
+        <p class="text-slate-500 font-bold mb-12 text-lg">Chaque modèle est <strong>100% personnalisable</strong> — couleurs, textes, photos, logo</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-left">
+            <a href="https://hugomolletstivala.github.io/TemplateArtisant/" target="_blank" rel="noopener noreferrer" class="tmpl-card group bg-white rounded-[2.5rem] overflow-hidden border border-slate-100 shadow-sm" aria-label="Voir la démo du template Artisan et Indépendant">
+                <div class="h-60 bg-gradient-to-br from-orange-400 to-red-500 flex flex-col items-center justify-center relative"><i class="fas fa-hammer text-white text-6xl mb-4" aria-hidden="true"></i><span class="bg-white/20 text-white px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-tighter absolute bottom-6">Artisan &amp; Indépendant</span></div>
+                <div class="p-8"><h3 class="text-xl font-bold mb-1 italic">Services &amp; Proximité</h3><p class="text-slate-500 text-sm mb-3 font-medium">Plombier, électricien, peintre, menuisier, jardinier…</p><span class="text-blue-600 text-sm font-bold flex items-center gap-2">Voir la démo <i class="fas fa-arrow-right" aria-hidden="true"></i></span></div>
+            </a>
+            <a href="https://hugomolletstivala.github.io/templateBeautyArtist/" target="_blank" rel="noopener noreferrer" class="tmpl-card group bg-white rounded-[2.5rem] overflow-hidden border border-slate-100 shadow-sm" aria-label="Voir la démo du template Beauty Artist">
+                <div class="h-60 bg-gradient-to-br from-pink-400 to-rose-500 flex flex-col items-center justify-center relative"><i class="fas fa-wand-magic-sparkles text-white text-6xl mb-4" aria-hidden="true"></i><span class="bg-white/20 text-white px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-tighter absolute bottom-6">Beauty Artist</span></div>
+                <div class="p-8"><h3 class="text-xl font-bold mb-1 italic">Soin &amp; Esthétique</h3><p class="text-slate-500 text-sm mb-3 font-medium">Institut de beauté, nail art, coiffeur, spa…</p><span class="text-rose-600 text-sm font-bold flex items-center gap-2">Voir la démo <i class="fas fa-arrow-right" aria-hidden="true"></i></span></div>
+            </a>
+            <a href="https://hugomolletstivala.github.io/TemplateBoutique/" target="_blank" rel="noopener noreferrer" class="tmpl-card group bg-white rounded-[2.5rem] overflow-hidden border border-slate-100 shadow-sm" aria-label="Voir la démo du template Boutique">
+                <div class="h-60 bg-gradient-to-br from-purple-500 to-pink-500 flex flex-col items-center justify-center relative"><i class="fas fa-shopping-bag text-white text-6xl mb-4" aria-hidden="true"></i><span class="bg-white/20 text-white px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-tighter absolute bottom-6">Boutique</span></div>
+                <div class="p-8"><h3 class="text-xl font-bold mb-1 italic">Commerce de détail</h3><p class="text-slate-500 text-sm mb-3 font-medium">Prêt-à-porter, fleuriste, épicerie fine, bijouterie…</p><span class="text-purple-600 text-sm font-bold flex items-center gap-2">Voir la démo <i class="fas fa-arrow-right" aria-hidden="true"></i></span></div>
+            </a>
+            <a href="https://hugomolletstivala.github.io/TemplateRestaurant/" target="_blank" rel="noopener noreferrer" class="tmpl-card group bg-white rounded-[2.5rem] overflow-hidden border border-slate-100 shadow-sm" aria-label="Voir la démo du template Restaurant">
+                <div class="h-60 bg-gradient-to-br from-green-400 to-emerald-600 flex flex-col items-center justify-center relative"><i class="fas fa-utensils text-white text-6xl mb-4" aria-hidden="true"></i><span class="bg-white/20 text-white px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-tighter absolute bottom-6">Restaurant</span></div>
+                <div class="p-8"><h3 class="text-xl font-bold mb-1 italic">Restauration &amp; Bar</h3><p class="text-slate-500 text-sm mb-3 font-medium">Restaurant, brasserie, bar, café, traiteur…</p><span class="text-emerald-600 text-sm font-bold flex items-center gap-2">Voir la démo <i class="fas fa-arrow-right" aria-hidden="true"></i></span></div>
+            </a>
+        </div>
+        <p class="mt-10 text-slate-400 text-sm font-medium"><i class="fas fa-info-circle mr-1" aria-hidden="true"></i>Votre secteur n'est pas dans la liste ? <a href="#contact" class="text-blue-600 font-bold underline underline-offset-2 hover:text-blue-800">Contactez-moi</a> — je crée des structures sur mesure.</p>
+    </div>
+</section>
+
+<!-- À PROPOS -->
+<section id="about" class="py-24 px-6 bg-white" aria-labelledby="about-title">
+    <div class="max-w-5xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-16 items-center">
+            <div>
+                <p class="text-blue-600 font-bold tracking-widest uppercase text-[11px] mb-4 italic">Qui suis-je ?</p>
+                <h2 id="about-title" class="text-4xl font-extrabold mb-6 italic tracking-tight leading-tight">Un étudiant passionné,<br><span class="gradient-text">pas une agence froide.</span></h2>
+                <p class="text-slate-600 leading-relaxed mb-4 font-medium">Je m'appelle <strong>Hugo Mollet-Stivala</strong>, étudiant et développeur web freelance basé dans la <strong>Métropole Lilloise</strong>. J'ai lancé HMS Digital avec une idée simple : aider les commerçants et indépendants locaux à exister en ligne, sans les tarifs inaccessibles des grandes agences.</p>
+                <p class="text-slate-600 leading-relaxed mb-4 font-medium">Grâce à des <strong>templates que j'ai conçus moi-même</strong>, la base technique est déjà prête. Je me concentre sur la personnalisation — vos couleurs, votre logo, vos textes — pour vous livrer un site unique en <strong>7 jours</strong>.</p>
+                <p class="text-slate-600 leading-relaxed mb-6 font-medium">Chaque site est livré <strong>optimisé SEO, SXO, GEO et E-E-A-T</strong> pour maximiser votre visibilité locale et vos conversions. Vous avez un interlocuteur unique, disponible, qui s'investit vraiment dans votre projet.</p>
+                <div class="flex flex-wrap gap-3">
+                    <span class="inline-flex items-center gap-2 bg-blue-50 border border-blue-100 text-blue-700 rounded-full px-4 py-2 text-sm font-bold"><i class="fas fa-code" aria-hidden="true"></i> Templates 100% maison</span>
+                    <span class="inline-flex items-center gap-2 bg-purple-50 border border-purple-100 text-purple-700 rounded-full px-4 py-2 text-sm font-bold"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Métropole Lilloise</span>
+                    <span class="inline-flex items-center gap-2 bg-pink-50 border border-pink-100 text-pink-700 rounded-full px-4 py-2 text-sm font-bold"><i class="fas fa-shield-alt" aria-hidden="true"></i> Auto-entrepreneur déclaré</span>
+                </div>
+            </div>
+            <div class="space-y-4">
+                <div class="hlbox"><h3 class="font-bold text-slate-800 mb-1 flex items-center gap-2"><i class="fas fa-server text-blue-500 text-sm" aria-hidden="true"></i>Hébergement sur Vercel</h3><p class="text-slate-500 text-sm leading-relaxed">Plateforme moderne, rapide et fiable. L'hébergement est <strong>gratuit</strong>. Vous payez uniquement votre nom de domaine (~10–15 €/an).</p></div>
+                <div class="hlbox"><h3 class="font-bold text-slate-800 mb-1 flex items-center gap-2"><i class="fas fa-search text-purple-500 text-sm" aria-hidden="true"></i>SEO optimisé dès la livraison</h3><p class="text-slate-500 text-sm leading-relaxed">Balises meta, schema.org, ciblage géographique Lille &amp; Métropole, et conseils pour votre fiche Google Business Profile.</p></div>
+                <div class="hlbox"><h3 class="font-bold text-slate-800 mb-1 flex items-center gap-2"><i class="fas fa-handshake text-pink-500 text-sm" aria-hidden="true"></i>Un vrai suivi après livraison</h3><p class="text-slate-500 text-sm leading-relaxed">Je reste disponible pour les modifications après la mise en ligne. Horaires, photos, textes — on s'adapte ensemble.</p></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="py-24 px-6 bg-slate-50" aria-labelledby="faq-title">
+    <div class="max-w-3xl mx-auto">
+        <h2 id="faq-title" class="text-4xl font-extrabold mb-2 italic tracking-tight text-center">Questions fréquentes</h2>
+        <p class="text-slate-500 font-bold mb-12 text-lg text-center">Tout ce que vous voulez savoir avant de vous lancer</p>
+        <div role="list">
+            <div class="faq-item" role="listitem"><button class="faq-btn" aria-expanded="false" aria-controls="f1">Combien de temps pour créer mon site ?<span class="faq-ico" aria-hidden="true"><i class="fas fa-plus text-xs"></i></span></button><div class="faq-ans" id="f1" role="region"><strong>7 jours ouvrés</strong> à partir de la validation du modèle et de la réception de vos éléments (logo, textes, photos). C'est rendu possible par les templates que j'ai conçus : la base est déjà prête, je me concentre sur la personnalisation.</div></div>
+            <div class="faq-item" role="listitem"><button class="faq-btn" aria-expanded="false" aria-controls="f2">Quel est le tarif ?<span class="faq-ico" aria-hidden="true"><i class="fas fa-plus text-xs"></i></span></button><div class="faq-ans" id="f2" role="region">Le prix est établi <strong>sur devis</strong>, selon votre activité et vos besoins. L'approche par templates réduit le temps de travail, ce qui se répercute directement sur le tarif final — bien en-dessous des prix d'une agence classique. <a href="#contact" class="text-blue-600 font-bold">Demandez un devis gratuit</a>, je réponds sous 24h.</div></div>
+            <div class="faq-item" role="listitem"><button class="faq-btn" aria-expanded="false" aria-controls="f3">Vous intervenez uniquement à Lille ?<span class="faq-ico" aria-hidden="true"><i class="fas fa-plus text-xs"></i></span></button><div class="faq-ans" id="f3" role="region">J'interviens <strong>partout en France</strong>, tout se fait à distance. Pour les clients de la <strong>Métropole Lilloise</strong>, des rencontres physiques sont possibles si vous le souhaitez.</div></div>
+            <div class="faq-item" role="listitem"><button class="faq-btn" aria-expanded="false" aria-controls="f4">Qui héberge mon site et quel est le coût ?<span class="faq-ico" aria-hidden="true"><i class="fas fa-plus text-xs"></i></span></button><div class="faq-ans" id="f4" role="region">Les sites sont déployés sur <strong>Vercel</strong>, une plateforme moderne et performante. L'hébergement est <strong>gratuit</strong>. Vous payez uniquement votre nom de domaine, en général entre 10 et 15 € par an selon l'extension (.fr, .com…).</div></div>
+            <div class="faq-item" role="listitem"><button class="faq-btn" aria-expanded="false" aria-controls="f5">Mon site sera-t-il visible sur Google ?<span class="faq-ico" aria-hidden="true"><i class="fas fa-plus text-xs"></i></span></button><div class="faq-ans" id="f5" role="region">Oui. Chaque site est livré avec une <strong>optimisation SEO local</strong> : balises meta, schema.org LocalBusiness, ciblage géographique. Je vous guide aussi pour créer votre fiche <strong>Google Business Profile</strong>, indispensable pour apparaître sur Google Maps.</div></div>
+            <div class="faq-item" role="listitem"><button class="faq-btn" aria-expanded="false" aria-controls="f6">Puis-je modifier le site après la livraison ?<span class="faq-ico" aria-hidden="true"><i class="fas fa-plus text-xs"></i></span></button><div class="faq-ans" id="f6" role="region">Oui. Un <strong>accompagnement post-livraison</strong> est inclus pour les petites modifications (horaires, textes, photos). Pour des évolutions plus importantes, on s'organise ensemble.</div></div>
+            <div class="faq-item" role="listitem"><button class="faq-btn" aria-expanded="false" aria-controls="f7">Mon activité n'est pas dans vos 4 modèles ?<span class="faq-ico" aria-hidden="true"><i class="fas fa-plus text-xs"></i></span></button><div class="faq-ans" id="f7" role="region">Pas de problème. Les 4 templates couvrent les cas les plus courants, mais je peux créer une structure adaptée à n'importe quel secteur. <a href="#contact" class="text-blue-600 font-bold">Contactez-moi</a> — j'étudie votre projet gratuitement.</div></div>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="py-24 px-6 bg-slate-900 text-white relative overflow-hidden" aria-labelledby="contact-title">
+    <div class="absolute top-0 left-0 w-full h-1 hms-gradient" aria-hidden="true"></div>
+    <div class="max-w-2xl mx-auto text-center">
+        <p class="text-blue-400 font-bold tracking-widest uppercase text-[11px] mb-4 italic">Devis gratuit · Réponse sous 24h</p>
+        <h2 id="contact-title" class="text-3xl font-bold mb-4 italic text-white tracking-tight">On en discute ?</h2>
+        <p class="text-slate-400 mb-10 font-medium">Décrivez votre projet en quelques mots. Je vous réponds rapidement pour un échange sans engagement.</p>
+        <form action="https://formspree.io/f/mbdwrknl" method="POST" class="space-y-4 text-slate-900 font-bold text-left" aria-label="Formulaire de contact HMS Digital" novalidate>
+            <div class="grid md:grid-cols-2 gap-4">
+                <div><label for="nom" class="sr-only">Votre entreprise ou nom</label><input type="text" id="nom" name="nom" required autocomplete="organization" placeholder="Votre entreprise / Nom" class="w-full p-4 rounded-2xl bg-white outline-none focus:ring-2 focus:ring-blue-500 transition"></div>
+                <div><label for="telephone" class="sr-only">Numéro de téléphone</label><input type="tel" id="telephone" name="telephone" required autocomplete="tel" placeholder="N° de téléphone" class="w-full p-4 rounded-2xl bg-white outline-none focus:ring-2 focus:ring-blue-500 transition"></div>
+            </div>
+            <div><label for="email" class="sr-only">Adresse e-mail</label><input type="email" id="email" name="email" required autocomplete="email" placeholder="Adresse e-mail" class="w-full p-4 rounded-2xl bg-white outline-none focus:ring-2 focus:ring-blue-500 transition"></div>
+            <div><label for="ville" class="sr-only">Votre ville</label><select id="ville" name="ville" class="w-full p-4 rounded-2xl bg-white outline-none focus:ring-2 focus:ring-blue-500 transition text-slate-500"><option value="">Votre ville</option><option>Lille</option><option>Roubaix</option><option>Tourcoing</option><option>Villeneuve-d'Ascq</option><option>Marcq-en-Barœul</option><option>Wasquehal</option><option>Croix</option><option>Hem</option><option>Wattrelos</option><option>Autre ville en France</option></select></div>
+            <div><label for="message" class="sr-only">Description de votre projet</label><textarea id="message" name="message" rows="4" placeholder="Décrivez votre activité et ce que vous attendez de votre site…" class="w-full p-4 rounded-2xl bg-white outline-none focus:ring-2 focus:ring-blue-500 transition"></textarea></div>
+            <div class="flex items-start gap-3">
+                <input type="checkbox" id="rgpd" name="rgpd" required class="mt-1 accent-blue-500" aria-required="true">
+                <label for="rgpd" class="text-slate-400 text-xs font-medium leading-relaxed">J'accepte que mes données soient utilisées pour traiter ma demande de contact. Conformément au RGPD, vous pouvez exercer vos droits en écrivant à <a href="mailto:hmsdigital.lille@gmail.com" class="text-blue-400 underline">hmsdigital.lille@gmail.com</a>.</label>
+            </div>
+            <button type="submit" class="w-full hms-gradient text-white font-black py-5 rounded-2xl hover:scale-[1.01] transition-all shadow-xl text-lg uppercase tracking-widest"><i class="fas fa-paper-plane mr-2" aria-hidden="true"></i>Envoyer ma demande</button>
+        </form>
+        <div class="mt-10 flex flex-col md:flex-row justify-center items-center gap-5 text-sm">
+            <a href="tel:+33615101256" class="flex items-center gap-2 text-slate-300 hover:text-white transition font-semibold"><i class="fas fa-phone" aria-hidden="true"></i>06 15 10 12 56</a>
+            <span class="hidden md:block text-slate-700">·</span>
+            <a href="mailto:hmsdigital.lille@gmail.com" class="flex items-center gap-2 text-blue-400 hover:text-blue-300 transition font-semibold"><i class="fas fa-envelope" aria-hidden="true"></i>hmsdigital.lille@gmail.com</a>
+            <span class="hidden md:block text-slate-700">·</span>
+            <span class="flex items-center gap-2 text-slate-500 text-xs"><i class="fas fa-clock" aria-hidden="true"></i>Réponse sous 24h</span>
+        </div>
+    </div>
+</section>
+
+<!-- MENTIONS LÉGALES -->
+<section id="mentions-legales" class="py-16 px-6 bg-slate-950 text-slate-400" aria-labelledby="legal-title">
+    <div class="max-w-4xl mx-auto">
+        <h2 id="legal-title" class="text-white font-bold text-xl mb-6 italic">Mentions légales &amp; Politique de confidentialité</h2>
+        <div class="grid md:grid-cols-2 gap-8 text-sm leading-relaxed">
+            <div>
+                <h3 class="text-white font-semibold mb-3">Éditeur du site</h3>
+                <p><strong class="text-slate-300">HMS Digital</strong> — Auto-entrepreneur<br>Représentant légal : Hugo Mollet-Stivala<br>Métropole Lilloise, Hauts-de-France, France<br>SIRET : 103 855 136 000 18<br>Tél : <a href="tel:+33615101256" class="text-blue-400 hover:underline">06 15 10 12 56</a><br>E-mail : <a href="mailto:hmsdigital.lille@gmail.com" class="text-blue-400 hover:underline">hmsdigital.lille@gmail.com</a></p>
+            </div>
+            <div>
+                <h3 class="text-white font-semibold mb-3">Données personnelles (RGPD)</h3>
+                <p>Les données collectées via le formulaire (nom, e-mail, téléphone, ville) sont utilisées uniquement pour répondre à votre demande. Elles ne sont jamais revendues ni transmises à des tiers. Durée de conservation : 3 ans maximum. Pour exercer vos droits, contactez : <a href="mailto:hmsdigital.lille@gmail.com" class="text-blue-400 hover:underline">hmsdigital.lille@gmail.com</a>.</p>
+                <p class="mt-3"><strong class="text-slate-300">Hébergement :</strong> Vercel Inc., 340 Pine Street, Suite 701, San Francisco, CA 94104, USA.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="py-12 text-center text-slate-400 text-sm bg-slate-950 border-t border-slate-800" role="contentinfo">
+    <div class="mb-4 font-bold text-white tracking-tighter italic text-lg"><span class="gradient-text">HMS</span> DIGITAL</div>
+    <nav class="flex flex-wrap justify-center gap-6 mb-4 text-xs font-semibold text-slate-500" aria-label="Liens de pied de page">
+        <a href="#comment" class="hover:text-white transition">Comment ça marche</a>
+        <a href="#templates" class="hover:text-white transition">Modèles</a>
+        <a href="#faq" class="hover:text-white transition">FAQ</a>
+        <a href="#about" class="hover:text-white transition">À propos</a>
+        <a href="#contact" class="hover:text-white transition">Contact</a>
+        <a href="#mentions-legales" class="hover:text-white transition">Mentions légales</a>
+    </nav>
+    <p>© 2026 HMS Digital — Hugo Mollet-Stivala · SIRET 103 855 136 000 18</p>
+    <p class="mt-1 text-xs text-slate-600">Création de sites web · Métropole Lilloise &amp; toute la France</p>
+</footer>
+
+<!-- STICKY CTA MOBILE -->
+<div class="sticky-cta" role="complementary" aria-label="Appel à l'action mobile">
+    <a href="#contact" class="block w-full hms-gradient text-white py-4 rounded-2xl font-bold text-center text-base shadow-lg"><i class="fas fa-comments mr-2" aria-hidden="true"></i>Devis gratuit · Réponse sous 24h</a>
+</div>
+
+<script>
+    window.addEventListener('scroll',()=>{const h=document.documentElement.scrollHeight-document.documentElement.clientHeight;document.getElementById('prog').style.width=(window.scrollY/h*100)+'%'});
+    document.querySelectorAll('.faq-btn').forEach(b=>{b.addEventListener('click',()=>{const o=b.getAttribute('aria-expanded')==='true';document.querySelectorAll('.faq-btn').forEach(x=>{x.setAttribute('aria-expanded','false');document.getElementById(x.getAttribute('aria-controls')).classList.remove('open')});if(!o){b.setAttribute('aria-expanded','true');document.getElementById(b.getAttribute('aria-controls')).classList.add('open')}})});
+    const ce=document.getElementById('contact'),se=document.querySelector('.sticky-cta');if(ce&&se)new IntersectionObserver(([e])=>{se.style.display=e.isIntersecting?'none':''},{ threshold:0.1}).observe(ce);
+    document.querySelector('form')?.addEventListener('submit',e=>{const cb=document.getElementById('rgpd');if(cb&&!cb.checked){e.preventDefault();cb.focus();cb.closest('.flex').style.cssText='outline:2px solid #ef4444;border-radius:8px';setTimeout(()=>{cb.closest('.flex').style.cssText=''},3000)}});
+</script>
+</body>
+</html>
