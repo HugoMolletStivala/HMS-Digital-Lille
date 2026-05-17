@@ -1,1372 +1,325 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Maison Céleste — Boutique mode femme à Lyon</title>
-  <meta name="description" content="Boutique de mode féminine à Lyon. Pièces sélectionnées avec soin. Ouvert lun–sam 10h–19h. ☎ 04 72 00 00 00"/>
-  <link rel="canonical" href="https://maisonceleste.fr/"/>
-
-  <meta property="og:title" content="Maison Céleste — Boutique mode femme à Lyon">
-  <meta property="og:description" content="Découvrez notre sélection de pièces uniques et accessoires au cœur du 2ème arrondissement de Lyon.">
-  <meta property="og:image" content="https://maisonceleste.fr/photo-hero-2.jpeg">
-  <meta property="og:url" content="https://maisonceleste.fr/">
-  <meta property="og:type" content="website">
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "ClothingStore",
-    "name": "Maison Céleste",
-    "telephone": "+33472000000",
-    "priceRange": "€€",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "8 rue Auguste Comte",
-      "addressLocality": "Lyon",
-      "postalCode": "69002",
-      "addressCountry": "FR"
-    },
-    "openingHoursSpecification": [{
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
-      "opens": "10:00",
-      "closes": "19:00"
-    }]
-  }
-  </script>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
-
-  <style>
-    /* ─────────── TOKENS ─────────── */
-    :root {
-      --cream: #FAF7F2;
-      --cream2: #F2EDE4;
-      --cream3: #EDE5D8;
-      --gold: #C9A84C;
-      --gold2: #E8C97A;
-      --gold3: #F0D898;
-      --ink: #1A1612;
-      --ink2: #5C5045;
-      --ink3: #8C7E72;
-      --rose: #E8B4B8;
-      --sage: #B5C4B1;
-      --border: rgba(26,22,18,.1);
-      --border2: rgba(26,22,18,.06);
-      --r: 4px;
-      --r2: 12px;
-      --shadow: 0 8px 40px rgba(26,22,18,.10);
-      --shadow2: 0 2px 12px rgba(26,22,18,.07);
-    }
-
-    *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0 }
-    html { font-size: 16px; scroll-behavior: smooth }
-    body { background: var(--cream); color: var(--ink); font-family: 'Jost', sans-serif; font-weight: 300; overflow-x: hidden }
-    img { display: block; max-width: 100%; height: auto }
-    a { color: inherit; text-decoration: none }
-    ul { list-style: none }
-    button { font-family: inherit; cursor: pointer }
-
-    /* ─────────── SCROLL PROGRESS ─────────── */
-    #progress-bar {
-      position: fixed; top: 0; left: 0; height: 2px; width: 0%;
-      background: linear-gradient(90deg, var(--gold), var(--gold3));
-      z-index: 999; transition: width .05s linear;
-      will-change: width;
-    }
-
-    /* ─────────── PRELOADER ─────────── */
-    #preloader {
-      position: fixed; inset: 0; background: var(--ink); z-index: 9000;
-      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.5rem;
-      transition: opacity .6s ease, visibility .6s;
-    }
-    #preloader.done { opacity: 0; visibility: hidden }
-    .pre-logo {
-      font-family: 'Playfair Display', serif; font-style: italic;
-      font-size: 2.2rem; color: var(--cream); letter-spacing: .04em;
-    }
-    .pre-logo span { color: var(--gold) }
-    .pre-bar {
-      width: 120px; height: 1px; background: rgba(250,247,242,.15); position: relative; overflow: hidden;
-    }
-    .pre-bar::after {
-      content: ''; position: absolute; left: -100%; top: 0; width: 100%; height: 100%;
-      background: var(--gold); animation: preload 1.2s ease forwards;
-    }
-    @keyframes preload { to { left: 0 } }
-
-    /* ─────────── NAV ─────────── */
-    #nav {
-      position: sticky; top: 0; z-index: 200;
-      background: rgba(250,247,242,.92);
-      backdrop-filter: blur(12px) saturate(1.4);
-      -webkit-backdrop-filter: blur(12px) saturate(1.4);
-      border-bottom: 1px solid var(--border);
-      padding: 0 5vw;
-      transition: box-shadow .3s;
-    }
-    #nav.scrolled { box-shadow: 0 4px 24px rgba(26,22,18,.08) }
-    .nav-inner {
-      display: grid; grid-template-columns: 1fr auto 1fr;
-      align-items: center; height: 68px;
-    }
-    .nav-left { display: flex; gap: 2rem; align-items: center }
-    .nav-right { display: flex; gap: 1.25rem; justify-content: flex-end; align-items: center }
-    .nav-link {
-      font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: var(--ink2);
-      transition: color .2s; position: relative; padding-bottom: 2px;
-    }
-    .nav-link::after {
-      content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px;
-      background: var(--gold); transition: width .3s;
-    }
-    .nav-link:hover { color: var(--ink) }
-    .nav-link:hover::after { width: 100% }
-    .nav-logo {
-      font-family: 'Playfair Display', serif; font-size: 1.5rem; font-style: italic;
-      color: var(--ink); letter-spacing: .02em; text-align: center; white-space: nowrap;
-    }
-    .nav-logo span { color: var(--gold) }
-
-    /* Favoris badge nav */
-    #fav-toggle {
-      position: relative; background: none; border: none;
-      display: flex; align-items: center; gap: .4rem;
-      font-size: .72rem; letter-spacing: .1em; text-transform: uppercase;
-      color: var(--ink2); transition: color .2s; padding: .4rem;
-    }
-    #fav-toggle:hover { color: var(--rose) }
-    #fav-toggle svg { width: 16px; height: 16px; transition: fill .2s }
-    #fav-toggle.has-favs svg { fill: var(--rose); stroke: var(--rose) }
-    #fav-count {
-      position: absolute; top: -2px; right: -2px;
-      background: var(--rose); color: var(--ink); border-radius: 50%;
-      width: 16px; height: 16px; font-size: .6rem; font-weight: 600;
-      display: flex; align-items: center; justify-content: center;
-      opacity: 0; transform: scale(0); transition: all .25s;
-    }
-    #fav-count.show { opacity: 1; transform: scale(1) }
-
-    .nav-phone {
-      display: inline-flex; align-items: center; gap: .4rem;
-      font-size: .78rem; font-weight: 500; color: var(--ink);
-      letter-spacing: .04em; transition: color .2s;
-    }
-    .nav-phone:hover { color: var(--gold) }
-    .nav-phone svg { color: var(--gold); flex-shrink: 0 }
-
-    .burger {
-      display: none; flex-direction: column; gap: 5px;
-      background: none; border: none; cursor: pointer; padding: .3rem;
-    }
-    .burger span { width: 22px; height: 1px; background: var(--ink); display: block; transition: all .3s }
-    .burger.open span:nth-child(1) { transform: rotate(45deg) translate(4px,4px) }
-    .burger.open span:nth-child(2) { opacity: 0 }
-    .burger.open span:nth-child(3) { transform: rotate(-45deg) translate(4px,-4px) }
-
-    /* ─────────── MOBILE MENU ─────────── */
-    .mob-menu {
-      display: none; position: fixed; inset: 0; background: var(--cream); z-index: 190;
-      flex-direction: column; align-items: center; justify-content: center; gap: 2rem;
-    }
-    .mob-menu.open { display: flex }
-    .mob-menu a { font-family: 'Playfair Display', serif; font-size: 1.9rem; font-style: italic; color: var(--ink); transition: color .2s }
-    .mob-menu a:hover { color: var(--gold) }
-    .mob-menu .nav-phone { font-family: 'Jost', sans-serif; font-size: 1rem; font-style: normal; margin-top: .5rem }
-
-    /* ─────────── FAVORIS DRAWER ─────────── */
-    #fav-drawer {
-      position: fixed; inset: 0; z-index: 500; pointer-events: none;
-    }
-    #fav-overlay {
-      position: absolute; inset: 0; background: rgba(26,22,18,.45);
-      opacity: 0; transition: opacity .35s; backdrop-filter: blur(4px);
-    }
-    #fav-panel {
-      position: absolute; top: 0; right: 0; bottom: 0; width: min(420px, 100vw);
-      background: var(--cream); display: flex; flex-direction: column;
-      transform: translateX(100%); transition: transform .4s cubic-bezier(.25,.46,.45,.94);
-      box-shadow: -8px 0 48px rgba(26,22,18,.12);
-    }
-    #fav-drawer.open { pointer-events: all }
-    #fav-drawer.open #fav-overlay { opacity: 1 }
-    #fav-drawer.open #fav-panel { transform: translateX(0) }
-
-    .fav-header {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 1.5rem 1.75rem; border-bottom: 1px solid var(--border);
-    }
-    .fav-header h2 {
-      font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 400; font-style: italic;
-    }
-    .fav-header h2 span { font-style: normal; color: var(--ink3); font-size: .85rem; margin-left: .5rem }
-    #fav-close {
-      background: none; border: none; font-size: 1.4rem; color: var(--ink2);
-      transition: color .2s; line-height: 1; padding: .25rem;
-    }
-    #fav-close:hover { color: var(--ink) }
-
-    .fav-body { flex: 1; overflow-y: auto; padding: 1.25rem 1.75rem; display: flex; flex-direction: column; gap: .75rem }
-    .fav-empty {
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      flex: 1; gap: 1rem; color: var(--ink3); text-align: center; padding: 2rem;
-    }
-    .fav-empty svg { opacity: .3 }
-    .fav-empty p { font-size: .88rem; line-height: 1.7 }
-
-    .fav-item {
-      display: flex; align-items: center; gap: 1rem;
-      background: var(--cream2); border-radius: var(--r2); padding: .75rem 1rem;
-      border: 1px solid var(--border2);
-      animation: fadeSlideIn .3s ease forwards;
-    }
-    @keyframes fadeSlideIn { from { opacity: 0; transform: translateX(12px) } to { opacity: 1; transform: none } }
-    .fav-item-img {
-      width: 56px; height: 72px; object-fit: cover; border-radius: 6px;
-      background: var(--cream3); flex-shrink: 0;
-    }
-    .fav-item-info { flex: 1 }
-    .fav-item-name { font-family: 'Playfair Display', serif; font-style: italic; font-size: .95rem }
-    .fav-item-ref { font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; color: var(--gold); margin-top: .15rem }
-    .fav-item-price { font-size: .82rem; color: var(--ink2); margin-top: .2rem }
-    .fav-remove {
-      background: none; border: none; color: var(--ink3); font-size: 1rem;
-      padding: .25rem; transition: color .2s; flex-shrink: 0;
-    }
-    .fav-remove:hover { color: var(--rose) }
-
-    .fav-footer {
-      padding: 1.25rem 1.75rem; border-top: 1px solid var(--border);
-      display: flex; flex-direction: column; gap: .75rem;
-    }
-    .fav-cta {
-      display: flex; align-items: center; justify-content: center; gap: .5rem;
-      background: var(--ink); color: var(--cream); border: none;
-      padding: .9rem 1.5rem; border-radius: 100px;
-      font-size: .75rem; letter-spacing: .12em; text-transform: uppercase;
-      transition: background .25s, color .25s;
-    }
-    .fav-cta:hover { background: var(--gold); color: var(--ink) }
-    .fav-clear {
-      background: none; border: none; color: var(--ink3);
-      font-size: .72rem; letter-spacing: .08em; text-transform: uppercase;
-      text-align: center; transition: color .2s;
-    }
-    .fav-clear:hover { color: var(--rose) }
-
-    /* ─────────── TOAST ─────────── */
-    #toast {
-      position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(0);
-      background: var(--ink); color: var(--cream);
-      padding: .65rem 1.4rem; border-radius: 100px;
-      font-size: .78rem; letter-spacing: .06em;
-      display: none; align-items: center; gap: .6rem;
-      z-index: 600; transition: opacity .35s ease, transform .35s cubic-bezier(.34,1.56,.64,1);
-      white-space: nowrap; box-shadow: 0 8px 32px rgba(26,22,18,.25);
-      pointer-events: none; opacity: 0;
-    }
-    #toast.show { display: flex; opacity: 1; transform: translateX(-50%) translateY(-4px) }
-    #toast .t-heart { color: var(--rose) }
-
-    /* ─────────── HERO ─────────── */
-    #hero { position: relative; height: 90svh; display: flex; overflow: hidden; }
-    .hero-col { flex: 1; position: relative; overflow: hidden }
-    .hero-col img { width: 100%; height: 100%; object-fit: cover; transition: transform 9s ease; will-change: transform }
-    .hero-col:hover img { transform: scale(1.06) }
-    .hero-col:nth-child(2) { flex: 1.3 }
-    .hero-col:nth-child(3) { flex: .9 }
-    .hero-col::after {
-      content: ''; position: absolute; inset: 0;
-      background: linear-gradient(to bottom, transparent 35%, rgba(26,22,18,.5));
-    }
-    .hero-col+.hero-col { border-left: 2px solid rgba(201,168,76,.4) }
-    .hero-text {
-      position: absolute; bottom: 3rem; left: 50%; transform: translateX(-50%);
-      z-index: 10; text-align: center; white-space: nowrap; pointer-events: none;
-    }
-    .hero-kicker {
-      display: inline-block;
-      font-size: .66rem; letter-spacing: .22em; text-transform: uppercase; color: var(--gold2); margin-bottom: .8rem;
-    }
-    .hero-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.6rem,5vw,5rem); font-weight: 400; color: #fff; line-height: 1.05;
-    }
-    .hero-title em { font-style: italic; color: var(--gold2) }
-    .hero-btn {
-      pointer-events: all; display: inline-block; margin-top: 1.5rem;
-      border: 1px solid rgba(255,255,255,.6); color: #fff;
-      padding: .65rem 2rem; border-radius: 100px;
-      font-size: .72rem; letter-spacing: .1em; text-transform: uppercase;
-      backdrop-filter: blur(4px); background: rgba(255,255,255,.08);
-      transition: background .25s, border-color .25s, color .25s;
-    }
-    .hero-btn:hover { background: var(--gold); border-color: var(--gold); color: var(--ink) }
-    .hero-tag {
-      position: absolute; top: 1.5rem; right: 1.5rem; z-index: 10;
-      background: var(--gold); color: var(--ink);
-      font-size: .62rem; font-weight: 500; letter-spacing: .12em; text-transform: uppercase;
-      padding: .35rem .9rem; border-radius: 100px;
-    }
-    /* Scroll hint */
-    .scroll-hint {
-      position: absolute; bottom: 1.5rem; right: 5vw; z-index: 10;
-      display: flex; align-items: center; gap: .5rem;
-      font-size: .62rem; letter-spacing: .14em; text-transform: uppercase;
-      color: rgba(255,255,255,.5); animation: bounce 2.5s ease-in-out infinite;
-    }
-    @keyframes bounce { 0%,100% { transform: translateY(0) } 50% { transform: translateY(5px) } }
-
-    /* ─────────── MARQUEE ─────────── */
-    .marquee-wrap {
-      overflow: hidden;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      background: var(--ink); padding: .8rem 0;
-    }
-    .marquee-track {
-      display: flex; width: max-content;
-      animation: marquee 36s linear infinite;
-      will-change: transform;
-    }
-    .marquee-track:hover { animation-play-state: paused }
-    @keyframes marquee { from { transform: translateX(0) } to { transform: translateX(-50%) } }
-    .marquee-item {
-      display: inline-flex; align-items: center; gap: .7rem;
-      padding: 0 1.5rem; white-space: nowrap;
-      font-size: .7rem; letter-spacing: .18em; text-transform: uppercase;
-      color: rgba(250,247,242,.45);
-    }
-    .marquee-sep { color: var(--gold); font-size: .75rem }
-
-    /* ─────────── SECTION HELPERS ─────────── */
-    .section-tag { font-size: .66rem; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: .75rem }
-    .section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem,3vw,2.8rem); font-weight: 400; line-height: 1.15 }
-    .section-title em { font-style: italic; color: var(--gold) }
-
-    /* ─────────── CATALOGUE ─────────── */
-    #catalogue { padding: 5.5rem 5vw }
-    .cat-head { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 2.5rem; gap: 2rem; flex-wrap: wrap }
-    .cat-sub { font-size: .85rem; color: var(--ink2); max-width: 32ch; line-height: 1.75; text-align: right }
-
-    /* Filtres */
-    .cat-filters {
-      display: flex; gap: .6rem; flex-wrap: wrap; margin-bottom: 2.25rem;
-      padding-bottom: 1.5rem; border-bottom: 1px solid var(--border);
-    }
-    .filter-btn {
-      font-size: .68rem; letter-spacing: .12em; text-transform: uppercase;
-      padding: .45rem 1.1rem; border-radius: 100px;
-      border: 1px solid var(--border); background: transparent; color: var(--ink2);
-      transition: all .2s; cursor: pointer;
-    }
-    .filter-btn:hover, .filter-btn.active {
-      background: var(--ink); color: var(--cream); border-color: var(--ink);
-    }
-
-    /* Grille produits */
-    .cat-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1.25rem;
-    }
-    .prod {
-      position: relative; overflow: hidden; border-radius: var(--r2);
-      background: var(--cream2); cursor: pointer;
-      transition: box-shadow .3s;
-    }
-    .prod:hover { box-shadow: var(--shadow) }
-    .prod-img-wrap { position: relative; overflow: hidden; aspect-ratio: 3/4 }
-    .prod-img-wrap img {
-      width: 100%; height: 100%; object-fit: cover;
-      transition: transform .7s cubic-bezier(.25,.46,.45,.94);
-      will-change: transform;
-    }
-    .prod:hover .prod-img-wrap img { transform: scale(1.07) }
-
-    .prod-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(transparent 50%, rgba(26,22,18,.55));
-      opacity: 0; transition: opacity .35s;
-    }
-    .prod:hover .prod-overlay { opacity: 1 }
-
-    /* Bouton favoris */
-    .prod-fav {
-      position: absolute; top: .75rem; right: .75rem; z-index: 5;
-      width: 34px; height: 34px; border-radius: 50%;
-      background: rgba(250,247,242,.92); border: none;
-      display: flex; align-items: center; justify-content: center;
-      color: var(--ink2); transition: all .25s;
-      opacity: 0; transform: translateY(-4px);
-    }
-    .prod:hover .prod-fav, .prod-fav.active { opacity: 1; transform: translateY(0) }
-    .prod-fav:hover { background: #fff }
-    .prod-fav svg { width: 15px; height: 15px; transition: all .2s }
-    .prod-fav.active svg { fill: var(--rose); stroke: var(--rose) }
-
-    .prod-badge {
-      position: absolute; top: .75rem; left: .75rem; z-index: 5;
-      font-size: .6rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase;
-      padding: .28rem .75rem; border-radius: 100px;
-    }
-    .badge-new { background: var(--gold); color: var(--ink) }
-    .badge-last { background: var(--rose); color: var(--ink) }
-    .badge-exclu { background: var(--sage); color: var(--ink) }
-
-    .prod-info { padding: 1rem 1.1rem 1.2rem }
-    .prod-cat { font-size: .62rem; letter-spacing: .14em; text-transform: uppercase; color: var(--ink3); margin-bottom: .3rem }
-    .prod-name { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1rem; color: var(--ink) }
-    .prod-ref { font-size: .66rem; letter-spacing: .1em; text-transform: uppercase; color: var(--gold); margin-top: .2rem }
-    .prod-footer { display: flex; align-items: center; justify-content: space-between; margin-top: .6rem }
-    .prod-price { font-size: .9rem; font-weight: 500; color: var(--ink) }
-    .prod-sizes { display: flex; gap: .3rem }
-    .prod-size { font-size: .6rem; border: 1px solid var(--border); border-radius: 3px; padding: .2rem .4rem; color: var(--ink3) }
-
-    /* hidden filtered */
-    .prod.hidden { display: none }
-
-    /* ─────────── LOOKBOOK (horizontal scroll) ─────────── */
-    #lookbook { padding: 5rem 0; overflow: hidden }
-    .lb-head { padding: 0 5vw; display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 2.5rem; gap: 2rem }
-    .lb-sub { font-size: .85rem; color: var(--ink2); max-width: 32ch; line-height: 1.75; text-align: right }
-    .lb-scroll-wrap {
-      position: relative;
-    }
-    .lb-track {
-      display: flex; gap: 1rem; padding: 0 5vw 1rem;
-      overflow-x: auto; scroll-snap-type: x mandatory;
-      scroll-padding-left: 5vw;
-      scrollbar-width: none;
-      -webkit-overflow-scrolling: touch;
-      cursor: grab;
-    }
-    .lb-track:active { cursor: grabbing }
-    .lb-track::-webkit-scrollbar { display: none }
-    .lb-slide {
-      scroll-snap-align: start; flex-shrink: 0;
-      width: clamp(220px, 28vw, 360px);
-      border-radius: var(--r2); overflow: hidden;
-      position: relative; background: var(--cream3);
-    }
-    .lb-slide img { width: 100%; aspect-ratio: 2/3; object-fit: cover; transition: transform .6s ease; will-change: transform }
-    .lb-slide:hover img { transform: scale(1.04) }
-    .lb-slide-caption {
-      padding: 1rem 1.25rem 1.25rem;
-    }
-    .lb-slide-caption span { font-size: .65rem; letter-spacing: .14em; text-transform: uppercase; color: var(--gold) }
-    .lb-slide-caption p { font-family: 'Playfair Display', serif; font-style: italic; font-size: .95rem; margin-top: .2rem; color: var(--ink) }
-    /* Arrow buttons */
-    .lb-arrow {
-      position: absolute; top: 40%; transform: translateY(-50%);
-      width: 44px; height: 44px; border-radius: 50%;
-      background: var(--cream); border: 1px solid var(--border);
-      display: flex; align-items: center; justify-content: center;
-      cursor: pointer; transition: all .2s; z-index: 5;
-      box-shadow: var(--shadow2);
-    }
-    .lb-arrow:hover { background: var(--ink); color: var(--cream); border-color: var(--ink) }
-    .lb-arrow.prev { left: calc(5vw - 22px) }
-    .lb-arrow.next { right: calc(5vw - 22px) }
-
-    /* ─────────── BANNIÈRE HISTOIRE ─────────── */
-    #banniere {
-      display: grid; grid-template-columns: 1fr 1fr;
-      min-height: 55vh; margin: 0 5vw;
-      border: 1px solid var(--border); border-radius: 8px; overflow: hidden;
-    }
-    .ban-img { overflow: hidden }
-    .ban-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 8s ease }
-    .ban-img:hover img { transform: scale(1.04) }
-    .ban-text {
-      display: flex; flex-direction: column; justify-content: center;
-      padding: 4rem 4rem 4rem 3.5rem; background: var(--ink); color: var(--cream);
-    }
-    .ban-text .section-tag { color: var(--gold2) }
-    .ban-text .section-title { color: #fff }
-    .ban-text .section-title em { color: var(--gold2) }
-    .ban-body { margin-top: 1.25rem; color: rgba(250,247,242,.55); font-size: .9rem; line-height: 1.9; max-width: 36ch }
-    .ban-divider { width: 36px; height: 1px; background: var(--gold); margin: 2rem 0 }
-    .ban-facts { display: flex; gap: 2.5rem }
-    .ban-fact-num { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--gold2); display: block }
-    .ban-fact-lbl { font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; color: rgba(250,247,242,.35) }
-
-    /* ─────────── INSTAGRAM ─────────── */
-    #instagram { padding: 5.5rem 5vw }
-    .ig-head { text-align: center; margin-bottom: 2.5rem }
-    .ig-handle {
-      display: inline-flex; align-items: center; gap: .5rem;
-      font-size: .8rem; letter-spacing: .14em; text-transform: uppercase; color: var(--ink2);
-      margin-bottom: .75rem;
-    }
-    .ig-handle svg { color: var(--gold) }
-    .ig-grid {
-      display: grid; grid-template-columns: repeat(6, 1fr); gap: .5rem;
-    }
-    .ig-item {
-      aspect-ratio: 1; overflow: hidden; border-radius: 6px; background: var(--cream2);
-      position: relative; cursor: pointer;
-    }
-    .ig-item img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease }
-    .ig-item:hover img { transform: scale(1.08) }
-    .ig-item-overlay {
-      position: absolute; inset: 0; background: rgba(26,22,18,.45);
-      display: flex; align-items: center; justify-content: center;
-      opacity: 0; transition: opacity .3s;
-    }
-    .ig-item:hover .ig-item-overlay { opacity: 1 }
-    .ig-item-overlay svg { color: #fff; width: 22px; height: 22px }
-    .ig-cta {
-      display: flex; justify-content: center; margin-top: 1.75rem;
-    }
-    .ig-cta a {
-      display: inline-flex; align-items: center; gap: .5rem;
-      font-size: .72rem; letter-spacing: .12em; text-transform: uppercase;
-      color: var(--ink2); border-bottom: 1px solid var(--border);
-      padding-bottom: .2rem; transition: color .2s, border-color .2s;
-    }
-    .ig-cta a:hover { color: var(--gold); border-color: var(--gold) }
-
-    /* ─────────── INFOS / NAP ─────────── */
-    #infos {
-      display: grid; grid-template-columns: 1fr 1fr 1fr;
-      gap: 0; border-top: 1px solid var(--border); margin-top: 5rem;
-    }
-    .info-cell { padding: 3.5rem 4vw; border-right: 1px solid var(--border) }
-    .info-cell:last-child { border-right: none }
-    .info-label { font-size: .66rem; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; display: block }
-    .info-title { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 400; margin-bottom: .75rem }
-    .info-body { font-size: .87rem; color: var(--ink2); line-height: 1.9 }
-    .info-body a { color: var(--ink); border-bottom: 1px solid var(--border); transition: border-color .2s, color .2s }
-    .info-body a:hover { border-color: var(--gold); color: var(--gold) }
-    .call-number {
-      display: flex; align-items: center; gap: .6rem; margin-top: 1.25rem;
-      font-family: 'Playfair Display', serif; font-size: 1.7rem; font-weight: 400;
-      color: var(--ink); transition: color .2s;
-      border-bottom: 1px solid var(--border); padding-bottom: 1rem;
-    }
-    .call-number:hover { color: var(--gold) }
-    .call-number svg { color: var(--gold); flex-shrink: 0; width: 20px; height: 20px }
-    .call-note { margin-top: .75rem; font-size: .82rem; color: var(--ink2); line-height: 1.75 }
-
-    /* ─────────── FOOTER ─────────── */
-    footer {
-      background: var(--ink); color: rgba(250,247,242,.4);
-      padding: 2.5rem 5vw 1.75rem;
-    }
-    .footer-inner {
-      display: grid; grid-template-columns: 1fr auto 1fr;
-      align-items: start; gap: 2rem; margin-bottom: 2rem;
-      padding-bottom: 2rem; border-bottom: 1px solid rgba(250,247,242,.08);
-    }
-    .footer-logo { font-family: 'Playfair Display', serif; font-style: italic; color: var(--cream); font-size: 1.4rem; display: block; margin-bottom: .5rem }
-    .footer-tagline { font-size: .75rem; color: rgba(250,247,242,.35); line-height: 1.6 }
-    .footer-nav { display: flex; flex-direction: column; gap: .6rem; align-items: center }
-    .footer-nav a { font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: rgba(250,247,242,.45); transition: color .2s }
-    .footer-nav a:hover { color: var(--gold2) }
-    .footer-social { display: flex; flex-direction: column; gap: .6rem; align-items: flex-end }
-    .footer-social a { font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: rgba(250,247,242,.45); transition: color .2s }
-    .footer-social a:hover { color: var(--gold2) }
-    .footer-bottom { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; font-size: .7rem }
-
-    /* ─────────── ANIMATIONS ─────────── */
-    .fade { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease }
-    .fade.in { opacity: 1; transform: none }
-
-    /* ─────────── RESPONSIVE ─────────── */
-    @media (max-width: 1100px) {
-      .cat-grid { grid-template-columns: repeat(3, 1fr) }
-      .ig-grid { grid-template-columns: repeat(4, 1fr) }
-    }
-    @media (max-width: 900px) {
-      .nav-left, .nav-right .nav-link { display: none }
-      .nav-right .nav-phone { display: none }
-      .burger { display: flex }
-      .nav-inner { grid-template-columns: auto 1fr auto }
-      .nav-logo { text-align: left }
-
-      #hero { height: 70svh; }
-      .hero-col:nth-child(2), .hero-col:nth-child(3) { display: none }
-      .hero-col:nth-child(1) { flex: 1; width: 100% }
-      .hero-col::after { background: linear-gradient(transparent 30%, rgba(26,22,18,.6)) }
-      .hero-text { white-space: normal; width: 90%; left: 5%; transform: none; text-align: left }
-      .scroll-hint { display: none }
-
-      .cat-grid { grid-template-columns: repeat(2, 1fr) }
-      .ig-grid { grid-template-columns: repeat(3, 1fr) }
-
-      #banniere { grid-template-columns: 1fr; margin: 0 }
-      .ban-img { min-height: 50vw }
-      .ban-text { padding: 3rem 5vw }
-
-      #infos { grid-template-columns: 1fr }
-      .info-cell { border-right: none; border-bottom: 1px solid var(--border) }
-      .info-cell:last-child { border-bottom: none }
-
-      .footer-inner { grid-template-columns: 1fr; text-align: center }
-      .footer-social { align-items: center }
-      .footer-nav { flex-direction: row; justify-content: center; flex-wrap: wrap }
-
-      .lb-arrow { display: none }
-    }
-    @media (max-width: 600px) {
-      .cat-grid { grid-template-columns: repeat(2, 1fr); gap: .75rem }
-      .ig-grid { grid-template-columns: repeat(3, 1fr) }
-      .ban-facts { flex-direction: column; gap: 1.5rem }
-      .cat-sub, .lb-sub { text-align: left }
-    }
-    @media (max-width: 400px) {
-      .ig-grid { grid-template-columns: repeat(2, 1fr) }
-    }
-
-    /* ─────────── PRINT ─────────── */
-    @media print {
-      #nav, .marquee-wrap, #preloader, #fav-drawer, #toast, #progress-bar { display: none }
-      .fade { opacity: 1; transform: none }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Création de site web à Lille en 7 jours | HMS Digital – Agence web Métropole Lilloise</title>
+    <meta name="description" content="HMS Digital crée votre site web professionnel en 7 jours. Solution simple, rapide et abordable pour commerçants et indépendants de la Métropole Lilloise. Optimisé SEO local. Devis gratuit.">
+    <meta name="keywords" content="création site web Lille, freelance web Lille, site internet commerçant Lille, site web artisan Lille, site internet Roubaix, site web Tourcoing, création site Villeneuve-d'Ascq, site web métropole lilloise, SEO local Lille">
+    <meta name="author" content="Hugo Mollet-Stivala – HMS Digital">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://hms-digital.fr/">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hms-digital.fr/">
+    <meta property="og:title" content="Création de site web à Lille en 7 jours | HMS Digital">
+    <meta property="og:description" content="Site web pro en 7 jours pour commerçants et indépendants. Simple, rapide, abordable. SEO local inclus. Devis gratuit.">
+    <meta property="og:image" content="https://hms-digital.fr/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:site_name" content="HMS Digital">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Création de site web à Lille en 7 jours | HMS Digital">
+    <meta name="twitter:description" content="Site web pro en 7 jours pour commerçants et indépendants de la Métropole Lilloise.">
+    <meta name="twitter:image" content="https://hms-digital.fr/og-image.jpg">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":["LocalBusiness","ProfessionalService"],"name":"HMS Digital","legalName":"HMS Digital","description":"Création de sites web rapides, simples et optimisés SEO pour commerçants et indépendants. Solution clé en main livrée en 7 jours.","url":"https://hms-digital.fr","telephone":"+33615101256","email":"hmsdigital.lille@gmail.com","priceRange":"€","address":{"@type":"PostalAddress","addressLocality":"Lille","addressRegion":"Hauts-de-France","postalCode":"59000","addressCountry":"FR"},"geo":{"@type":"GeoCoordinates","latitude":50.6292,"longitude":3.0573},"areaServed":[{"@type":"City","name":"Lille"},{"@type":"City","name":"Roubaix"},{"@type":"City","name":"Tourcoing"},{"@type":"City","name":"Villeneuve-d'Ascq"},{"@type":"City","name":"Marcq-en-Barœul"},{"@type":"Country","name":"France"}],"identifier":{"@type":"PropertyValue","name":"SIRET","value":"10385513600018"},"founder":{"@type":"Person","name":"Hugo Mollet-Stivala","jobTitle":"Fondateur & Développeur web freelance"}}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Combien de temps faut-il pour créer un site web avec HMS Digital ?","acceptedAnswer":{"@type":"Answer","text":"Grâce à des templates prêts à personnaliser, votre site est en ligne en 7 jours ouvrés."}},{"@type":"Question","name":"Combien coûte la création d'un site web ?","acceptedAnswer":{"@type":"Answer","text":"Le tarif est établi sur devis selon votre activité. HMS Digital propose des prix accessibles grâce à son approche par templates. Contactez-nous pour un devis gratuit."}},{"@type":"Question","name":"Intervenez-vous uniquement à Lille ?","acceptedAnswer":{"@type":"Answer","text":"HMS Digital intervient partout en France. Le travail se fait à distance. Pour les clients de la Métropole Lilloise, des rencontres physiques sont possibles."}},{"@type":"Question","name":"Qui héberge mon site ?","acceptedAnswer":{"@type":"Answer","text":"Les sites sont hébergés sur Vercel, plateforme performante et fiable. L'hébergement est gratuit. Vous payez uniquement votre nom de domaine (environ 10 à 15 € par an)."}},{"@type":"Question","name":"Puis-je modifier mon site après livraison ?","acceptedAnswer":{"@type":"Answer","text":"Oui. Un accompagnement est inclus après la livraison pour les petites modifications (textes, horaires, photos)."}}]}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"HowTo","name":"Comment créer votre site web avec HMS Digital en 7 jours","totalTime":"P7D","step":[{"@type":"HowToStep","position":1,"name":"Choisissez votre modèle","text":"Sélectionnez parmi les templates disponibles celui qui correspond à votre activité."},{"@type":"HowToStep","position":2,"name":"Je personnalise tout","text":"Logo, couleurs, textes et photos sont adaptés à votre identité et votre zone géographique."},{"@type":"HowToStep","position":3,"name":"Mise en ligne en J+7","text":"Votre site est déployé sur Vercel, indexé sur Google et prêt à accueillir vos clients."}]}</script>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap');
+        *,*::before,*::after{box-sizing:border-box}
+        body{font-family:'Plus Jakarta Sans',sans-serif}
+        .hms-gradient{background:linear-gradient(90deg,#3b82f6,#8b5cf6,#ec4899)}
+        .gradient-text{background:linear-gradient(90deg,#3b82f6,#8b5cf6,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent;padding-right:.2em}
+        .glass{background:rgba(255,255,255,.88);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+        .geo-bold{font-weight:800;color:#0f172a}
+        .step-number{background:linear-gradient(135deg,#6366f1,#a855f7);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+        @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+        .fade-up{animation:fadeUp .65s ease both}
+        .d1{animation-delay:.1s}.d2{animation-delay:.22s}.d3{animation-delay:.34s}.d4{animation-delay:.46s}
+        .trust-badge{display:inline-flex;align-items:center;gap:8px;background:#eff6ff;border:1px solid #bfdbfe;color:#1d4ed8;border-radius:999px;padding:6px 18px;font-size:12px;font-weight:700}
+        .card-feat{background:#fff;border-radius:2rem;border:1.5px solid #e2e8f0;padding:2.5rem;transition:box-shadow .25s,border-color .25s}
+        .card-feat:hover{box-shadow:0 8px 32px rgba(59,130,246,.09);border-color:#bfdbfe}
+        .tmpl-card{transition:transform .25s,box-shadow .25s}
+        .tmpl-card:hover{transform:translateY(-5px);box-shadow:0 20px 48px rgba(0,0,0,.1)}
+        .city-tag{display:inline-block;background:#f8fafc;border:1.5px solid #e2e8f0;color:#334155;border-radius:999px;padding:5px 14px;font-size:12px;font-weight:600}
+        .faq-item{border-bottom:1.5px solid #e2e8f0}
+        .faq-btn{width:100%;text-align:left;background:none;border:none;cursor:pointer;padding:1.25rem 0;display:flex;justify-content:space-between;align-items:center;font-weight:700;font-size:1rem;color:#0f172a;gap:1rem}
+        .faq-ico{width:28px;height:28px;border-radius:50%;background:#f1f5f9;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .3s,background .3s}
+        .faq-btn[aria-expanded="true"] .faq-ico{transform:rotate(45deg);background:#3b82f6;color:#fff}
+        .faq-ans{max-height:0;overflow:hidden;transition:max-height .4s ease,padding-bottom .3s;color:#475569;line-height:1.75;font-size:.95rem}
+        .faq-ans.open{max-height:300px;padding-bottom:1.25rem}
+        .sticky-cta{position:fixed;bottom:0;left:0;right:0;padding:12px 16px;z-index:100;background:rgba(15,23,42,.95);backdrop-filter:blur(8px);display:none}
+        @media(max-width:768px){.sticky-cta{display:block}}
+        #prog{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,#3b82f6,#8b5cf6,#ec4899);z-index:9999;width:0%}
+        .hlbox{background:linear-gradient(135deg,#eff6ff,#faf5ff);border:1.5px solid #c7d2fe;border-radius:1.5rem;padding:1.5rem 2rem}
+    </style>
 </head>
-<body>
+<body class="bg-white text-slate-900">
+<div id="prog" role="progressbar" aria-label="Progression de lecture"></div>
 
-<!-- Progress bar -->
-<div id="progress-bar" role="progressbar" aria-hidden="true"></div>
-
-<!-- Preloader -->
-<div id="preloader" aria-hidden="true">
-  <div class="pre-logo">Maison <span>Céleste</span></div>
-  <div class="pre-bar"></div>
-</div>
-
-<!-- Toast -->
-<div id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
-
-<!-- Favoris Drawer -->
-<div id="fav-drawer" aria-label="Vos favoris" aria-modal="true">
-  <div id="fav-overlay"></div>
-  <div id="fav-panel">
-    <div class="fav-header">
-      <h2>Mes favoris <span id="fav-count-label"></span></h2>
-      <button id="fav-close" aria-label="Fermer">✕</button>
+<!-- NAV -->
+<nav class="fixed top-0 w-full z-50 glass border-b border-slate-100" role="navigation" aria-label="Navigation principale">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+        <a href="/" aria-label="HMS Digital – Accueil">
+            <span class="text-2xl font-extrabold tracking-tighter italic"><span class="gradient-text">HMS</span> DIGITAL</span>
+        </a>
+        <div class="flex items-center space-x-10">
+            <div class="hidden md:flex space-x-8 font-bold text-sm uppercase tracking-widest text-slate-700">
+                <a href="#comment" class="hover:text-blue-600 transition">Comment ça marche</a>
+                <a href="#templates" class="hover:text-blue-600 transition">Modèles</a>
+                <a href="#faq" class="hover:text-blue-600 transition">FAQ</a>
+                <a href="#about" class="hover:text-blue-600 transition">À propos</a>
+            </div>
+            <a href="#contact" class="hms-gradient text-white px-8 py-3 rounded-full font-bold hover:opacity-90 transition-all text-sm shadow-lg shadow-blue-500/20">Devis gratuit</a>
+        </div>
     </div>
-    <div class="fav-body" id="fav-list">
-      <div class="fav-empty" id="fav-empty">
-        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
-        <p>Vous n'avez pas encore de favoris.<br/>Cliquez sur ♥ sur une pièce pour la retrouver ici.</p>
-      </div>
-    </div>
-    <div class="fav-footer" id="fav-footer" style="display:none">
-      <button class="fav-cta" id="fav-copy-btn">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-        Copier les références
-      </button>
-      <button class="fav-clear" id="fav-clear-btn">Tout effacer</button>
-    </div>
-  </div>
-</div>
-
-<!-- Nav -->
-<nav id="nav">
-  <div class="nav-inner">
-    <div class="nav-left">
-      <a href="#catalogue" class="nav-link">Collection</a>
-      <a href="#lookbook" class="nav-link">Lookbook</a>
-      <a href="#infos" class="nav-link">Infos pratiques</a>
-    </div>
-    <a href="#hero" class="nav-logo">Maison <span>Céleste</span></a>
-    <div class="nav-right">
-      <a href="#banniere" class="nav-link">Notre histoire</a>
-      <button id="fav-toggle" aria-label="Mes favoris (0 article)">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
-        <span id="fav-count">0</span>
-        <span>Favoris</span>
-      </button>
-      <a href="tel:+33472000000" class="nav-phone">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.63A2 2 0 012 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-        04 72 00 00 00
-      </a>
-      <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
-    </div>
-  </div>
 </nav>
 
-<div class="mob-menu" id="mobMenu">
-  <a href="#catalogue">Collection</a>
-  <a href="#lookbook">Lookbook</a>
-  <a href="#banniere">Notre histoire</a>
-  <a href="#infos">Adresse & horaires</a>
-  <a href="tel:+33472000000" class="nav-phone">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.63A2 2 0 012 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-    04 72 00 00 00
-  </a>
-</div>
+<!-- HERO -->
+<header class="pt-48 pb-20 px-6 text-center" role="banner">
+    <div class="max-w-5xl mx-auto">
+        <div class="mb-6 fade-up d1">
+            <span class="trust-badge"><i class="fas fa-map-marker-alt" aria-hidden="true"></i>Focus Métropole Lilloise · Interventions partout en France</span>
+        </div>
+        <p class="text-blue-600 font-bold tracking-widest uppercase text-[11px] mb-4 italic fade-up d2">La solution pour digitaliser votre business local en 7 jours</p>
+        <h1 class="text-5xl md:text-8xl font-extrabold mt-6 mb-6 leading-tight text-slate-900 tracking-tighter fade-up d3">
+            Votre site web est<br><span class="gradient-text italic">déjà prêt.</span>
+        </h1>
+        <p class="text-xl md:text-2xl text-slate-500 max-w-3xl mx-auto mb-10 font-medium fade-up d4">
+            Simple, rapide et abordable pour les commerçants et indépendants de la <span class="geo-bold">Métropole Lilloise</span>. Choisissez votre modèle, je personnalise tout, et votre activité décolle en ligne.
+        </p>
+        <div class="flex flex-col md:flex-row justify-center gap-4 mb-10 fade-up d4">
+            <a href="#templates" class="bg-slate-900 text-white px-10 py-5 rounded-2xl font-bold text-lg hover:bg-slate-800 transition-all text-center shadow-xl"><i class="fas fa-eye mr-2" aria-hidden="true"></i>Voir les modèles</a>
+            <a href="#contact" class="bg-white text-slate-900 border-2 border-slate-200 px-10 py-5 rounded-2xl font-bold text-lg hover:border-blue-500 transition-all text-center"><i class="fas fa-comments mr-2" aria-hidden="true"></i>Discuter de mon projet</a>
+        </div>
+        <div class="fade-up d4">
+            <p class="text-xs text-slate-400 uppercase tracking-widest font-bold mb-3">Zones prioritaires</p>
+            <div class="flex flex-wrap justify-center gap-2">
+                <span class="city-tag">Lille</span><span class="city-tag">Roubaix</span><span class="city-tag">Tourcoing</span><span class="city-tag">Villeneuve-d'Ascq</span><span class="city-tag">Marcq-en-Barœul</span><span class="city-tag">Wasquehal</span><span class="city-tag">Croix</span><span class="city-tag">Hem</span><span class="city-tag">Wattrelos</span><span class="city-tag">+ toute la France 🇫🇷</span>
+            </div>
+        </div>
+    </div>
+</header>
 
-<!-- Hero -->
-<section id="hero" aria-label="Bannière principale">
-  <div class="hero-col">
-    <img src="photo-hero-1.jpg" alt="Boutique Maison Céleste — mode femme Lyon" width="800" height="1100" fetchpriority="high" decoding="sync"/>
-  </div>
-  <div class="hero-col">
-    <img src="photo-hero-2.jpeg" alt="Collection printemps été Maison Céleste Lyon" width="900" height="1100" fetchpriority="high" decoding="sync"/>
-    <span class="hero-tag">Nouveautés Printemps</span>
-  </div>
-  <div class="hero-col">
-    <img src="photo-hero-3.png" alt="Accessoires mode femme Maison Céleste Lyon" width="700" height="1100" fetchpriority="high" decoding="sync"/>
-  </div>
-  <div class="hero-text">
-    <span class="hero-kicker">Boutique mode femme · Lyon</span>
-    <h1 class="hero-title">Le style,<br/><em>tout simplement.</em></h1>
-    <a href="#catalogue" class="hero-btn">Découvrir la collection</a>
-  </div>
-  <div class="scroll-hint" aria-hidden="true">
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
-    Défiler
-  </div>
+<!-- POURQUOI -->
+<section class="py-24 px-6 bg-slate-50" aria-labelledby="why-title">
+    <div class="max-w-7xl mx-auto">
+        <h2 id="why-title" class="text-3xl md:text-4xl font-extrabold text-center mb-4 italic tracking-tight">Pourquoi choisir HMS Digital ?</h2>
+        <p class="text-slate-500 text-center font-medium mb-16 max-w-2xl mx-auto">Une solution pensée pour les indépendants qui veulent une présence en ligne sérieuse, sans se ruiner ni attendre des mois.</p>
+        <div class="grid md:grid-cols-3 gap-8">
+            <article class="card-feat text-center">
+                <div class="w-16 h-16 hms-gradient rounded-2xl flex items-center justify-center text-white text-2xl mx-auto mb-6 shadow-lg" aria-hidden="true"><i class="fas fa-bolt"></i></div>
+                <h3 class="text-2xl font-bold mb-4 italic">Rapide</h3>
+                <p class="text-slate-500 font-medium leading-relaxed"><strong>7 jours</strong> de la validation du modèle à la mise en ligne. C'est possible grâce à des templates déjà construits que je personnalise entièrement à votre image.</p>
+            </article>
+            <article class="card-feat text-center">
+                <div class="w-16 h-16 hms-gradient rounded-2xl flex items-center justify-center text-white text-2xl mx-auto mb-6 shadow-lg" aria-hidden="true"><i class="fas fa-hand-holding-heart"></i></div>
+                <h3 class="text-2xl font-bold mb-4 italic">Simple</h3>
+                <p class="text-slate-500 font-medium leading-relaxed">Pas de back-office compliqué, pas de formation de 3 heures. Vous recevez un site <strong>facile à prendre en main</strong> et je reste disponible pour les modifications après livraison.</p>
+            </article>
+            <article class="card-feat text-center">
+                <div class="w-16 h-16 hms-gradient rounded-2xl flex items-center justify-center text-white text-2xl mx-auto mb-6 shadow-lg" aria-hidden="true"><i class="fas fa-tag"></i></div>
+                <h3 class="text-2xl font-bold mb-4 italic">Abordable</h3>
+                <p class="text-slate-500 font-medium leading-relaxed">Grâce aux templates, le temps de travail par projet est réduit, ce qui se répercute directement sur le <strong>prix final</strong>. Un site pro n'a pas à coûter une fortune.</p>
+            </article>
+        </div>
+        <div class="mt-16 hlbox">
+            <h3 class="text-xl font-bold mb-6 text-slate-800 text-center italic">Ce qui est inclus dans chaque projet</h3>
+            <div class="grid md:grid-cols-2 gap-4 max-w-3xl mx-auto">
+                <div class="flex items-center gap-3"><span class="w-6 h-6 hms-gradient rounded-full flex items-center justify-center flex-shrink-0" aria-hidden="true"><i class="fas fa-check text-white text-[10px]"></i></span><span class="text-slate-700 font-medium text-sm">Design personnalisé (logo, couleurs, textes, photos)</span></div>
+                <div class="flex items-center gap-3"><span class="w-6 h-6 hms-gradient rounded-full flex items-center justify-center flex-shrink-0" aria-hidden="true"><i class="fas fa-check text-white text-[10px]"></i></span><span class="text-slate-700 font-medium text-sm">Hébergement Vercel (performant, gratuit)</span></div>
+                <div class="flex items-center gap-3"><span class="w-6 h-6 hms-gradient rounded-full flex items-center justify-center flex-shrink-0" aria-hidden="true"><i class="fas fa-check text-white text-[10px]"></i></span><span class="text-slate-700 font-medium text-sm">Nom de domaine (à votre charge, ~10–15 €/an)</span></div>
+                <div class="flex items-center gap-3"><span class="w-6 h-6 hms-gradient rounded-full flex items-center justify-center flex-shrink-0" aria-hidden="true"><i class="fas fa-check text-white text-[10px]"></i></span><span class="text-slate-700 font-medium text-sm">Site responsive mobile, tablette, desktop</span></div>
+                <div class="flex items-center gap-3"><span class="w-6 h-6 hms-gradient rounded-full flex items-center justify-center flex-shrink-0" aria-hidden="true"><i class="fas fa-check text-white text-[10px]"></i></span><span class="text-slate-700 font-medium text-sm">Optimisation SEO local (Lille &amp; Métropole)</span></div>
+                <div class="flex items-center gap-3"><span class="w-6 h-6 hms-gradient rounded-full flex items-center justify-center flex-shrink-0" aria-hidden="true"><i class="fas fa-check text-white text-[10px]"></i></span><span class="text-slate-700 font-medium text-sm">Formulaire de contact + intégration Google Maps</span></div>
+                <div class="flex items-center gap-3"><span class="w-6 h-6 hms-gradient rounded-full flex items-center justify-center flex-shrink-0" aria-hidden="true"><i class="fas fa-check text-white text-[10px]"></i></span><span class="text-slate-700 font-medium text-sm">Accompagnement post-livraison pour les modifications</span></div>
+                <div class="flex items-center gap-3"><span class="w-6 h-6 hms-gradient rounded-full flex items-center justify-center flex-shrink-0" aria-hidden="true"><i class="fas fa-check text-white text-[10px]"></i></span><span class="text-slate-700 font-medium text-sm">Conformité RGPD + mentions légales</span></div>
+            </div>
+        </div>
+    </div>
 </section>
 
-<!-- Marquee -->
-<div class="marquee-wrap" aria-hidden="true">
-  <div class="marquee-track">
-    <span class="marquee-item">Pièces sélectionnées avec soin <span class="marquee-sep">✦</span></span>
-    <span class="marquee-item">Mode féminine <span class="marquee-sep">✦</span></span>
-    <span class="marquee-item">Boutique indépendante <span class="marquee-sep">✦</span></span>
-    <span class="marquee-item">Nouvelle collection disponible <span class="marquee-sep">✦</span></span>
-    <span class="marquee-item">Accessoires & bijoux <span class="marquee-sep">✦</span></span>
-    <span class="marquee-item">Tenues de cérémonie <span class="marquee-sep">✦</span></span>
-    <span class="marquee-item">Lyon · Rue Auguste Comte <span class="marquee-sep">✦</span></span>
-    <span class="marquee-item">Ouvert lun–sam 10h–19h <span class="marquee-sep">✦</span></span>
-    <span class="marquee-item">Livraison en boutique <span class="marquee-sep">✦</span></span>
-    <span class="marquee-item">Conseils personnalisés <span class="marquee-sep">✦</span></span>
-    <span class="marquee-item">Pièces sélectionnées avec soin <span class="marquee-sep">✦</span></span>
-    <span class="marquee-item">Mode féminine <span class="marquee-sep">✦</span></span>
-    <span class="marquee-item">Boutique indépendante <span class="marquee-sep">✦</span></span>
-    <span class="marquee-item">Nouvelle collection disponible <span class="marquee-sep">✦</span></span>
-    <span class="marquee-item">Accessoires & bijoux <span class="marquee-sep">✦</span></span>
-    <span class="marquee-item">Tenues de cérémonie <span class="marquee-sep">✦</span></span>
-    <span class="marquee-item">Lyon · Rue Auguste Comte <span class="marquee-sep">✦</span></span>
-    <span class="marquee-item">Ouvert lun–sam 10h–19h <span class="marquee-sep">✦</span></span>
-    <span class="marquee-item">Livraison en boutique <span class="marquee-sep">✦</span></span>
-    <span class="marquee-item">Conseils personnalisés <span class="marquee-sep">✦</span></span>
-  </div>
-</div>
-
-<!-- Catalogue -->
-<section id="catalogue">
-  <div class="cat-head fade">
-    <div>
-      <span class="section-tag">Collection Printemps–Été</span>
-      <h2 class="section-title">Nos <em>pièces</em><br/>du moment</h2>
+<!-- COMMENT ÇA MARCHE -->
+<section id="comment" class="py-24 px-6 bg-white" aria-labelledby="process-title">
+    <div class="max-w-7xl mx-auto text-center">
+        <h2 id="process-title" class="text-4xl md:text-5xl font-extrabold mb-4 italic tracking-tight">Comment ça marche ?</h2>
+        <p class="text-slate-500 text-lg font-medium mb-16 max-w-xl mx-auto">Un process simple en 3 étapes, pensé pour les entrepreneurs qui n'ont pas de temps à perdre.</p>
+        <div class="relative grid md:grid-cols-3 gap-12">
+            <article class="relative">
+                <span class="step-number text-7xl font-black opacity-20 absolute -top-10 left-1/2 -translate-x-1/2" aria-hidden="true">01</span>
+                <div class="bg-slate-50 p-8 rounded-3xl border border-slate-100">
+                    <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center text-blue-600 text-xl mx-auto mb-4" aria-hidden="true"><i class="fas fa-mouse-pointer"></i></div>
+                    <h3 class="text-xl font-bold mb-3 italic">Choisissez votre modèle</h3>
+                    <p class="text-slate-500 font-medium text-sm leading-relaxed">Parcourez les templates disponibles et choisissez celui qui correspond à votre activité. Pas sûr ? On en discute ensemble.</p>
+                </div>
+            </article>
+            <article class="relative">
+                <span class="step-number text-7xl font-black opacity-20 absolute -top-10 left-1/2 -translate-x-1/2" aria-hidden="true">02</span>
+                <div class="bg-slate-50 p-8 rounded-3xl border border-slate-100">
+                    <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center text-purple-600 text-xl mx-auto mb-4" aria-hidden="true"><i class="fas fa-paint-brush"></i></div>
+                    <h3 class="text-xl font-bold mb-3 italic">Je personnalise tout</h3>
+                    <p class="text-slate-500 font-medium text-sm leading-relaxed">Logo, couleurs, textes, horaires, photos — j'adapte chaque détail à votre identité et à votre zone géographique.</p>
+                </div>
+            </article>
+            <article class="relative">
+                <span class="step-number text-7xl font-black opacity-20 absolute -top-10 left-1/2 -translate-x-1/2" aria-hidden="true">03</span>
+                <div class="bg-slate-50 p-8 rounded-3xl border border-slate-100">
+                    <div class="w-12 h-12 bg-pink-100 rounded-xl flex items-center justify-center text-pink-600 text-xl mx-auto mb-4" aria-hidden="true"><i class="fas fa-rocket"></i></div>
+                    <h3 class="text-xl font-bold mb-3 italic">Mise en ligne J+7</h3>
+                    <p class="text-slate-500 font-medium text-sm leading-relaxed">Déployé sur Vercel, indexé sur Google, et je reste disponible pour les ajustements après la livraison.</p>
+                </div>
+            </article>
+        </div>
     </div>
-    <p class="cat-sub">Des silhouettes choisies une à une, pour vous accompagner du matin au soir.</p>
-  </div>
-
-  <div class="cat-filters fade" role="group" aria-label="Filtrer la collection">
-    <button class="filter-btn active" data-filter="all">Tout voir</button>
-    <button class="filter-btn" data-filter="robe">Robes</button>
-    <button class="filter-btn" data-filter="haut">Hauts</button>
-    <button class="filter-btn" data-filter="bas">Bas</button>
-    <button class="filter-btn" data-filter="veste">Vestes</button>
-    <button class="filter-btn" data-filter="accessoire">Accessoires</button>
-  </div>
-
-  <div class="cat-grid" id="catalogue-grid">
-
-    <article class="prod fade" data-cat="robe" data-id="p1" data-name="Robe Capucine" data-ref="MC-R01" data-price="79 €" data-img="photo-1.webp">
-      <div class="prod-img-wrap">
-        <img src="photo-1.webp" alt="Robe Capucine – Maison Céleste" loading="lazy" width="600" height="800"/>
-        <div class="prod-overlay" aria-hidden="true"></div>
-        <span class="prod-badge badge-new" aria-label="Nouveauté">Nouveau</span>
-        <button class="prod-fav" aria-label="Ajouter Robe Capucine aux favoris" data-id="p1">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
-        </button>
-      </div>
-      <div class="prod-info">
-        <span class="prod-cat">Robe</span>
-        <div class="prod-name">Robe Capucine</div>
-        <div class="prod-ref">Réf. MC-R01</div>
-        <div class="prod-footer">
-          <span class="prod-price">79 €</span>
-          <div class="prod-sizes" aria-label="Tailles disponibles"><span class="prod-size">XS</span><span class="prod-size">S</span><span class="prod-size">M</span></div>
-        </div>
-      </div>
-    </article>
-
-    <article class="prod fade" data-cat="haut" data-id="p2" data-name="Chemisier Iris" data-ref="MC-H01" data-price="55 €" data-img="photo-2.jpg">
-      <div class="prod-img-wrap">
-        <img src="photo-2.jpg" alt="Chemisier Iris – Maison Céleste" loading="lazy" width="600" height="800"/>
-        <div class="prod-overlay" aria-hidden="true"></div>
-        <button class="prod-fav" aria-label="Ajouter Chemisier Iris aux favoris" data-id="p2">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
-        </button>
-      </div>
-      <div class="prod-info">
-        <span class="prod-cat">Haut</span>
-        <div class="prod-name">Chemisier Iris</div>
-        <div class="prod-ref">Réf. MC-H01</div>
-        <div class="prod-footer">
-          <span class="prod-price">55 €</span>
-          <div class="prod-sizes" aria-label="Tailles disponibles"><span class="prod-size">S</span><span class="prod-size">M</span><span class="prod-size">L</span></div>
-        </div>
-      </div>
-    </article>
-
-    <article class="prod fade" data-cat="bas" data-id="p3" data-name="Jupe Violette" data-ref="MC-B01" data-price="49 €" data-img="photo-3.jpg">
-      <div class="prod-img-wrap">
-        <img src="photo-3.jpg" alt="Jupe Violette – Maison Céleste" loading="lazy" width="600" height="800"/>
-        <div class="prod-overlay" aria-hidden="true"></div>
-        <span class="prod-badge badge-exclu" aria-label="Exclusivité">Exclu</span>
-        <button class="prod-fav" aria-label="Ajouter Jupe Violette aux favoris" data-id="p3">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
-        </button>
-      </div>
-      <div class="prod-info">
-        <span class="prod-cat">Bas</span>
-        <div class="prod-name">Jupe Violette</div>
-        <div class="prod-ref">Réf. MC-B01</div>
-        <div class="prod-footer">
-          <span class="prod-price">49 €</span>
-          <div class="prod-sizes" aria-label="Tailles disponibles"><span class="prod-size">XS</span><span class="prod-size">S</span><span class="prod-size">M</span><span class="prod-size">L</span></div>
-        </div>
-      </div>
-    </article>
-
-    <article class="prod fade" data-cat="robe" data-id="p4" data-name="Ensemble Pivoine" data-ref="MC-R02" data-price="135 €" data-img="photo-4.jpg">
-      <div class="prod-img-wrap">
-        <img src="photo-4.jpg" alt="Ensemble Pivoine – Maison Céleste" loading="lazy" width="600" height="800"/>
-        <div class="prod-overlay" aria-hidden="true"></div>
-        <button class="prod-fav" aria-label="Ajouter Ensemble Pivoine aux favoris" data-id="p4">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
-        </button>
-      </div>
-      <div class="prod-info">
-        <span class="prod-cat">Robe</span>
-        <div class="prod-name">Ensemble Pivoine</div>
-        <div class="prod-ref">Réf. MC-R02</div>
-        <div class="prod-footer">
-          <span class="prod-price">135 €</span>
-          <div class="prod-sizes" aria-label="Tailles disponibles"><span class="prod-size">S</span><span class="prod-size">M</span></div>
-        </div>
-      </div>
-    </article>
-
-    <article class="prod fade" data-cat="haut" data-id="p5" data-name="Pull Rosée" data-ref="MC-H02" data-price="65 €" data-img="photo-5.jpg">
-      <div class="prod-img-wrap">
-        <img src="photo-5.jpg" alt="Pull Rosée – Maison Céleste" loading="lazy" width="600" height="800"/>
-        <div class="prod-overlay" aria-hidden="true"></div>
-        <span class="prod-badge badge-last" aria-label="Dernières pièces">Dernières pièces</span>
-        <button class="prod-fav" aria-label="Ajouter Pull Rosée aux favoris" data-id="p5">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
-        </button>
-      </div>
-      <div class="prod-info">
-        <span class="prod-cat">Haut</span>
-        <div class="prod-name">Pull Rosée</div>
-        <div class="prod-ref">Réf. MC-H02</div>
-        <div class="prod-footer">
-          <span class="prod-price">65 €</span>
-          <div class="prod-sizes" aria-label="Tailles disponibles"><span class="prod-size">XS</span><span class="prod-size">S</span></div>
-        </div>
-      </div>
-    </article>
-
-    <article class="prod fade" data-cat="accessoire" data-id="p6" data-name="Sac Camille" data-ref="MC-A01" data-price="89 €" data-img="photo-6.jpg">
-      <div class="prod-img-wrap">
-        <img src="photo-6.jpg" alt="Sac Camille – Maison Céleste" loading="lazy" width="600" height="800"/>
-        <div class="prod-overlay" aria-hidden="true"></div>
-        <button class="prod-fav" aria-label="Ajouter Sac Camille aux favoris" data-id="p6">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
-        </button>
-      </div>
-      <div class="prod-info">
-        <span class="prod-cat">Accessoire</span>
-        <div class="prod-name">Sac Camille</div>
-        <div class="prod-ref">Réf. MC-A01</div>
-        <div class="prod-footer">
-          <span class="prod-price">89 €</span>
-        </div>
-      </div>
-    </article>
-
-    <article class="prod fade" data-cat="veste" data-id="p7" data-name="Blazer Aurore" data-ref="MC-V01" data-price="115 €" data-img="photo-1.webp">
-      <div class="prod-img-wrap">
-        <img src="photo-1.webp" alt="Blazer Aurore – Maison Céleste" loading="lazy" width="600" height="800"/>
-        <div class="prod-overlay" aria-hidden="true"></div>
-        <span class="prod-badge badge-new" aria-label="Nouveauté">Nouveau</span>
-        <button class="prod-fav" aria-label="Ajouter Blazer Aurore aux favoris" data-id="p7">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
-        </button>
-      </div>
-      <div class="prod-info">
-        <span class="prod-cat">Veste</span>
-        <div class="prod-name">Blazer Aurore</div>
-        <div class="prod-ref">Réf. MC-V01</div>
-        <div class="prod-footer">
-          <span class="prod-price">115 €</span>
-          <div class="prod-sizes" aria-label="Tailles disponibles"><span class="prod-size">S</span><span class="prod-size">M</span><span class="prod-size">L</span></div>
-        </div>
-      </div>
-    </article>
-
-    <article class="prod fade" data-cat="bas" data-id="p8" data-name="Pantalon Céleste" data-ref="MC-B02" data-price="72 €" data-img="photo-3.jpg">
-      <div class="prod-img-wrap">
-        <img src="photo-3.jpg" alt="Pantalon Céleste – Maison Céleste" loading="lazy" width="600" height="800"/>
-        <div class="prod-overlay" aria-hidden="true"></div>
-        <button class="prod-fav" aria-label="Ajouter Pantalon Céleste aux favoris" data-id="p8">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
-        </button>
-      </div>
-      <div class="prod-info">
-        <span class="prod-cat">Bas</span>
-        <div class="prod-name">Pantalon Céleste</div>
-        <div class="prod-ref">Réf. MC-B02</div>
-        <div class="prod-footer">
-          <span class="prod-price">72 €</span>
-          <div class="prod-sizes" aria-label="Tailles disponibles"><span class="prod-size">S</span><span class="prod-size">M</span><span class="prod-size">L</span><span class="prod-size">XL</span></div>
-        </div>
-      </div>
-    </article>
-
-  </div>
 </section>
 
-<!-- Lookbook -->
-<section id="lookbook">
-  <div class="lb-head fade">
-    <div>
-      <span class="section-tag">Inspirations du moment</span>
-      <h2 class="section-title">Le <em>lookbook</em><br/>Printemps</h2>
+<!-- TEMPLATES -->
+<section id="templates" class="py-24 px-6 bg-slate-50" aria-labelledby="templates-title">
+    <div class="max-w-7xl mx-auto text-center">
+        <h2 id="templates-title" class="text-4xl font-extrabold mb-2 italic text-slate-900 tracking-tight">Modèles disponibles</h2>
+        <p class="text-slate-500 font-bold mb-12 text-lg">Chaque modèle est <strong>100% personnalisable</strong> — couleurs, textes, photos, logo</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-left">
+            <a href="https://hugomolletstivala.github.io/TemplateArtisant/" target="_blank" rel="noopener noreferrer" class="tmpl-card group bg-white rounded-[2.5rem] overflow-hidden border border-slate-100 shadow-sm" aria-label="Voir la démo du template Artisan et Indépendant">
+                <div class="h-60 bg-gradient-to-br from-orange-400 to-red-500 flex flex-col items-center justify-center relative"><i class="fas fa-hammer text-white text-6xl mb-4" aria-hidden="true"></i><span class="bg-white/20 text-white px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-tighter absolute bottom-6">Artisan &amp; Indépendant</span></div>
+                <div class="p-8"><h3 class="text-xl font-bold mb-1 italic">Services &amp; Proximité</h3><p class="text-slate-500 text-sm mb-3 font-medium">Plombier, électricien, peintre, menuisier, jardinier…</p><span class="text-blue-600 text-sm font-bold flex items-center gap-2">Voir la démo <i class="fas fa-arrow-right" aria-hidden="true"></i></span></div>
+            </a>
+            <a href="https://hugomolletstivala.github.io/templateBeautyArtist/" target="_blank" rel="noopener noreferrer" class="tmpl-card group bg-white rounded-[2.5rem] overflow-hidden border border-slate-100 shadow-sm" aria-label="Voir la démo du template Beauty Artist">
+                <div class="h-60 bg-gradient-to-br from-pink-400 to-rose-500 flex flex-col items-center justify-center relative"><i class="fas fa-wand-magic-sparkles text-white text-6xl mb-4" aria-hidden="true"></i><span class="bg-white/20 text-white px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-tighter absolute bottom-6">Beauty Artist</span></div>
+                <div class="p-8"><h3 class="text-xl font-bold mb-1 italic">Soin &amp; Esthétique</h3><p class="text-slate-500 text-sm mb-3 font-medium">Institut de beauté, nail art, coiffeur, spa…</p><span class="text-rose-600 text-sm font-bold flex items-center gap-2">Voir la démo <i class="fas fa-arrow-right" aria-hidden="true"></i></span></div>
+            </a>
+            <a href="https://hugomolletstivala.github.io/TemplateBoutique/" target="_blank" rel="noopener noreferrer" class="tmpl-card group bg-white rounded-[2.5rem] overflow-hidden border border-slate-100 shadow-sm" aria-label="Voir la démo du template Boutique">
+                <div class="h-60 bg-gradient-to-br from-purple-500 to-pink-500 flex flex-col items-center justify-center relative"><i class="fas fa-shopping-bag text-white text-6xl mb-4" aria-hidden="true"></i><span class="bg-white/20 text-white px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-tighter absolute bottom-6">Boutique</span></div>
+                <div class="p-8"><h3 class="text-xl font-bold mb-1 italic">Commerce de détail</h3><p class="text-slate-500 text-sm mb-3 font-medium">Prêt-à-porter, fleuriste, épicerie fine, bijouterie…</p><span class="text-purple-600 text-sm font-bold flex items-center gap-2">Voir la démo <i class="fas fa-arrow-right" aria-hidden="true"></i></span></div>
+            </a>
+            <a href="https://hugomolletstivala.github.io/TemplateRestaurant/" target="_blank" rel="noopener noreferrer" class="tmpl-card group bg-white rounded-[2.5rem] overflow-hidden border border-slate-100 shadow-sm" aria-label="Voir la démo du template Restaurant">
+                <div class="h-60 bg-gradient-to-br from-green-400 to-emerald-600 flex flex-col items-center justify-center relative"><i class="fas fa-utensils text-white text-6xl mb-4" aria-hidden="true"></i><span class="bg-white/20 text-white px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-tighter absolute bottom-6">Restaurant</span></div>
+                <div class="p-8"><h3 class="text-xl font-bold mb-1 italic">Restauration &amp; Bar</h3><p class="text-slate-500 text-sm mb-3 font-medium">Restaurant, brasserie, bar, café, traiteur…</p><span class="text-emerald-600 text-sm font-bold flex items-center gap-2">Voir la démo <i class="fas fa-arrow-right" aria-hidden="true"></i></span></div>
+            </a>
+        </div>
+        <p class="mt-10 text-slate-400 text-sm font-medium"><i class="fas fa-info-circle mr-1" aria-hidden="true"></i>Votre secteur n'est pas dans la liste ? <a href="#contact" class="text-blue-600 font-bold underline underline-offset-2 hover:text-blue-800">Contactez-moi</a> — je crée des structures sur mesure.</p>
     </div>
-    <p class="lb-sub">Des associations imaginées en boutique, à reproduire ou réinterpréter.</p>
-  </div>
-  <div class="lb-scroll-wrap">
-    <button class="lb-arrow prev" id="lb-prev" aria-label="Précédent">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15 18l-6-6 6-6"/></svg>
-    </button>
-    <div class="lb-track" id="lb-track">
-      <div class="lb-slide">
-        <img src="photo-hero-1.jpg" alt="Look 1 – Maison Céleste" loading="lazy" width="360" height="540"/>
-        <div class="lb-slide-caption"><span>Look 01</span><p>La flânerie parisienne</p></div>
-      </div>
-      <div class="lb-slide">
-        <img src="photo-hero-2.jpeg" alt="Look 2 – Maison Céleste" loading="lazy" width="360" height="540"/>
-        <div class="lb-slide-caption"><span>Look 02</span><p>Apéro en terrasse</p></div>
-      </div>
-      <div class="lb-slide">
-        <img src="photo-hero-3.png" alt="Look 3 – Maison Céleste" loading="lazy" width="360" height="540"/>
-        <div class="lb-slide-caption"><span>Look 03</span><p>Déjeuner dominical</p></div>
-      </div>
-      <div class="lb-slide">
-        <img src="photo-1.webp" alt="Look 4 – Maison Céleste" loading="lazy" width="360" height="540"/>
-        <div class="lb-slide-caption"><span>Look 04</span><p>Soirée en ville</p></div>
-      </div>
-      <div class="lb-slide">
-        <img src="photo-2.jpg" alt="Look 5 – Maison Céleste" loading="lazy" width="360" height="540"/>
-        <div class="lb-slide-caption"><span>Look 05</span><p>Week-end à la campagne</p></div>
-      </div>
-      <div class="lb-slide">
-        <img src="photo-3.jpg" alt="Look 6 – Maison Céleste" loading="lazy" width="360" height="540"/>
-        <div class="lb-slide-caption"><span>Look 06</span><p>Tenue de cérémonie</p></div>
-      </div>
-    </div>
-    <button class="lb-arrow next" id="lb-next" aria-label="Suivant">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 18l6-6-6-6"/></svg>
-    </button>
-  </div>
 </section>
 
-<!-- Bannière Histoire -->
-<section id="banniere" class="fade">
-  <div class="ban-img">
-    <img src="photo-boutique.jpg" alt="Intérieur boutique Maison Céleste Lyon rue Auguste Comte" loading="lazy" width="900" height="800"/>
-  </div>
-  <div class="ban-text">
-    <span class="section-tag">Notre histoire</span>
-    <h2 class="section-title">Une boutique<br/>née de la<br/><em>passion.</em></h2>
-    <p class="ban-body">Maison Céleste est née en 2018 dans un appartement haussmannien du 2e arrondissement de Lyon. Ce que nous aimons ? Dénicher des pièces que vous n'aurez nulle part ailleurs.</p>
-    <div class="ban-divider"></div>
-    <div class="ban-facts">
-      <div>
-        <span class="ban-fact-num">6+</span>
-        <span class="ban-fact-lbl">ans de boutique</span>
-      </div>
-      <div>
-        <span class="ban-fact-num">3</span>
-        <span class="ban-fact-lbl">adresses</span>
-      </div>
-      <div>
-        <span class="ban-fact-num">★ 4.9</span>
-        <span class="ban-fact-lbl">avis Google</span>
-      </div>
+<!-- À PROPOS -->
+<section id="about" class="py-24 px-6 bg-white" aria-labelledby="about-title">
+    <div class="max-w-5xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-16 items-center">
+            <div>
+                <p class="text-blue-600 font-bold tracking-widest uppercase text-[11px] mb-4 italic">Qui suis-je ?</p>
+                <h2 id="about-title" class="text-4xl font-extrabold mb-6 italic tracking-tight leading-tight">Un étudiant passionné,<br><span class="gradient-text">pas une agence froide.</span></h2>
+                <p class="text-slate-600 leading-relaxed mb-4 font-medium">Je m'appelle <strong>Hugo Mollet-Stivala</strong>, étudiant et développeur web freelance basé dans la <strong>Métropole Lilloise</strong>. J'ai lancé HMS Digital avec une idée simple : aider les commerçants et indépendants locaux à exister en ligne, sans les tarifs inaccessibles des grandes agences.</p>
+                <p class="text-slate-600 leading-relaxed mb-4 font-medium">Grâce à des <strong>templates que j'ai conçus moi-même</strong>, la base technique est déjà prête. Je me concentre sur la personnalisation — vos couleurs, votre logo, vos textes — pour vous livrer un site unique en <strong>7 jours</strong>.</p>
+                <p class="text-slate-600 leading-relaxed mb-6 font-medium">Chaque site est livré <strong>optimisé SEO, SXO, GEO et E-E-A-T</strong> pour maximiser votre visibilité locale et vos conversions. Vous avez un interlocuteur unique, disponible, qui s'investit vraiment dans votre projet.</p>
+                <div class="flex flex-wrap gap-3">
+                    <span class="inline-flex items-center gap-2 bg-blue-50 border border-blue-100 text-blue-700 rounded-full px-4 py-2 text-sm font-bold"><i class="fas fa-code" aria-hidden="true"></i> Templates 100% maison</span>
+                    <span class="inline-flex items-center gap-2 bg-purple-50 border border-purple-100 text-purple-700 rounded-full px-4 py-2 text-sm font-bold"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Métropole Lilloise</span>
+                    <span class="inline-flex items-center gap-2 bg-pink-50 border border-pink-100 text-pink-700 rounded-full px-4 py-2 text-sm font-bold"><i class="fas fa-shield-alt" aria-hidden="true"></i> Auto-entrepreneur déclaré</span>
+                </div>
+            </div>
+            <div class="space-y-4">
+                <div class="hlbox"><h3 class="font-bold text-slate-800 mb-1 flex items-center gap-2"><i class="fas fa-server text-blue-500 text-sm" aria-hidden="true"></i>Hébergement sur Vercel</h3><p class="text-slate-500 text-sm leading-relaxed">Plateforme moderne, rapide et fiable. L'hébergement est <strong>gratuit</strong>. Vous payez uniquement votre nom de domaine (~10–15 €/an).</p></div>
+                <div class="hlbox"><h3 class="font-bold text-slate-800 mb-1 flex items-center gap-2"><i class="fas fa-search text-purple-500 text-sm" aria-hidden="true"></i>SEO optimisé dès la livraison</h3><p class="text-slate-500 text-sm leading-relaxed">Balises meta, schema.org, ciblage géographique Lille &amp; Métropole, et conseils pour votre fiche Google Business Profile.</p></div>
+                <div class="hlbox"><h3 class="font-bold text-slate-800 mb-1 flex items-center gap-2"><i class="fas fa-handshake text-pink-500 text-sm" aria-hidden="true"></i>Un vrai suivi après livraison</h3><p class="text-slate-500 text-sm leading-relaxed">Je reste disponible pour les modifications après la mise en ligne. Horaires, photos, textes — on s'adapte ensemble.</p></div>
+            </div>
+        </div>
     </div>
-  </div>
 </section>
 
-<!-- Instagram -->
-<section id="instagram">
-  <div class="ig-head fade">
-    <div class="ig-handle">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-      @maisoncéleste
+<!-- FAQ -->
+<section id="faq" class="py-24 px-6 bg-slate-50" aria-labelledby="faq-title">
+    <div class="max-w-3xl mx-auto">
+        <h2 id="faq-title" class="text-4xl font-extrabold mb-2 italic tracking-tight text-center">Questions fréquentes</h2>
+        <p class="text-slate-500 font-bold mb-12 text-lg text-center">Tout ce que vous voulez savoir avant de vous lancer</p>
+        <div role="list">
+            <div class="faq-item" role="listitem"><button class="faq-btn" aria-expanded="false" aria-controls="f1">Combien de temps pour créer mon site ?<span class="faq-ico" aria-hidden="true"><i class="fas fa-plus text-xs"></i></span></button><div class="faq-ans" id="f1" role="region"><strong>7 jours ouvrés</strong> à partir de la validation du modèle et de la réception de vos éléments (logo, textes, photos). C'est rendu possible par les templates que j'ai conçus : la base est déjà prête, je me concentre sur la personnalisation.</div></div>
+            <div class="faq-item" role="listitem"><button class="faq-btn" aria-expanded="false" aria-controls="f2">Quel est le tarif ?<span class="faq-ico" aria-hidden="true"><i class="fas fa-plus text-xs"></i></span></button><div class="faq-ans" id="f2" role="region">Le prix est établi <strong>sur devis</strong>, selon votre activité et vos besoins. L'approche par templates réduit le temps de travail, ce qui se répercute directement sur le tarif final — bien en-dessous des prix d'une agence classique. <a href="#contact" class="text-blue-600 font-bold">Demandez un devis gratuit</a>, je réponds sous 24h.</div></div>
+            <div class="faq-item" role="listitem"><button class="faq-btn" aria-expanded="false" aria-controls="f3">Vous intervenez uniquement à Lille ?<span class="faq-ico" aria-hidden="true"><i class="fas fa-plus text-xs"></i></span></button><div class="faq-ans" id="f3" role="region">J'interviens <strong>partout en France</strong>, tout se fait à distance. Pour les clients de la <strong>Métropole Lilloise</strong>, des rencontres physiques sont possibles si vous le souhaitez.</div></div>
+            <div class="faq-item" role="listitem"><button class="faq-btn" aria-expanded="false" aria-controls="f4">Qui héberge mon site et quel est le coût ?<span class="faq-ico" aria-hidden="true"><i class="fas fa-plus text-xs"></i></span></button><div class="faq-ans" id="f4" role="region">Les sites sont déployés sur <strong>Vercel</strong>, une plateforme moderne et performante. L'hébergement est <strong>gratuit</strong>. Vous payez uniquement votre nom de domaine, en général entre 10 et 15 € par an selon l'extension (.fr, .com…).</div></div>
+            <div class="faq-item" role="listitem"><button class="faq-btn" aria-expanded="false" aria-controls="f5">Mon site sera-t-il visible sur Google ?<span class="faq-ico" aria-hidden="true"><i class="fas fa-plus text-xs"></i></span></button><div class="faq-ans" id="f5" role="region">Oui. Chaque site est livré avec une <strong>optimisation SEO local</strong> : balises meta, schema.org LocalBusiness, ciblage géographique. Je vous guide aussi pour créer votre fiche <strong>Google Business Profile</strong>, indispensable pour apparaître sur Google Maps.</div></div>
+            <div class="faq-item" role="listitem"><button class="faq-btn" aria-expanded="false" aria-controls="f6">Puis-je modifier le site après la livraison ?<span class="faq-ico" aria-hidden="true"><i class="fas fa-plus text-xs"></i></span></button><div class="faq-ans" id="f6" role="region">Oui. Un <strong>accompagnement post-livraison</strong> est inclus pour les petites modifications (horaires, textes, photos). Pour des évolutions plus importantes, on s'organise ensemble.</div></div>
+            <div class="faq-item" role="listitem"><button class="faq-btn" aria-expanded="false" aria-controls="f7">Mon activité n'est pas dans vos 4 modèles ?<span class="faq-ico" aria-hidden="true"><i class="fas fa-plus text-xs"></i></span></button><div class="faq-ans" id="f7" role="region">Pas de problème. Les 4 templates couvrent les cas les plus courants, mais je peux créer une structure adaptée à n'importe quel secteur. <a href="#contact" class="text-blue-600 font-bold">Contactez-moi</a> — j'étudie votre projet gratuitement.</div></div>
+        </div>
     </div>
-    <h2 class="section-title">Notre <em>univers</em></h2>
-  </div>
-  <div class="ig-grid fade">
-    <div class="ig-item">
-      <img src="photo-1.webp" alt="Instagram Maison Céleste" loading="lazy" width="300" height="300"/>
-      <div class="ig-item-overlay" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-      </div>
-    </div>
-    <div class="ig-item">
-      <img src="photo-2.jpg" alt="Instagram Maison Céleste" loading="lazy" width="300" height="300"/>
-      <div class="ig-item-overlay" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-      </div>
-    </div>
-    <div class="ig-item">
-      <img src="photo-3.jpg" alt="Instagram Maison Céleste" loading="lazy" width="300" height="300"/>
-      <div class="ig-item-overlay" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-      </div>
-    </div>
-    <div class="ig-item">
-      <img src="photo-4.jpg" alt="Instagram Maison Céleste" loading="lazy" width="300" height="300"/>
-      <div class="ig-item-overlay" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-      </div>
-    </div>
-    <div class="ig-item">
-      <img src="photo-5.jpg" alt="Instagram Maison Céleste" loading="lazy" width="300" height="300"/>
-      <div class="ig-item-overlay" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-      </div>
-    </div>
-    <div class="ig-item">
-      <img src="photo-6.jpg" alt="Instagram Maison Céleste" loading="lazy" width="300" height="300"/>
-      <div class="ig-item-overlay" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-      </div>
-    </div>
-  </div>
-  <div class="ig-cta fade">
-    <a href="https://instagram.com" target="_blank" rel="noopener">
-      Nous suivre sur Instagram
-      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-    </a>
-  </div>
 </section>
 
-<!-- Infos -->
-<section id="infos">
-  <div class="info-cell fade">
-    <span class="info-label">Venir nous voir</span>
-    <h3 class="info-title">8 rue Auguste Comte<br/>69002 Lyon</h3>
-    <p class="info-body">
-      Métro Bellecour (A/D)<br/>
-      À deux pas de la place Bellecour<br/><br/>
-      <a href="https://maps.google.com/?q=8+rue+Auguste+Comte+Lyon" target="_blank" rel="noopener">Voir sur Google Maps →</a>
-    </p>
-  </div>
-  <div class="info-cell fade">
-    <span class="info-label">Horaires</span>
-    <h3 class="info-title">Lun–Sam<br/>10h – 19h</h3>
-    <p class="info-body">
-      Fermé le dimanche.<br/><br/>
-      Conseils personnalisés disponibles en boutique — venez nous rendre visite !
-    </p>
-  </div>
-  <div class="info-cell fade">
-    <span class="info-label">Nous appeler</span>
-    <h3 class="info-title">On vous répond avec plaisir</h3>
-    <a href="tel:+33472000000" class="call-number">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.63A2 2 0 012 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-      04 72 00 00 00
-    </a>
-    <p class="call-note">Pour toute question sur les tailles, les disponibilités ou un conseil cadeau — on répond du lundi au samedi, 10h–18h30.</p>
-  </div>
+<!-- CONTACT -->
+<section id="contact" class="py-24 px-6 bg-slate-900 text-white relative overflow-hidden" aria-labelledby="contact-title">
+    <div class="absolute top-0 left-0 w-full h-1 hms-gradient" aria-hidden="true"></div>
+    <div class="max-w-2xl mx-auto text-center">
+        <p class="text-blue-400 font-bold tracking-widest uppercase text-[11px] mb-4 italic">Devis gratuit · Réponse sous 24h</p>
+        <h2 id="contact-title" class="text-3xl font-bold mb-4 italic text-white tracking-tight">On en discute ?</h2>
+        <p class="text-slate-400 mb-10 font-medium">Décrivez votre projet en quelques mots. Je vous réponds rapidement pour un échange sans engagement.</p>
+        <form action="https://formspree.io/f/mbdwrknl" method="POST" class="space-y-4 text-slate-900 font-bold text-left" aria-label="Formulaire de contact HMS Digital" novalidate>
+            <div class="grid md:grid-cols-2 gap-4">
+                <div><label for="nom" class="sr-only">Votre entreprise ou nom</label><input type="text" id="nom" name="nom" required autocomplete="organization" placeholder="Votre entreprise / Nom" class="w-full p-4 rounded-2xl bg-white outline-none focus:ring-2 focus:ring-blue-500 transition"></div>
+                <div><label for="telephone" class="sr-only">Numéro de téléphone</label><input type="tel" id="telephone" name="telephone" required autocomplete="tel" placeholder="N° de téléphone" class="w-full p-4 rounded-2xl bg-white outline-none focus:ring-2 focus:ring-blue-500 transition"></div>
+            </div>
+            <div><label for="email" class="sr-only">Adresse e-mail</label><input type="email" id="email" name="email" required autocomplete="email" placeholder="Adresse e-mail" class="w-full p-4 rounded-2xl bg-white outline-none focus:ring-2 focus:ring-blue-500 transition"></div>
+            <div><label for="ville" class="sr-only">Votre ville</label><select id="ville" name="ville" class="w-full p-4 rounded-2xl bg-white outline-none focus:ring-2 focus:ring-blue-500 transition text-slate-500"><option value="">Votre ville</option><option>Lille</option><option>Roubaix</option><option>Tourcoing</option><option>Villeneuve-d'Ascq</option><option>Marcq-en-Barœul</option><option>Wasquehal</option><option>Croix</option><option>Hem</option><option>Wattrelos</option><option>Autre ville en France</option></select></div>
+            <div><label for="message" class="sr-only">Description de votre projet</label><textarea id="message" name="message" rows="4" placeholder="Décrivez votre activité et ce que vous attendez de votre site…" class="w-full p-4 rounded-2xl bg-white outline-none focus:ring-2 focus:ring-blue-500 transition"></textarea></div>
+            <div class="flex items-start gap-3">
+                <input type="checkbox" id="rgpd" name="rgpd" required class="mt-1 accent-blue-500" aria-required="true">
+                <label for="rgpd" class="text-slate-400 text-xs font-medium leading-relaxed">J'accepte que mes données soient utilisées pour traiter ma demande de contact. Conformément au RGPD, vous pouvez exercer vos droits en écrivant à <a href="mailto:hmsdigital.lille@gmail.com" class="text-blue-400 underline">hmsdigital.lille@gmail.com</a>.</label>
+            </div>
+            <button type="submit" class="w-full hms-gradient text-white font-black py-5 rounded-2xl hover:scale-[1.01] transition-all shadow-xl text-lg uppercase tracking-widest"><i class="fas fa-paper-plane mr-2" aria-hidden="true"></i>Envoyer ma demande</button>
+        </form>
+        <div class="mt-10 flex flex-col md:flex-row justify-center items-center gap-5 text-sm">
+            <a href="tel:+33615101256" class="flex items-center gap-2 text-slate-300 hover:text-white transition font-semibold"><i class="fas fa-phone" aria-hidden="true"></i>06 15 10 12 56</a>
+            <span class="hidden md:block text-slate-700">·</span>
+            <a href="mailto:hmsdigital.lille@gmail.com" class="flex items-center gap-2 text-blue-400 hover:text-blue-300 transition font-semibold"><i class="fas fa-envelope" aria-hidden="true"></i>hmsdigital.lille@gmail.com</a>
+            <span class="hidden md:block text-slate-700">·</span>
+            <span class="flex items-center gap-2 text-slate-500 text-xs"><i class="fas fa-clock" aria-hidden="true"></i>Réponse sous 24h</span>
+        </div>
+    </div>
 </section>
 
-<!-- Footer -->
-<footer>
-  <div class="footer-inner">
-    <div>
-      <span class="footer-logo">Maison Céleste</span>
-      <p class="footer-tagline">Boutique mode femme indépendante<br/>au cœur du 2e arrondissement de Lyon.</p>
+<!-- MENTIONS LÉGALES -->
+<section id="mentions-legales" class="py-16 px-6 bg-slate-950 text-slate-400" aria-labelledby="legal-title">
+    <div class="max-w-4xl mx-auto">
+        <h2 id="legal-title" class="text-white font-bold text-xl mb-6 italic">Mentions légales &amp; Politique de confidentialité</h2>
+        <div class="grid md:grid-cols-2 gap-8 text-sm leading-relaxed">
+            <div>
+                <h3 class="text-white font-semibold mb-3">Éditeur du site</h3>
+                <p><strong class="text-slate-300">HMS Digital</strong> — Auto-entrepreneur<br>Représentant légal : Hugo Mollet-Stivala<br>Métropole Lilloise, Hauts-de-France, France<br>SIRET : 103 855 136 000 18<br>Tél : <a href="tel:+33615101256" class="text-blue-400 hover:underline">06 15 10 12 56</a><br>E-mail : <a href="mailto:hmsdigital.lille@gmail.com" class="text-blue-400 hover:underline">hmsdigital.lille@gmail.com</a></p>
+            </div>
+            <div>
+                <h3 class="text-white font-semibold mb-3">Données personnelles (RGPD)</h3>
+                <p>Les données collectées via le formulaire (nom, e-mail, téléphone, ville) sont utilisées uniquement pour répondre à votre demande. Elles ne sont jamais revendues ni transmises à des tiers. Durée de conservation : 3 ans maximum. Pour exercer vos droits, contactez : <a href="mailto:hmsdigital.lille@gmail.com" class="text-blue-400 hover:underline">hmsdigital.lille@gmail.com</a>.</p>
+                <p class="mt-3"><strong class="text-slate-300">Hébergement :</strong> Vercel Inc., 340 Pine Street, Suite 701, San Francisco, CA 94104, USA.</p>
+            </div>
+        </div>
     </div>
-    <nav class="footer-nav" aria-label="Navigation secondaire">
-      <a href="#catalogue">Collection</a>
-      <a href="#lookbook">Lookbook</a>
-      <a href="#banniere">Notre histoire</a>
-      <a href="#infos">Contact</a>
+</section>
+
+<!-- FOOTER -->
+<footer class="py-12 text-center text-slate-400 text-sm bg-slate-950 border-t border-slate-800" role="contentinfo">
+    <div class="mb-4 font-bold text-white tracking-tighter italic text-lg"><span class="gradient-text">HMS</span> DIGITAL</div>
+    <nav class="flex flex-wrap justify-center gap-6 mb-4 text-xs font-semibold text-slate-500" aria-label="Liens de pied de page">
+        <a href="#comment" class="hover:text-white transition">Comment ça marche</a>
+        <a href="#templates" class="hover:text-white transition">Modèles</a>
+        <a href="#faq" class="hover:text-white transition">FAQ</a>
+        <a href="#about" class="hover:text-white transition">À propos</a>
+        <a href="#contact" class="hover:text-white transition">Contact</a>
+        <a href="#mentions-legales" class="hover:text-white transition">Mentions légales</a>
     </nav>
-    <div class="footer-social">
-      <a href="#" target="_blank" rel="noopener">Instagram</a>
-      <a href="#" target="_blank" rel="noopener">Facebook</a>
-      <a href="#" target="_blank" rel="noopener">Pinterest</a>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <span>© <span id="yr"></span> Maison Céleste · 8 rue Auguste Comte, 69002 Lyon</span>
-    <ul style="display:flex;gap:1.5rem">
-      <li><a href="#" style="transition:color .2s" onmouseover="this.style.color='#E8C97A'" onmouseout="this.style.color=''">Mentions légales</a></li>
-      <li><a href="#" style="transition:color .2s" onmouseover="this.style.color='#E8C97A'" onmouseout="this.style.color=''">Politique de confidentialité</a></li>
-    </ul>
-  </div>
+    <p>© 2026 HMS Digital — Hugo Mollet-Stivala · SIRET 103 855 136 000 18</p>
+    <p class="mt-1 text-xs text-slate-600">Création de sites web · Métropole Lilloise &amp; toute la France</p>
 </footer>
 
+<!-- STICKY CTA MOBILE -->
+<div class="sticky-cta" role="complementary" aria-label="Appel à l'action mobile">
+    <a href="#contact" class="block w-full hms-gradient text-white py-4 rounded-2xl font-bold text-center text-base shadow-lg"><i class="fas fa-comments mr-2" aria-hidden="true"></i>Devis gratuit · Réponse sous 24h</a>
+</div>
+
 <script>
-/* ── Preloader ── */
-window.addEventListener('load', () => {
-  setTimeout(() => document.getElementById('preloader').classList.add('done'), 800);
-});
-
-/* ── Année footer ── */
-document.getElementById('yr').textContent = new Date().getFullYear();
-
-/* ── Scroll progress + nav shadow ── */
-const progressBar = document.getElementById('progress-bar');
-const nav = document.getElementById('nav');
-window.addEventListener('scroll', () => {
-  const scrolled = window.scrollY;
-  const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-  progressBar.style.width = (scrolled / maxScroll * 100) + '%';
-  nav.classList.toggle('scrolled', scrolled > 20);
-}, { passive: true });
-
-/* ── Burger ── */
-const burger = document.getElementById('burger');
-const mob = document.getElementById('mobMenu');
-burger.addEventListener('click', () => {
-  const o = mob.classList.toggle('open');
-  burger.classList.toggle('open', o);
-  document.body.style.overflow = o ? 'hidden' : '';
-});
-mob.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-  mob.classList.remove('open');
-  burger.classList.remove('open');
-  document.body.style.overflow = '';
-}));
-
-/* ── Fade IntersectionObserver ── */
-const io = new IntersectionObserver(entries => {
-  entries.forEach((e, i) => {
-    if (e.isIntersecting) {
-      setTimeout(() => e.target.classList.add('in'), i * 60);
-      io.unobserve(e.target);
-    }
-  });
-}, { threshold: .08 });
-document.querySelectorAll('.fade').forEach(el => io.observe(el));
-
-/* ── FAVORIS ── */
-let favs = {};
-try { favs = JSON.parse(localStorage.getItem('mc_favs') || '{}'); } catch(e) {}
-
-function saveFavs() {
-  try { localStorage.setItem('mc_favs', JSON.stringify(favs)); } catch(e) {}
-}
-
-function getFavCount() { return Object.keys(favs).length }
-
-function updateFavNav() {
-  const count = getFavCount();
-  const btn = document.getElementById('fav-toggle');
-  const badge = document.getElementById('fav-count');
-  badge.textContent = count;
-  badge.classList.toggle('show', count > 0);
-  btn.classList.toggle('has-favs', count > 0);
-  btn.setAttribute('aria-label', `Mes favoris (${count} article${count !== 1 ? 's' : ''})`);
-}
-
-function renderFavDrawer() {
-  const list = document.getElementById('fav-list');
-  const empty = document.getElementById('fav-empty');
-  const footer = document.getElementById('fav-footer');
-  const label = document.getElementById('fav-count-label');
-  const count = getFavCount();
-
-  label.textContent = count > 0 ? `(${count})` : '';
-  footer.style.display = count > 0 ? 'flex' : 'none';
-
-  // Remove old items (keep empty placeholder)
-  list.querySelectorAll('.fav-item').forEach(el => el.remove());
-  empty.style.display = count === 0 ? 'flex' : 'none';
-
-  if (count === 0) return;
-
-  Object.values(favs).forEach(item => {
-    const div = document.createElement('div');
-    div.className = 'fav-item';
-    div.setAttribute('data-id', item.id);
-    div.innerHTML = `
-      <img class="fav-item-img" src="${item.img}" alt="${item.name}" loading="lazy" width="56" height="72"/>
-      <div class="fav-item-info">
-        <div class="fav-item-name">${item.name}</div>
-        <div class="fav-item-ref">${item.ref}</div>
-        <div class="fav-item-price">${item.price}</div>
-      </div>
-      <button class="fav-remove" aria-label="Retirer ${item.name}" data-id="${item.id}">✕</button>
-    `;
-    list.appendChild(div);
-  });
-
-  list.querySelectorAll('.fav-remove').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const id = btn.dataset.id;
-      delete favs[id];
-      saveFavs();
-      updateFavNav();
-      renderFavDrawer();
-      updateFavButtons();
-    });
-  });
-}
-
-function updateFavButtons() {
-  document.querySelectorAll('.prod-fav').forEach(btn => {
-    const id = btn.dataset.id;
-    const active = !!favs[id];
-    btn.classList.toggle('active', active);
-    const prod = btn.closest('.prod');
-    const name = prod ? prod.dataset.name : '';
-    btn.setAttribute('aria-label', `${active ? 'Retirer' : 'Ajouter'} ${name} ${active ? 'des' : 'aux'} favoris`);
-  });
-}
-
-let toastTimer;
-function showToast(added) {
-  const toast = document.getElementById('toast');
-  toast.innerHTML = `<span class="t-heart">♥</span> ${added ? 'Ajouté à vos favoris' : 'Retiré de vos favoris'}`;
-  toast.classList.add('show');
-  clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => toast.classList.remove('show'), 2500);
-}
-
-// Boutons favoris produits
-document.querySelectorAll('.prod-fav').forEach(btn => {
-  btn.addEventListener('click', e => {
-    e.stopPropagation();
-    const id = btn.dataset.id;
-    const prod = btn.closest('.prod');
-    if (!prod) return;
-    if (favs[id]) {
-      delete favs[id];
-      showToast(false);
-    } else {
-      favs[id] = {
-        id: id,
-        name: prod.dataset.name,
-        ref: prod.dataset.ref,
-        price: prod.dataset.price,
-        img: prod.dataset.img
-      };
-      showToast(true);
-    }
-    saveFavs();
-    updateFavNav();
-    updateFavButtons();
-    if (document.getElementById('fav-drawer').classList.contains('open')) {
-      renderFavDrawer();
-    }
-  });
-});
-
-// Drawer open/close
-const drawer = document.getElementById('fav-drawer');
-document.getElementById('fav-toggle').addEventListener('click', () => {
-  renderFavDrawer();
-  drawer.classList.add('open');
-  document.body.style.overflow = 'hidden';
-});
-document.getElementById('fav-close').addEventListener('click', () => {
-  drawer.classList.remove('open');
-  document.body.style.overflow = '';
-});
-document.getElementById('fav-overlay').addEventListener('click', () => {
-  drawer.classList.remove('open');
-  document.body.style.overflow = '';
-});
-
-// Copier les références
-document.getElementById('fav-copy-btn').addEventListener('click', () => {
-  const refs = Object.values(favs).map(f => `${f.name} — ${f.ref} — ${f.price}`).join('\n');
-  if (navigator.clipboard) {
-    navigator.clipboard.writeText(refs).then(() => {
-      const btn = document.getElementById('fav-copy-btn');
-      btn.textContent = '✓ Copié !';
-      setTimeout(() => {
-        btn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copier les références`;
-      }, 2000);
-    });
-  }
-});
-
-document.getElementById('fav-clear-btn').addEventListener('click', () => {
-  if (confirm('Effacer tous les favoris ?')) {
-    favs = {};
-    saveFavs();
-    updateFavNav();
-    renderFavDrawer();
-    updateFavButtons();
-  }
-});
-
-// Init
-updateFavNav();
-updateFavButtons();
-
-/* ── Filtres catalogue ── */
-document.querySelectorAll('.filter-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    const filter = btn.dataset.filter;
-    document.querySelectorAll('.prod').forEach(prod => {
-      if (filter === 'all' || prod.dataset.cat === filter) {
-        prod.classList.remove('hidden');
-      } else {
-        prod.classList.add('hidden');
-      }
-    });
-  });
-});
-
-/* ── Lookbook scroll ── */
-const track = document.getElementById('lb-track');
-let isDown = false, startX, scrollLeft;
-
-track.addEventListener('mousedown', e => {
-  isDown = true; track.classList.add('active');
-  startX = e.pageX - track.offsetLeft;
-  scrollLeft = track.scrollLeft;
-});
-['mouseleave','mouseup'].forEach(ev => track.addEventListener(ev, () => { isDown = false; }));
-track.addEventListener('mousemove', e => {
-  if (!isDown) return;
-  e.preventDefault();
-  const x = e.pageX - track.offsetLeft;
-  track.scrollLeft = scrollLeft - (x - startX) * 1.2;
-});
-
-document.getElementById('lb-prev').addEventListener('click', () => {
-  track.scrollBy({ left: -360, behavior: 'smooth' });
-});
-document.getElementById('lb-next').addEventListener('click', () => {
-  track.scrollBy({ left: 360, behavior: 'smooth' });
-});
-
-/* ── Escape key ── */
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') {
-    drawer.classList.remove('open');
-    mob.classList.remove('open');
-    burger.classList.remove('open');
-    document.body.style.overflow = '';
-  }
-});
+    window.addEventListener('scroll',()=>{const h=document.documentElement.scrollHeight-document.documentElement.clientHeight;document.getElementById('prog').style.width=(window.scrollY/h*100)+'%'});
+    document.querySelectorAll('.faq-btn').forEach(b=>{b.addEventListener('click',()=>{const o=b.getAttribute('aria-expanded')==='true';document.querySelectorAll('.faq-btn').forEach(x=>{x.setAttribute('aria-expanded','false');document.getElementById(x.getAttribute('aria-controls')).classList.remove('open')});if(!o){b.setAttribute('aria-expanded','true');document.getElementById(b.getAttribute('aria-controls')).classList.add('open')}})});
+    const ce=document.getElementById('contact'),se=document.querySelector('.sticky-cta');if(ce&&se)new IntersectionObserver(([e])=>{se.style.display=e.isIntersecting?'none':''},{ threshold:0.1}).observe(ce);
+    document.querySelector('form')?.addEventListener('submit',e=>{const cb=document.getElementById('rgpd');if(cb&&!cb.checked){e.preventDefault();cb.focus();cb.closest('.flex').style.cssText='outline:2px solid #ef4444;border-radius:8px';setTimeout(()=>{cb.closest('.flex').style.cssText=''},3000)}});
 </script>
 </body>
 </html>
