@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr" class="scroll-smooth">
 <head>
-    <meta name="google-site-verification" content="wmvFZKY4h0OHEBNwzxcB_gyhFPECEw32T8LRx0yOLQk" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Création de site web à Lille en 7 jours | HMS Digital – Agence web Métropole Lilloise</title>
@@ -57,6 +56,53 @@
         @media(max-width:768px){.sticky-cta{display:block}}
         #prog{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,#3b82f6,#8b5cf6,#ec4899);z-index:9999;width:0%}
         .hlbox{background:linear-gradient(135deg,#eff6ff,#faf5ff);border:1.5px solid #c7d2fe;border-radius:1.5rem;padding:1.5rem 2rem}
+
+        /* ── TARIFS ── */
+        .tarifs-toggle{display:flex;align-items:center;justify-content:center;gap:1rem;margin-bottom:3rem}
+        .tarifs-toggle span{font-weight:700;font-size:.9rem;color:#64748b;transition:color .2s}
+        .tarifs-toggle span.active{color:#0f172a}
+        .toggle-track{position:relative;width:52px;height:28px;border-radius:999px;background:#e2e8f0;border:none;cursor:pointer;padding:0;transition:background .25s;flex-shrink:0}
+        .toggle-track[aria-checked="true"]{background:linear-gradient(90deg,#3b82f6,#8b5cf6)}
+        .toggle-thumb{position:absolute;top:4px;left:4px;width:20px;height:20px;border-radius:50%;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.18);transition:transform .25s}
+        .toggle-track[aria-checked="true"] .toggle-thumb{transform:translateX(24px)}
+        .tarifs-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+        @media(max-width:768px){.tarifs-grid{grid-template-columns:1fr}}
+        .tarif-card{background:#fff;border-radius:2rem;border:1.5px solid #e2e8f0;padding:2rem 2rem 2.5rem;position:relative;transition:box-shadow .25s,border-color .25s;display:flex;flex-direction:column}
+        .tarif-card:hover{box-shadow:0 8px 32px rgba(59,130,246,.09);border-color:#bfdbfe}
+        .tarif-card.featured{border-color:#8b5cf6;box-shadow:0 0 0 3px rgba(139,92,246,.12),0 12px 40px rgba(139,92,246,.1)}
+        .tarif-badge-top{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:linear-gradient(90deg,#8b5cf6,#ec4899);color:#fff;font-size:11px;font-weight:800;padding:4px 18px;border-radius:999px;white-space:nowrap;letter-spacing:.05em;text-transform:uppercase}
+        .tarif-name{font-size:1.15rem;font-weight:800;color:#0f172a;margin-bottom:.25rem}
+        .tarif-sub{font-size:.8rem;font-weight:600;color:#64748b;text-transform:uppercase;letter-spacing:.07em;margin-bottom:1.5rem}
+        .tarif-price-block{margin-bottom:1.75rem;min-height:72px;display:flex;flex-direction:column;justify-content:center}
+        .tarif-price-oneshot,.tarif-price-abo{transition:opacity .3s,transform .3s}
+        .tarif-price-oneshot{display:flex;flex-direction:column}
+        .tarif-price-abo{display:none;flex-direction:column}
+        .price-main{font-size:2.6rem;font-weight:800;color:#0f172a;line-height:1}
+        .price-main span{font-size:1.1rem;font-weight:600;color:#64748b}
+        .price-detail{font-size:.82rem;color:#64748b;font-weight:600;margin-top:.4rem}
+        .price-detail strong{color:#8b5cf6}
+        .tarif-divider{height:1.5px;background:#f1f5f9;margin:0 0 1.5rem}
+        .tarif-features{list-style:none;padding:0;margin:0 0 2rem;display:flex;flex-direction:column;gap:.75rem;flex:1}
+        .tarif-features li{display:flex;align-items:flex-start;gap:.6rem;font-size:.88rem;color:#475569;font-weight:600;line-height:1.4}
+        .tarif-features li::before{content:'';width:18px;height:18px;border-radius:50%;flex-shrink:0;margin-top:.05rem;background:linear-gradient(135deg,#6366f1,#a855f7);-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='white' d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='white' d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/%3E%3C/svg%3E") center/contain no-repeat}
+        .tarif-cta{display:block;text-align:center;padding:.9rem 1.5rem;border-radius:1.25rem;font-weight:800;font-size:.9rem;letter-spacing:.04em;text-decoration:none;transition:opacity .2s,transform .2s}
+        .tarif-cta:hover{opacity:.88;transform:translateY(-1px)}
+        .tarif-cta.primary{background:linear-gradient(90deg,#3b82f6,#8b5cf6,#ec4899);color:#fff;box-shadow:0 4px 18px rgba(139,92,246,.25)}
+        .tarif-cta.secondary{background:#f8fafc;border:1.5px solid #e2e8f0;color:#0f172a}
+        .serenite-card{background:#0f172a;border-radius:2rem;padding:2rem 2.5rem;display:flex;flex-direction:column;gap:1.5rem;margin-top:1.5rem}
+        @media(min-width:640px){.serenite-card{flex-direction:row;align-items:center;justify-content:space-between}}
+        .serenite-left{}
+        .serenite-title{font-size:1rem;font-weight:800;color:#fff;margin-bottom:.2rem}
+        .serenite-desc{font-size:.8rem;color:#94a3b8;font-weight:600;margin-bottom:.75rem}
+        .serenite-features{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:.5rem}
+        .serenite-features li{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);color:#cbd5e1;border-radius:999px;padding:3px 12px;font-size:.75rem;font-weight:700}
+        .serenite-price{text-align:center;flex-shrink:0}
+        .serenite-price .price-main{color:#fff}
+        .serenite-price .price-main span{color:#94a3b8}
+        .serenite-price p{font-size:.75rem;color:#64748b;font-weight:600;margin-top:.25rem}
+        /* toggle mode: show abo prices */
+        body.abo-mode .tarif-price-oneshot{display:none}
+        body.abo-mode .tarif-price-abo{display:flex}
     </style>
 </head>
 <body class="bg-white text-slate-900">
@@ -72,6 +118,7 @@
             <div class="hidden md:flex space-x-8 font-bold text-sm uppercase tracking-widest text-slate-700">
                 <a href="#comment" class="hover:text-blue-600 transition">Comment ça marche</a>
                 <a href="#templates" class="hover:text-blue-600 transition">Modèles</a>
+                <a href="#tarifs" class="hover:text-blue-600 transition">Tarifs</a>
                 <a href="#faq" class="hover:text-blue-600 transition">FAQ</a>
                 <a href="#about" class="hover:text-blue-600 transition">À propos</a>
             </div>
@@ -205,6 +252,121 @@
     </div>
 </section>
 
+<!-- TARIFS -->
+<section id="tarifs" class="py-24 px-6 bg-white" aria-labelledby="tarifs-title">
+    <div class="max-w-5xl mx-auto">
+
+        <h2 id="tarifs-title" class="text-4xl font-extrabold mb-2 italic tracking-tight text-center">Offres &amp; Tarifs</h2>
+        <p class="text-slate-500 font-bold mb-10 text-lg text-center">Sans surprise, sans engagement caché.</p>
+
+        <!-- Toggle One-Shot / Abonnement -->
+        <div class="tarifs-toggle" role="group" aria-label="Choisir le mode de paiement">
+            <span id="lbl-oneshot" class="active">Paiement unique</span>
+            <button
+                class="toggle-track"
+                role="switch"
+                aria-checked="false"
+                aria-labelledby="lbl-oneshot lbl-abo"
+                id="tarif-toggle"
+            >
+                <span class="toggle-thumb" aria-hidden="true"></span>
+            </button>
+            <span id="lbl-abo">
+                Abonnement
+                <span style="display:inline-block;background:linear-gradient(90deg,#8b5cf6,#ec4899);color:#fff;font-size:10px;font-weight:800;padding:2px 10px;border-radius:999px;margin-left:6px;vertical-align:middle;letter-spacing:.04em;">RECOMMANDÉ</span>
+            </span>
+        </div>
+
+        <!-- Cartes Pack -->
+        <div class="tarifs-grid" role="list">
+
+            <!-- Pack Essentiel -->
+            <article class="tarif-card" role="listitem" aria-label="Pack Essentiel Local">
+                <p class="tarif-name">Pack Essentiel Local</p>
+                <p class="tarif-sub">Template pur · Personnalisé</p>
+
+                <div class="tarif-price-block">
+                    <div class="tarif-price-oneshot" aria-label="Tarif paiement unique : 590 euros">
+                        <p class="price-main">590 <span>€</span></p>
+                        <p class="price-detail">Paiement unique — sans abonnement</p>
+                    </div>
+                    <div class="tarif-price-abo" aria-label="Tarif abonnement : 390 euros à la commande puis 59 euros par mois">
+                        <p class="price-main">390 <span>€</span></p>
+                        <p class="price-detail">à la commande · puis <strong>59 €/mois</strong> (12 mois)</p>
+                    </div>
+                </div>
+
+                <hr class="tarif-divider" aria-hidden="true">
+
+                <ul class="tarif-features" aria-label="Inclus dans le Pack Essentiel Local">
+                    <li>Structure optimisée Google (balises, schema.org)</li>
+                    <li>Intégration des contenus fournis par le client</li>
+                    <li>SEO / GEO / E-E-A-T de base</li>
+                    <li>100% responsive (mobile, tablette, desktop)</li>
+                    <li>Mise en ligne sur Vercel en 7 jours</li>
+                </ul>
+
+                <a href="#contact" class="tarif-cta secondary">Demander un devis</a>
+            </article>
+
+            <!-- Pack Sur-Mesure -->
+            <article class="tarif-card featured" role="listitem" aria-label="Pack Sur-Mesure Visuel — recommandé">
+                <span class="tarif-badge-top" aria-label="Offre recommandée">✦ Meilleur rapport qualité/prix</span>
+                <p class="tarif-name">Pack Sur-Mesure Visuel</p>
+                <p class="tarif-sub">Structure modifiée · Design dédié</p>
+
+                <div class="tarif-price-block">
+                    <div class="tarif-price-oneshot" aria-label="Tarif paiement unique : 990 euros">
+                        <p class="price-main">990 <span>€</span></p>
+                        <p class="price-detail">Paiement unique — sans abonnement</p>
+                    </div>
+                    <div class="tarif-price-abo" aria-label="Tarif abonnement : 690 euros à la commande puis 59 euros par mois">
+                        <p class="price-main">690 <span>€</span></p>
+                        <p class="price-detail">à la commande · puis <strong>59 €/mois</strong> (12 mois)</p>
+                    </div>
+                </div>
+
+                <hr class="tarif-divider" aria-hidden="true">
+
+                <ul class="tarif-features" aria-label="Inclus dans le Pack Sur-Mesure Visuel">
+                    <li>Tout ce qui est inclus dans le Pack Essentiel</li>
+                    <li>Design et zoning personnalisés (HTML/CSS modifié)</li>
+                    <li>Modifications de structures et mises en page uniques</li>
+                    <li>Intégration d'outils tiers (réservation, menu, maps…)</li>
+                    <li>SEO local poussé (longue traîne, villes, secteur)</li>
+                </ul>
+
+                <a href="#contact" class="tarif-cta primary">Demander un devis</a>
+            </article>
+
+        </div>
+
+        <!-- Forfait Sérénité -->
+        <div class="serenite-card" aria-label="Forfait Sérénité — inclus dans les formules abonnement">
+            <div class="serenite-left">
+                <p class="serenite-title">🛡️ Forfait Sérénité — inclus dans l'abonnement</p>
+                <p class="serenite-desc">Ce que vous obtenez chaque mois pour 59 €/mois</p>
+                <ul class="serenite-features" aria-label="Services inclus dans le forfait Sérénité">
+                    <li>Hébergement pro &amp; domaine</li>
+                    <li>Maintenance &amp; mises à jour</li>
+                    <li>1h de modification/mois — Site internet Vivant</li>
+                    <li>Support réactif</li>
+                </ul>
+            </div>
+            <div class="serenite-price">
+                <p class="price-main" style="font-size:2rem">59 <span style="font-size:1rem;color:#94a3b8">€</span></p>
+                <p style="font-size:.75rem;color:#64748b;font-weight:600;margin-top:.25rem">/mois · inclus dans les abonnements</p>
+                <a href="#contact" style="display:inline-block;margin-top:.75rem;background:linear-gradient(90deg,#3b82f6,#8b5cf6);color:#fff;font-weight:800;font-size:.8rem;padding:.5rem 1.25rem;border-radius:999px;text-decoration:none;transition:opacity .2s" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">Me contacter</a>
+            </div>
+        </div>
+
+        <p class="text-center text-slate-400 text-xs font-semibold mt-8">
+            <i class="fas fa-info-circle mr-1" aria-hidden="true"></i>
+            Tous les tarifs s'entendent HT · TVA non applicable — article 293B du CGI (auto-entrepreneur)
+        </p>
+    </div>
+</section>
+
 <!-- À PROPOS -->
 <section id="about" class="py-24 px-6 bg-white" aria-labelledby="about-title">
     <div class="max-w-5xl mx-auto">
@@ -279,20 +441,55 @@
 </section>
 
 <!-- MENTIONS LÉGALES -->
-<section id="mentions-legales" class="py-16 px-6 bg-slate-950 text-slate-400" aria-labelledby="legal-title">
+<section id="mentions-legales" class="py-20 px-6 bg-slate-950" aria-labelledby="legal-title">
     <div class="max-w-4xl mx-auto">
-        <h2 id="legal-title" class="text-white font-bold text-xl mb-6 italic">Mentions légales &amp; Politique de confidentialité</h2>
-        <div class="grid md:grid-cols-2 gap-8 text-sm leading-relaxed">
-            <div>
-                <h3 class="text-white font-semibold mb-3">Éditeur du site</h3>
-                <p><strong class="text-slate-300">HMS Digital</strong> — Auto-entrepreneur<br>Représentant légal : Hugo Mollet-Stivala<br>Métropole Lilloise, Hauts-de-France, France<br>SIRET : 103 855 136 000 18<br>Tél : <a href="tel:+33615101256" class="text-blue-400 hover:underline">06 15 10 12 56</a><br>E-mail : <a href="mailto:hmsdigital.lille@gmail.com" class="text-blue-400 hover:underline">hmsdigital.lille@gmail.com</a></p>
-            </div>
-            <div>
-                <h3 class="text-white font-semibold mb-3">Données personnelles (RGPD)</h3>
-                <p>Les données collectées via le formulaire (nom, e-mail, téléphone, ville) sont utilisées uniquement pour répondre à votre demande. Elles ne sont jamais revendues ni transmises à des tiers. Durée de conservation : 3 ans maximum. Pour exercer vos droits, contactez : <a href="mailto:hmsdigital.lille@gmail.com" class="text-blue-400 hover:underline">hmsdigital.lille@gmail.com</a>.</p>
-                <p class="mt-3"><strong class="text-slate-300">Hébergement :</strong> Vercel Inc., 340 Pine Street, Suite 701, San Francisco, CA 94104, USA.</p>
-            </div>
+
+        <!-- En-tête -->
+        <div class="text-center mb-12">
+            <span style="display:inline-flex;align-items:center;gap:8px;background:rgba(59,130,246,.1);border:1px solid rgba(59,130,246,.25);color:#60a5fa;border-radius:999px;padding:6px 18px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:1rem">
+                <i class="fas fa-shield-halved" aria-hidden="true"></i> Transparence &amp; Conformité RGPD
+            </span>
+            <h2 id="legal-title" class="text-white font-extrabold text-2xl italic tracking-tight">Mentions légales &amp; Politique de confidentialité</h2>
         </div>
+
+        <!-- Cartes -->
+        <div class="grid md:grid-cols-2 gap-6 text-sm leading-relaxed">
+
+            <!-- Éditeur -->
+            <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:1.5rem;padding:1.75rem 2rem">
+                <div class="flex items-center gap-3 mb-4">
+                    <span style="width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#3b82f6,#8b5cf6);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+                        <i class="fas fa-building text-white text-xs" aria-hidden="true"></i>
+                    </span>
+                    <h3 class="text-white font-bold text-base">Éditeur du site</h3>
+                </div>
+                <ul class="space-y-2 text-slate-400">
+                    <li class="flex items-start gap-2"><i class="fas fa-user text-slate-600 text-xs mt-1 flex-shrink-0" aria-hidden="true"></i><span><strong class="text-slate-200">HMS Digital</strong> — Auto-entrepreneur<br>Hugo Mollet-Stivala</span></li>
+                    <li class="flex items-start gap-2"><i class="fas fa-map-marker-alt text-slate-600 text-xs mt-1 flex-shrink-0" aria-hidden="true"></i><span>Métropole Lilloise, Hauts-de-France, France</span></li>
+                    <li class="flex items-start gap-2"><i class="fas fa-id-card text-slate-600 text-xs mt-1 flex-shrink-0" aria-hidden="true"></i><span>SIRET : 103 855 136 000 18</span></li>
+                    <li class="flex items-start gap-2"><i class="fas fa-phone text-slate-600 text-xs mt-1 flex-shrink-0" aria-hidden="true"></i><a href="tel:+33615101256" class="text-blue-400 hover:text-blue-300 transition font-semibold">06 15 10 12 56</a></li>
+                    <li class="flex items-start gap-2"><i class="fas fa-envelope text-slate-600 text-xs mt-1 flex-shrink-0" aria-hidden="true"></i><a href="mailto:hmsdigital.lille@gmail.com" class="text-blue-400 hover:text-blue-300 transition font-semibold">hmsdigital.lille@gmail.com</a></li>
+                </ul>
+            </div>
+
+            <!-- RGPD -->
+            <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:1.5rem;padding:1.75rem 2rem">
+                <div class="flex items-center gap-3 mb-4">
+                    <span style="width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#8b5cf6,#ec4899);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+                        <i class="fas fa-lock text-white text-xs" aria-hidden="true"></i>
+                    </span>
+                    <h3 class="text-white font-bold text-base">Données personnelles (RGPD)</h3>
+                </div>
+                <p class="text-slate-400 mb-4">Les données collectées via le formulaire (nom, e-mail, téléphone, ville) sont utilisées <strong class="text-slate-300">uniquement pour répondre à votre demande</strong>. Elles ne sont jamais revendues ni transmises à des tiers. Durée de conservation : 3 ans maximum.</p>
+                <p class="text-slate-400 mb-4">Pour exercer vos droits d'accès, de rectification ou de suppression : <a href="mailto:hmsdigital.lille@gmail.com" class="text-blue-400 hover:text-blue-300 transition font-semibold">hmsdigital.lille@gmail.com</a></p>
+                <div style="background:rgba(59,130,246,.07);border:1px solid rgba(59,130,246,.15);border-radius:.75rem;padding:.75rem 1rem">
+                    <p class="text-slate-400"><i class="fas fa-server text-blue-500 text-xs mr-2" aria-hidden="true"></i><strong class="text-slate-300">Hébergement :</strong> Vercel Inc., 340 Pine Street, Suite 701, San Francisco, CA 94104, USA.</p>
+                </div>
+            </div>
+
+        </div>
+
+        <p class="text-center text-slate-700 text-xs font-medium mt-8">© 2026 HMS Digital · Tous droits réservés · Site réalisé par Hugo Mollet-Stivala</p>
     </div>
 </section>
 
@@ -302,6 +499,7 @@
     <nav class="flex flex-wrap justify-center gap-6 mb-4 text-xs font-semibold text-slate-500" aria-label="Liens de pied de page">
         <a href="#comment" class="hover:text-white transition">Comment ça marche</a>
         <a href="#templates" class="hover:text-white transition">Modèles</a>
+        <a href="#tarifs" class="hover:text-white transition">Tarifs</a>
         <a href="#faq" class="hover:text-white transition">FAQ</a>
         <a href="#about" class="hover:text-white transition">À propos</a>
         <a href="#contact" class="hover:text-white transition">Contact</a>
@@ -321,6 +519,9 @@
     document.querySelectorAll('.faq-btn').forEach(b=>{b.addEventListener('click',()=>{const o=b.getAttribute('aria-expanded')==='true';document.querySelectorAll('.faq-btn').forEach(x=>{x.setAttribute('aria-expanded','false');document.getElementById(x.getAttribute('aria-controls')).classList.remove('open')});if(!o){b.setAttribute('aria-expanded','true');document.getElementById(b.getAttribute('aria-controls')).classList.add('open')}})});
     const ce=document.getElementById('contact'),se=document.querySelector('.sticky-cta');if(ce&&se)new IntersectionObserver(([e])=>{se.style.display=e.isIntersecting?'none':''},{ threshold:0.1}).observe(ce);
     document.querySelector('form')?.addEventListener('submit',e=>{const cb=document.getElementById('rgpd');if(cb&&!cb.checked){e.preventDefault();cb.focus();cb.closest('.flex').style.cssText='outline:2px solid #ef4444;border-radius:8px';setTimeout(()=>{cb.closest('.flex').style.cssText=''},3000)}});
+    // Tarifs toggle
+    const tt=document.getElementById('tarif-toggle');
+    if(tt){tt.addEventListener('click',()=>{const on=tt.getAttribute('aria-checked')==='true';tt.setAttribute('aria-checked',String(!on));document.body.classList.toggle('abo-mode',!on);document.getElementById('lbl-oneshot').classList.toggle('active',on);document.getElementById('lbl-abo').style.fontWeight=on?'700':'800';document.getElementById('lbl-abo').style.color=on?'#64748b':'#0f172a';document.getElementById('lbl-oneshot').style.color=on?'#0f172a':'#64748b'})};
 </script>
 </body>
 </html>
