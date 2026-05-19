@@ -541,8 +541,8 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
 }
 
 @media (max-width: 900px) {
-  nav { padding: 0 24px; }
-  .nav-links { display: none; }
+   { padding: 0 24px; }
+  .-links { display: none; }
   .container { padding: 0 24px; }
   .hero { padding: 120px 24px 60px; min-height: auto; }
   .hero-stats { grid-template-columns: repeat(2, 1fr); gap: 12px; }
@@ -569,7 +569,9 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
 <body>
 
 <nav id="top">
-  <a href="#top" class="brand"><em>HMS</em> DIGITAL</a>
+<a href="#" class="brand">
+  <img src="favicon.png" alt="HMS Digital" style="height: 32px; width: auto; display: block;">
+</a>
   <ul class="nav-links">
     <li><a href="#comment">Comment ça marche</a></li>
     <li><a href="#templates">Nos Modèles</a></li>
