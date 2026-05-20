@@ -49,7 +49,7 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: auto; }
 
 body {
   font-family: 'DM Sans', sans-serif;
@@ -85,17 +85,77 @@ nav {
 }
 .brand { font-size: 20px; font-weight: 700; letter-spacing: -0.5px; color: var(--text); text-decoration: none; }
 .brand em { color: var(--accent); font-style: normal; }
-.nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
-.nav-links a { font-size: 13.5px; font-weight: 500; color: var(--muted); text-decoration: none; transition: color 0.2s; }
-.nav-links a:hover { color: var(--text); }
-.btn-nav {
-  display: inline-flex; align-items: center; gap: 8px;
-  padding: 10px 22px; background: var(--accent); color: #fff;
-  font-family: 'Space Grotesk', sans-serif; font-size: 13.5px; font-weight: 600;
-  border-radius: 10px; text-decoration: none; transition: all 0.25s;
-  box-shadow: 0 0 24px var(--accent-glow);
+.nav-links { display: flex; align-items: center; gap: 6px; list-style: none; }
+.nav-links a {
+  font-size: 13px; font-weight: 500; color: var(--muted); text-decoration: none;
+  padding: 7px 14px; border-radius: 8px; border: 1px solid transparent;
+  transition: all 0.2s ease; letter-spacing: 0.01em;
 }
-.btn-nav:hover { background: #35bfb7; box-shadow: 0 0 36px var(--accent-glow); transform: translateY(-1px); }
+.nav-links a:hover {
+  color: var(--text);
+  background: rgba(255,255,255,0.05);
+  border-color: var(--border);
+}
+
+/* HAMBURGER BUTTON */
+.menu-toggle {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  width: 42px; height: 42px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px;
+  cursor: pointer; padding: 0; transition: all 0.2s; z-index: 600; flex-shrink: 0;
+}
+.menu-toggle:hover { border-color: var(--border-hover); background: var(--surface); }
+.menu-toggle span {
+  display: block; width: 18px; height: 1.5px;
+  background: var(--muted); border-radius: 2px;
+  transition: all 0.25s ease; transform-origin: center;
+}
+.menu-toggle.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); background: var(--accent); }
+.menu-toggle.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.menu-toggle.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); background: var(--accent); }
+
+/* DROPDOWN MENU */
+.nav-dropdown {
+  position: absolute;
+  top: calc(72px + 8px);
+  right: 48px;
+  background: rgba(22,27,34,0.97);
+  backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 12px;
+  min-width: 240px;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.04);
+  opacity: 0; pointer-events: none; visibility: hidden;
+  transform: translateY(-8px) scale(0.97);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+  z-index: 599;
+}
+.nav-dropdown.open {
+  opacity: 1; pointer-events: auto; visibility: visible;
+  transform: translateY(0) scale(1);
+}
+.nav-dropdown .nav-links {
+  flex-direction: column; align-items: stretch; gap: 2px;
+}
+.nav-dropdown .nav-links a {
+  font-size: 14px; padding: 10px 14px; display: block;
+  border-radius: 8px;
+}
+.nav-dropdown .nav-links a:hover { color: var(--accent); background: var(--accent-dim); border-color: rgba(47,167,160,0.2); }
+.btn-nav-menu {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  margin-top: 10px; padding: 12px 16px;
+  background: var(--accent); color: #fff;
+  font-family: 'Space Grotesk', sans-serif; font-size: 13.5px; font-weight: 600;
+  border-radius: 10px; text-decoration: none; transition: all 0.2s;
+  box-shadow: 0 0 20px var(--accent-glow);
+  border: 1px solid rgba(255,255,255,0.15);
+}
+.btn-nav-menu:hover { background: #35bfb7; box-shadow: 0 0 32px var(--accent-glow); }
+/* btn-nav remplacé par btn-nav-menu dans le dropdown */
 
 /* HERO */
 .hero {
@@ -112,6 +172,7 @@ nav {
   padding: 7px 18px; background: var(--accent-dim); border: 1px solid rgba(47,167,160,0.25); border-radius: 999px;
   font-size: 12px; font-weight: 500; color: var(--accent); letter-spacing: 0.04em;
   margin-bottom: 24px; animation: fadeUp 0.7s ease both;
+  max-width: 100%; text-align: center; white-space: normal; flex-wrap: wrap; justify-content: center;
 }
 .hero-badge::before {
   content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--accent);
@@ -461,7 +522,7 @@ section { position: relative; overflow: hidden; }
 .faq-item { border: 1px solid var(--border); border-radius: 14px; overflow: hidden; transition: border-color 0.25s; background: rgba(22,27,34,0.4); }
 .faq-item:hover, .faq-item.open { border-color: rgba(47,167,160,0.25); }
 .faq-q {
-  display: flex; align-items: center; justify-content: space-between;
+  display: flex; align-items: flex-start; justify-content: space-between;
   padding: 20px 24px; cursor: pointer;
   font-family: 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 600; color: var(--text);
   user-select: none; gap: 16px; transition: color 0.2s;
@@ -535,34 +596,181 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
 .reveal-delay-2 { transition-delay: 0.2s; }
 .reveal-delay-3 { transition-delay: 0.3s; }
 
-/* RESPONSIVE & MOBILE FIXES */
+/* =============================================
+   RESPONSIVE — AUDIT COMPLET
+   Breakpoints : 1100 · 900 · 600 · 400
+   ============================================= */
+
+/* ---- 1100px : tablette paysage ---- */
 @media (max-width: 1100px) {
-  .templates-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .container { padding: 0 36px; }
+  .templates-grid { grid-template-columns: repeat(2, 1fr); }
+  .why-grid { grid-template-columns: repeat(2, 1fr); }
+  .hero-title { letter-spacing: -1.5px; }
+  .about-inner { gap: 40px; }
+  .contact-inner { gap: 48px; }
 }
 
+/* ---- 900px : tablette portrait ---- */
 @media (max-width: 900px) {
-   { padding: 0 24px; }
-  .-links { display: none; }
+  /* NAV */
+  nav { padding: 0 24px; }
+  .nav-dropdown { right: 24px; }
+
+  /* CONTAINER & SECTIONS */
   .container { padding: 0 24px; }
-  .hero { padding: 120px 24px 60px; min-height: auto; }
+  .why { padding: 80px 0; }
+  .process { padding: 80px 0; }
+  .templates { padding: 80px 0; }
+  .pricing { padding: 80px 0; }
+  .faq { padding: 80px 0; }
+  .about { padding: 80px 0; }
+  .contact-section { padding: 80px 0; }
+  .legal { padding: 60px 0; }
+
+  /* HERO */
+  .hero { padding: 110px 24px 60px; min-height: auto; }
+  .hero-title { letter-spacing: -1px; }
+  .hero-ctas { flex-direction: column; align-items: center; }
+  .btn-primary, .btn-ghost { width: 100%; max-width: 320px; justify-content: center; }
   .hero-stats { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-  .stat-item { border-left: none; padding: 16px 10px; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; }
+  .stat-item {
+    border-left: none;
+    padding: 16px 10px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+  }
+  .hero-scroll { display: none; }
+
+  /* WHY */
   .why-grid { grid-template-columns: 1fr; gap: 16px; }
-  .templates-grid { grid-template-columns: 1fr; gap: 20px; }
+  .why-card { padding: 32px 24px; }
+  .includes-grid { grid-template-columns: 1fr; }
+
+  /* PROCESS */
   .process-steps { grid-template-columns: 1fr; gap: 24px; }
   .process-steps::before { display: none; }
+
+  /* TEMPLATES */
+  .templates-grid { grid-template-columns: 1fr; }
+
+  /* ABOUT */
   .about-inner { grid-template-columns: 1fr; gap: 40px; }
   .about-float-card { position: static; box-shadow: none; width: 100%; }
+
+  /* PRICING */
   .pricing-panels-container { min-height: auto; }
-  .pricing-cards { position: static; opacity: 1; pointer-events: auto; visibility: hidden; transform: none; display: none; }
-  .pricing-cards.active-panel { display: grid; grid-template-columns: 1fr; }
+  .pricing-cards {
+    position: static;
+    opacity: 1; pointer-events: auto; visibility: hidden;
+    transform: none; display: none;
+  }
+  .pricing-cards.active-panel {
+    display: grid;
+    grid-template-columns: 1fr;
+    visibility: visible;
+  }
+  .pricing-toggle { flex-wrap: wrap; gap: 10px; }
+  .serenite-card { padding: 24px; }
+
+  /* CONTACT */
   .contact-inner { grid-template-columns: 1fr; gap: 40px; }
   .contact-form { padding: 24px; }
-  .legal-grid { grid-template-columns: 1fr; gap: 20px; }
+
+  /* LEGAL */
+  .legal-grid { grid-template-columns: 1fr; gap: 16px; }
+
+  /* FOOTER */
   footer { padding: 32px 24px 80px; }
   .footer-inner { flex-direction: column; align-items: flex-start; gap: 16px; }
-  .includes-grid { grid-template-columns: 1fr; }
+  .footer-links { gap: 16px; }
+}
+
+/* ---- 600px : mobile ---- */
+@media (max-width: 600px) {
+  /* HERO */
+  .hero { padding: 100px 20px 56px; }
+  .hero-badge { font-size: 11px; padding: 6px 14px; }
+  .hero-eyebrow { font-size: 10px; }
+  .hero-sub { font-size: 15px; margin-bottom: 32px; }
+  .hero-zones { margin-bottom: 36px; }
+  .hero-stats { gap: 10px; }
+  .stat-value { font-size: 22px; }
+
+  /* CONTAINER */
+  .container { padding: 0 20px; }
+
+  /* SECTIONS */
+  .section-title { letter-spacing: -0.5px; }
+  .why { padding: 64px 0; }
+  .process { padding: 64px 0; }
+  .templates { padding: 64px 0; }
+  .pricing { padding: 64px 0; }
+  .faq { padding: 64px 0; }
+  .about { padding: 64px 0; }
+  .contact-section { padding: 64px 0; }
+  .legal { padding: 48px 0; }
+
+  /* WHY */
+  .why-grid { margin-top: 40px; }
+  .why-card { padding: 28px 20px; }
+
+  /* PROCESS */
+  .process-steps { margin-top: 40px; }
+
+  /* TEMPLATES */
+  .templates-grid { margin-top: 40px; gap: 16px; }
+  .template-preview { height: 140px; }
+
+  /* PRICING */
+  .price-card { padding: 28px 24px; }
+  .price-number { font-size: 42px; }
+  .pricing-toggle { gap: 8px; }
+  .toggle-label { font-size: 13px; }
+  .recommended-pill { display: none; }
+  .serenite-card { padding: 20px; }
+  .serenite-price { text-align: left; }
+
+  /* FAQ */
+  .faq-list { margin-top: 40px; }
+  .faq-q { font-size: 14px; padding: 16px 18px; }
+  .faq-a { font-size: 13.5px; padding: 0 18px 16px; }
+
+  /* CONTACT */
+  .contact-form { padding: 20px; border-radius: 16px; }
   .form-grid { grid-template-columns: 1fr; }
+  .form-input, .form-select, .form-textarea { font-size: 16px; } /* évite le zoom iOS */
+
+  /* ABOUT */
+  .about-card-main { padding: 24px 20px; }
+  .about-metric { padding: 14px 0; }
+  .includes-list li { font-size: 13.5px; }
+
+  /* FOOTER */
+  .footer-links { flex-direction: column; gap: 12px; }
+  footer { padding: 28px 20px 80px; }
+
+  /* STICKY CTA */
+  .sticky-cta { display: block; }
+
+  /* NAV DROPDOWN */
+  .nav-dropdown { right: 20px; left: 20px; min-width: unset; }
+}
+
+/* ---- 400px : très petits mobiles ---- */
+@media (max-width: 400px) {
+  nav { padding: 0 16px; }
+  .container { padding: 0 16px; }
+  .hero { padding: 96px 16px 48px; }
+  .hero-badge { font-size: 10px; padding: 5px 12px; white-space: normal; text-align: center; }
+  .btn-primary, .btn-ghost { padding: 13px 20px; font-size: 14px; }
+  .why-card { padding: 24px 16px; }
+  .price-card { padding: 24px 18px; }
+  .contact-form { padding: 16px; }
+  .faq-q { font-size: 13px; }
+  footer { padding: 24px 16px 80px; }
+  .nav-dropdown { right: 16px; left: 16px; }
 }
 </style>
 </head>
@@ -572,14 +780,21 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
 <a href="#" class="brand">
   <img src="favicon.png" alt="HMS Digital" style="height: 32px; width: auto; display: block;">
 </a>
-  <ul class="nav-links">
-    <li><a href="#comment">Comment ça marche</a></li>
-    <li><a href="#templates">Nos Modèles</a></li>
-    <li><a href="#tarifs">Tarifs</a></li>
-    <li><a href="#faq">FAQ</a></li>
-    <li><a href="#about">À propos</a></li>
-  </ul>
-  <a href="#contact" class="btn-nav">Parlons de votre projet <i class="fa-solid fa-arrow-right"></i></a>
+
+  <button class="menu-toggle" id="menu-toggle" aria-label="Menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+
+  <div class="nav-dropdown" id="nav-menu">
+    <ul class="nav-links">
+      <li><a href="#comment">Comment ça marche</a></li>
+      <li><a href="#templates">Nos Modèles</a></li>
+      <li><a href="#tarifs">Tarifs</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#about">À propos</a></li>
+    </ul>
+    <a href="#contact" class="btn-nav-menu">Parlons de votre projet <i class="fa-solid fa-arrow-right"></i></a>
+  </div>
 </nav>
 
 <header class="hero">
@@ -917,6 +1132,42 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
   </div>
 </section>
 
+<section id="faq" class="faq">
+  <div class="container">
+    <div class="reveal" style="text-align:center;">
+      <span class="section-label">Questions fréquentes</span>
+      <h2 class="section-title">Tout ce que vous devez savoir<br>avant de démarrer.</h2>
+    </div>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q" role="button" tabindex="0">Quel est le délai réel pour la mise en ligne ?<span class="faq-chevron"><i class="fa-solid fa-chevron-down"></i></span></div>
+        <div class="faq-a">Le site est déployé et fonctionnel sous <strong>7 jours ouvrés</strong> à compter de la validation définitive de la structure choisie et de la réception de l'ensemble de vos contenus (textes, logo officiel, photographies). L'utilisation de bases structurelles développées à l'avance permet de garantir cette rapidité d'exécution.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" role="button" tabindex="0">Quels sont vos prix et comment fonctionnent-ils ?<span class="faq-chevron"><i class="fa-solid fa-chevron-down"></i></span></div>
+        <div class="faq-a">Chez HMS Digital, <strong>les tarifs sont fixes et transparents</strong>, vous n'avez pas de devis variable ou de mauvaise surprise. Vous avez le choix entre le Pack Essentiel Local et le Pack Sur-Mesure Visuel. Ces deux offres sont disponibles soit en paiement unique à la commande, soit en formule mensuelle par abonnement pour étaler les coûts.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" role="button" tabindex="0">Comment se passent les modifications après la livraison du site ?<span class="faq-chevron"><i class="fa-solid fa-chevron-down"></i></span></div>
+        <div class="faq-a">Si vous choisissez notre <strong>formule par abonnement</strong>, les modifications courantes sont entièrement intégrées : vous disposez de <strong>1 heure incluse chaque mois</strong> (dans le cadre du Forfait Sérénité) pour actualiser vos menus, horaires, textes ou photographies sur simple demande par e-mail. Pour les formules en paiement unique, les interventions ultérieures font l'objet d'un forfait d'ajustement classique.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" role="button" tabindex="0">Intervenez-vous exclusivement sur la métropole de Lille ?<span class="faq-chevron"><i class="fa-solid fa-chevron-down"></i></span></div>
+        <div class="faq-a">Non, je collabore avec des professionnels <strong>partout en France</strong> en travaillant de manière fluide à distance. Pour les entrepreneurs implantés dans la <strong>Métropole Lilloise</strong>, nous pouvons également organiser un rendez-vous physique pour cadrer vos besoins.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" role="button" tabindex="0">Quel est le coût récurrent lié à l'hébergement du site ?<span class="faq-chevron"><i class="fa-solid fa-chevron-down"></i></span></div>
+        <div class="faq-a">L'hébergement technique de votre site web sur la plateforme sécurisée Vercel est <strong>inclus de base</strong> dans nos formules. La seule dépense obligatoire à votre charge est l'achat et le renouvellement annuel de votre nom de domaine (comptez entre 10 et 15 € TTC par an auprès d'un bureau d'enregistrement comme OVH ou Gandi).</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" role="button" tabindex="0">Mon site web sera-t-il référencé sur les moteurs de recherche ?<span class="faq-chevron"><i class="fa-solid fa-chevron-down"></i></span></div>
+        <div class="faq-a">Oui, l'optimisation sémantique locale est injectée dans le code source lors du montage (balises fondamentales, métadonnées, ciblage géographique). Je vous fournis également un accompagnement méthodologique pour lier votre site à votre fiche <strong>Google Business Profile</strong> afin de maximiser votre présence sur Google Maps.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="about" class="about">
   <div class="container">
     <div class="about-inner">
@@ -996,42 +1247,6 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
           <span class="about-badge">Ancrage Métropole Lilloise</span>
           <span class="about-badge">Structure légale déclarée</span>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="faq" class="faq">
-  <div class="container">
-    <div class="reveal" style="text-align:center;">
-      <span class="section-label">Questions fréquentes</span>
-      <h2 class="section-title">Tout ce que vous devez savoir<br>avant de démarrer.</h2>
-    </div>
-
-    <div class="faq-list">
-      <div class="faq-item">
-        <div class="faq-q" role="button" tabindex="0">Quel est le délai réel pour la mise en ligne ?<span class="faq-chevron"><i class="fa-solid fa-chevron-down"></i></span></div>
-        <div class="faq-a">Le site est déployé et fonctionnel sous <strong>7 jours ouvrés</strong> à compter de la validation définitive de la structure choisie et de la réception de l'ensemble de vos contenus (textes, logo officiel, photographies). L'utilisation de bases structurelles développées à l'avance permet de garantir cette rapidité d'exécution.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" role="button" tabindex="0">Quels sont vos prix et comment fonctionnent-ils ?<span class="faq-chevron"><i class="fa-solid fa-chevron-down"></i></span></div>
-        <div class="faq-a">Chez HMS Digital, <strong>les tarifs sont fixes et transparents</strong>, vous n'avez pas de devis variable ou de mauvaise surprise. Vous avez le choix entre le Pack Essentiel Local et le Pack Sur-Mesure Visuel. Ces deux offres sont disponibles soit en paiement unique à la commande, soit en formule mensuelle par abonnement pour étaler les coûts.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" role="button" tabindex="0">Comment se passent les modifications après la livraison du site ?<span class="faq-chevron"><i class="fa-solid fa-chevron-down"></i></span></div>
-        <div class="faq-a">Si vous choisissez notre <strong>formule par abonnement</strong>, les modifications courantes sont entièrement intégrées : vous disposez de <strong>1 heure incluse chaque mois</strong> (dans le cadre du Forfait Sérénité) pour actualiser vos menus, horaires, textes ou photographies sur simple demande par e-mail. Pour les formules en paiement unique, les interventions ultérieures font l'objet d'un forfait d'ajustement classique.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" role="button" tabindex="0">Intervenez-vous exclusivement sur la métropole de Lille ?<span class="faq-chevron"><i class="fa-solid fa-chevron-down"></i></span></div>
-        <div class="faq-a">Non, je collabore avec des professionnels <strong>partout en France</strong> en travaillant de manière fluide à distance. Pour les entrepreneurs implantés dans la <strong>Métropole Lilloise</strong>, nous pouvons également organiser un rendez-vous physique pour cadrer vos besoins.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" role="button" tabindex="0">Quel est le coût récurrent lié à l'hébergement du site ?<span class="faq-chevron"><i class="fa-solid fa-chevron-down"></i></span></div>
-        <div class="faq-a">L'hébergement technique de votre site web sur la plateforme sécurisée Vercel est <strong>inclus de base</strong> dans nos formules. La seule dépense obligatoire à votre charge est l'achat et le renouvellement annuel de votre nom de domaine (comptez entre 10 et 15 € TTC par an auprès d'un bureau d'enregistrement comme OVH ou Gandi).</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" role="button" tabindex="0">Mon site web sera-t-il référencé sur les moteurs de recherche ?<span class="faq-chevron"><i class="fa-solid fa-chevron-down"></i></span></div>
-        <div class="faq-a">Oui, l'optimisation sémantique locale est injectée dans le code source lors du montage (balises fondamentales, métadonnées, ciblage géographique). Je vous fournis également un accompagnement méthodologique pour lier votre site à votre fiche <strong>Google Business Profile</strong> afin de maximiser votre présence sur Google Maps.</div>
       </div>
     </div>
   </div>
@@ -1178,50 +1393,60 @@ window.addEventListener('scroll', () => {
   nav.style.background = window.scrollY > 60 ? 'rgba(13,17,23,0.96)' : 'rgba(13,17,23,0.8)';
 });
 
-// RESTAURATION ET OPTIMISATION DU SMOOTH SCROLL ULTRA-FLUIDE
+// HAMBURGER MENU TOGGLE
+const menuToggle = document.getElementById('menu-toggle');
+const navMenu = document.getElementById('nav-menu');
+menuToggle.addEventListener('click', () => {
+  const isOpen = navMenu.classList.toggle('open');
+  menuToggle.classList.toggle('open', isOpen);
+  menuToggle.setAttribute('aria-expanded', isOpen);
+});
+// Fermer en cliquant dehors
+document.addEventListener('click', (e) => {
+  if (!nav.contains(e.target)) {
+    navMenu.classList.remove('open');
+    menuToggle.classList.remove('open');
+    menuToggle.setAttribute('aria-expanded', 'false');
+  }
+});
+
+// SMOOTH SCROLL — DÉMARRAGE IMMÉDIAT
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
     e.preventDefault();
     const targetId = this.getAttribute('href');
-    
-    if (targetId === '#top') {
-      smoothScrollTo(0, 800);
+
+    // Fermer le menu mobile si ouvert
+    document.getElementById('nav-menu').classList.remove('open');
+    document.getElementById('menu-toggle').classList.remove('open');
+
+    if (targetId === '#' || targetId === '#top') {
+      smoothScrollTo(0, 350);
       return;
     }
-    
+
     const targetElement = document.querySelector(targetId);
     if (targetElement) {
-      const navHeight = 72; // Hauteur fixe de la nav
-      const elementPosition = targetElement.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - navHeight;
-      
-      smoothScrollTo(offsetPosition, 800); // 800ms pour une transition douce
+      const navHeight = 72;
+      const offsetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navHeight;
+      smoothScrollTo(offsetPosition, 350);
     }
   });
 });
 
-// FONCTION DE SCROLL PAR AMORTISSEMENT MATHÉMATIQUE (ALGORITHME D'ÉQUATION DE SCROLL FLUIDE)
 function smoothScrollTo(targetY, duration) {
   const startY = window.pageYOffset;
-  const difference = targetY - startY;
-  let startTimestamp = null;
-
-  function step(timestamp) {
-    if (!startTimestamp) startTimestamp = timestamp;
-    const progress = timestamp - startTimestamp;
-    const progressPercentage = Math.min(progress / duration, 1);
-    
-    // Fonction d'atténuation (Cubic Easing Out) pour un effet "freinage" ultra qualitatif
-    const easeOutCubic = 1 - Math.pow(1 - progressPercentage, 3);
-    
-    window.scrollTo(0, startY + difference * easeOutCubic);
-
-    if (progress < duration) {
-      window.requestAnimationFrame(step);
-    }
+  const diff = targetY - startY;
+  let start = null;
+  function step(ts) {
+    if (!start) start = ts;
+    const p = Math.min((ts - start) / duration, 1);
+    // ease-out cubic : démarre vite, freine à la fin
+    const ease = 1 - Math.pow(1 - p, 3);
+    window.scrollTo(0, startY + diff * ease);
+    if (p < 1) requestAnimationFrame(step);
   }
-  
-  window.requestAnimationFrame(step);
+  requestAnimationFrame(step);
 }
 
 // STICKY CTA MOBILE GESTION VISIBILITÉ
