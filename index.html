@@ -64,6 +64,11 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 
+/* Offset pour la nav fixe (72px) + marge de sécurité */
+#top, #comment, #templates, #tarifs, #about, #faq, #contact, #mentions-legales {
+  scroll-margin-top: 80px;
+}
+
 body {
   font-family: 'DM Sans', sans-serif;
   background: var(--bg);
@@ -320,6 +325,8 @@ section { position: relative; overflow: hidden; }
   display: flex;
   flex-direction: column;
   position: relative;
+  /* Empêche tout conflit avec le smooth scroll interne */
+  -webkit-tap-highlight-color: transparent;
 }
 
 .template-card:hover { 
@@ -648,7 +655,7 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
 </head>
 <body>
 
-<nav id="top">
+<nav id="nav-bar">
 <a href="#top" class="brand">
   <img src="android-chrome-192x192.png" alt="HMS Digital" style="height: 44px; width: auto; display: block;">
 </a>
@@ -666,14 +673,15 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
 </nav>
 
 <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
-  <a href="#comment" class="mobile-link">Comment ça marche</a>
-  <a href="#templates" class="mobile-link">Nos Modèles de Site</a>
-  <a href="#tarifs" class="mobile-link">Tarifs</a>
-  <a href="#faq" class="mobile-link">FAQ</a>
-  <a href="#about" class="mobile-link">À propos</a>
-  <a href="#contact" class="mobile-cta mobile-link">Parlons de votre projet</a>
+  <a href="#comment">Comment ça marche</a>
+  <a href="#templates">Nos Modèles de Site</a>
+  <a href="#tarifs">Tarifs</a>
+  <a href="#faq">FAQ</a>
+  <a href="#about">À propos</a>
+  <a href="#contact" class="mobile-cta">Parlons de votre projet</a>
 </div>
 
+<div id="top" style="position:absolute;top:0;left:0;width:0;height:0;pointer-events:none;" aria-hidden="true"></div>
 <header class="hero">
   <div class="bg-orb hero-orb-1"></div>
   <div class="bg-orb hero-orb-2"></div>
@@ -821,6 +829,7 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
     </div>
 
     <div class="templates-grid">
+      <!-- Les template-card ont target="_blank" donc ce sont de vrais liens externes, pas des ancres -->
       <a href="https://hugomolletstivala.github.io/TemplateArtisant/" target="_blank" rel="noopener noreferrer" class="template-card reveal reveal-delay-1">
         <div class="template-preview tmpl-artisan">
           <div class="template-grid-texture"></div>
@@ -1254,88 +1263,69 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
   </div>
 </footer>
 
-
-
 <script>
-// HAMBURGER MENU
+// ============================================================
+// HAMBURGER MENU — logique unique, sans scroll JS
+// ============================================================
 const hamburger = document.getElementById('hamburger');
 const mobileMenu = document.getElementById('mobile-menu');
 
-function toggleMenu(force) {
-  const isOpen = force !== undefined ? force : !hamburger.classList.contains('open');
-  hamburger.classList.toggle('open', isOpen);
-  hamburger.setAttribute('aria-expanded', isOpen);
-  mobileMenu.classList.toggle('open', isOpen);
-  mobileMenu.setAttribute('aria-hidden', !isOpen);
-  document.body.style.overflow = isOpen ? 'hidden' : '';
+function closeMenu() {
+  hamburger.classList.remove('open');
+  hamburger.setAttribute('aria-expanded', 'false');
+  mobileMenu.classList.remove('open');
+  mobileMenu.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
 }
 
-hamburger.addEventListener('click', () => toggleMenu());
+function openMenu() {
+  hamburger.classList.add('open');
+  hamburger.setAttribute('aria-expanded', 'true');
+  mobileMenu.classList.add('open');
+  mobileMenu.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+}
 
-document.querySelectorAll('.mobile-link').forEach(link => {
-  link.addEventListener('click', () => toggleMenu(false));
+hamburger.addEventListener('click', function() {
+  if (hamburger.classList.contains('open')) { closeMenu(); } else { openMenu(); }
 });
 
-// SCROLL REVEAL (INTERSECTION OBSERVER)
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
-}, { threshold: 0.05 });
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-// NAVIGATION SCROLL BACKGROUND EFFET
-const nav = document.querySelector('nav');
-window.addEventListener('scroll', () => {
-  nav.style.background = window.scrollY > 60 ? 'rgba(250,250,248,0.96)' : 'rgba(250,250,248,0.92)';
-});
-
-// RESTAURATION ET OPTIMISATION DU SMOOTH SCROLL ULTRA-FLUIDE
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
-    e.preventDefault();
-    const targetId = this.getAttribute('href');
-    
-    if (targetId === '#top') {
-      smoothScrollTo(0, 80);
-      return;
-    }
-    
-    const targetElement = document.querySelector(targetId);
-    if (targetElement) {
-      const navHeight = 72; // Hauteur fixe de la nav
-      const elementPosition = targetElement.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - navHeight;
-      
-      smoothScrollTo(offsetPosition, 80); // 400ms
-    }
+// Liens du menu mobile : fermer le menu, puis laisser le navigateur gérer l'ancre nativement
+document.querySelectorAll('.mobile-menu-link').forEach(function(link) {
+  link.addEventListener('click', function() {
+    closeMenu();
+    // Pas de JS de scroll : le navigateur suit l'ancre href nativement avec scroll-margin-top CSS
   });
 });
 
-// FONCTION DE SCROLL PAR AMORTISSEMENT MATHÉMATIQUE (ALGORITHME D'ÉQUATION DE SCROLL FLUIDE)
-function smoothScrollTo(targetY, duration) {
-  const startY = window.pageYOffset;
-  const difference = targetY - startY;
-  let startTimestamp = null;
-
-  function step(timestamp) {
-    if (!startTimestamp) startTimestamp = timestamp;
-    const progress = timestamp - startTimestamp;
-    const progressPercentage = Math.min(progress / duration, 1);
-    
-    // Fonction d'atténuation (Cubic Easing Out) pour un effet "freinage" ultra qualitatif
-    const easeOutCubic = 1 - Math.pow(1 - progressPercentage, 3);
-    
-    window.scrollTo(0, startY + difference * easeOutCubic);
-
-    if (progress < duration) {
-      window.requestAnimationFrame(step);
+// ============================================================
+// SCROLL REVEAL
+// ============================================================
+const revealObserver = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      revealObserver.unobserve(e.target);
     }
-  }
-  
-  window.requestAnimationFrame(step);
-}
+  });
+}, { threshold: 0.05 });
+document.querySelectorAll('.reveal').forEach(function(el) {
+  revealObserver.observe(el);
+});
 
+// ============================================================
+// NAV BACKGROUND ON SCROLL
+// ============================================================
+const nav = document.querySelector('nav');
+window.addEventListener('scroll', function() {
+  nav.style.background = window.scrollY > 60
+    ? 'rgba(250,250,248,0.96)'
+    : 'rgba(250,250,248,0.92)';
+}, { passive: true });
 
-// PRICING TOGGLE AVEC ANIMATION CSS COHÉRENTE
+// ============================================================
+// PRICING TOGGLE
+// ============================================================
 const toggleEl = document.getElementById('tarif-toggle');
 const panelOneshot = document.getElementById('panel-oneshot');
 const panelAbo = document.getElementById('panel-abo');
@@ -1349,59 +1339,59 @@ function applyPricingMode() {
     toggleEl.setAttribute('aria-checked', 'true');
     lblOneshot.classList.remove('active');
     lblAbo.classList.add('active');
-    
     panelOneshot.classList.remove('active-panel');
-    setTimeout(() => {
-      if (isAbo) {
-        panelOneshot.style.display = 'none';
-        panelAbo.style.display = 'grid';
-        panelAbo.offsetHeight; 
-        panelAbo.classList.add('active-panel');
-      }
+    setTimeout(function() {
+      if (!isAbo) return;
+      panelOneshot.style.display = 'none';
+      panelAbo.style.display = 'grid';
+      panelAbo.offsetHeight;
+      panelAbo.classList.add('active-panel');
     }, 300);
   } else {
     toggleEl.classList.remove('on');
     toggleEl.setAttribute('aria-checked', 'false');
     lblOneshot.classList.add('active');
     lblAbo.classList.remove('active');
-    
     panelAbo.classList.remove('active-panel');
-    setTimeout(() => {
-      if (!isAbo) {
-        panelAbo.style.display = 'none';
-        panelOneshot.style.display = 'grid';
-        panelOneshot.offsetHeight;
-        panelOneshot.classList.add('active-panel');
-      }
+    setTimeout(function() {
+      if (isAbo) return;
+      panelAbo.style.display = 'none';
+      panelOneshot.style.display = 'grid';
+      panelOneshot.offsetHeight;
+      panelOneshot.classList.add('active-panel');
     }, 300);
   }
 }
 
-toggleEl.addEventListener('click', () => { isAbo = !isAbo; applyPricingMode(); });
-toggleEl.addEventListener('keydown', (e) => { if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); isAbo = !isAbo; applyPricingMode(); } });
-lblOneshot.addEventListener('click', () => { isAbo = false; applyPricingMode(); });
-lblAbo.addEventListener('click', () => { isAbo = true; applyPricingMode(); });
+toggleEl.addEventListener('click', function() { isAbo = !isAbo; applyPricingMode(); });
+toggleEl.addEventListener('keydown', function(e) {
+  if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); isAbo = !isAbo; applyPricingMode(); }
+});
+lblOneshot.addEventListener('click', function() { isAbo = false; applyPricingMode(); });
+lblAbo.addEventListener('click', function() { isAbo = true; applyPricingMode(); });
 
-// FAQ ACCORDION LOGIQUE ACTIVATION FLUIDE
-document.querySelectorAll('.faq-q').forEach(q => {
-  const activate = () => {
+// ============================================================
+// FAQ ACCORDION
+// ============================================================
+document.querySelectorAll('.faq-q').forEach(function(q) {
+  function activate() {
     const item = q.closest('.faq-item');
     const answer = item.querySelector('.faq-a');
     const isOpen = item.classList.contains('open');
-    
-    document.querySelectorAll('.faq-item').forEach(i => {
+    document.querySelectorAll('.faq-item').forEach(function(i) {
       i.classList.remove('open');
       const a = i.querySelector('.faq-a');
       if (a) a.style.display = 'none';
     });
-    
     if (!isOpen) {
       item.classList.add('open');
       if (answer) answer.style.display = 'block';
     }
-  };
+  }
   q.addEventListener('click', activate);
-  q.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate(); } });
+  q.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate(); }
+  });
 });
 </script>
 </body>
