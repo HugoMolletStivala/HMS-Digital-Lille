@@ -304,7 +304,7 @@ section { position: relative; overflow: hidden; }
   z-index: 2; 
 }
 
-.template-card { 
+.template-card { touch-action: manipulation; -webkit-tap-highlight-color: transparent; 
   border-radius: 20px; 
   overflow: hidden; 
   background: var(--bg); 
@@ -334,12 +334,12 @@ section { position: relative; overflow: hidden; }
   transition: all 0.3s ease;
 }
 
-.template-grid-texture {
+.template-grid-texture { pointer-events: none;
   position: absolute; inset: 0;
   background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
   background-size: 15px 15px; opacity: 0.5; transition: opacity 0.3s ease;
 }
-.template-card:hover .template-grid-texture { opacity: 0.8; animation: gridGlow 1.5s infinite alternate; }
+.template-card:hover .template-grid-texture { pointer-events: none; opacity: 0.8; animation: gridGlow 1.5s infinite alternate; }
 @keyframes gridGlow { from { opacity: 0.8; } to { opacity: 0.4; } }
 
 .template-preview::before {
@@ -355,19 +355,19 @@ section { position: relative; overflow: hidden; }
 .tmpl-boutique { background: linear-gradient(135deg, #182238 0%, #090e1a 100%); color: #5283f6; }
 .tmpl-restaurant { background: linear-gradient(135deg, #112a20 0%, #06120e 100%); color: #34b399; }
 
-.template-orb {
+.template-orb { pointer-events: none;
   position: absolute; bottom: -40px; left: 50%; transform: translateX(-50%);
   width: 150px; height: 150px; border-radius: 50%; opacity: 0.4; filter: blur(45px);
   transition: all 0.3s ease;
 }
-.tmpl-artisan .template-orb { background: radial-gradient(circle, #bfa071 0%, transparent 70%); }
-.tmpl-beauty .template-orb { background: radial-gradient(circle, #f0608c 0%, transparent 70%); }
-.tmpl-boutique .template-orb { background: radial-gradient(circle, #5283f6 0%, transparent 70%); }
-.tmpl-restaurant .template-orb { background: radial-gradient(circle, #34b399 0%, transparent 70%); }
+.tmpl-artisan .template-orb { pointer-events: none; background: radial-gradient(circle, #bfa071 0%, transparent 70%); }
+.tmpl-beauty .template-orb { pointer-events: none; background: radial-gradient(circle, #f0608c 0%, transparent 70%); }
+.tmpl-boutique .template-orb { pointer-events: none; background: radial-gradient(circle, #5283f6 0%, transparent 70%); }
+.tmpl-restaurant .template-orb { pointer-events: none; background: radial-gradient(circle, #34b399 0%, transparent 70%); }
 
-.template-card:hover .template-orb { transform: translateX(-50%) translateY(-20px) scale(1.4); opacity: 0.9; }
+.template-card:hover .template-orb { pointer-events: none; transform: translateX(-50%) translateY(-20px) scale(1.4); opacity: 0.9; }
 
-.template-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 40%, rgba(11,17,32,0.98) 100%); transition: opacity 0.3s ease; }
+.template-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 40%, rgba(11,17,32,0.98) 100%); transition: opacity 0.3s ease; pointer-events: none; }
 .template-card:hover .template-overlay { opacity: 0.7; }
 
 .template-preview i { position: relative; z-index: 2; color: inherit; transition: all 0.3s ease; filter: drop-shadow(0 0 12px currentColor); }
