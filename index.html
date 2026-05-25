@@ -34,7 +34,7 @@
 <meta name="twitter:image" content="https://hms-digital.fr/og-image.jpg">
 
 <script type="application/ld+json">{"@context":"https://schema.org","@type":["LocalBusiness","ProfessionalService"],"name":"HMS Digital","legalName":"HMS Digital","description":"Création de sites web rapides, simples et optimisés SEO pour commerçants et indépendants sur base de templates. Solution clé en main livrée en 7 jours.","url":"https://hms-digital.fr","telephone":"+33615101256","email":"hmsdigital.lille@gmail.com","priceRange":"€","address":{"@type":"PostalAddress","addressLocality":"Lille","addressRegion":"Hauts-de-France","postalCode":"59000","addressCountry":"FR"},"geo":{"@type":"GeoCoordinates","latitude":50.6292,"longitude":3.0573},"areaServed":[{"@type":"City","name":"Lille"},{"@type":"City","name":"Roubaix"},{"@type":"City","name":"Tourcoing"},{"@type":"City","name":"Villeneuve-d'Ascq"},{"@type":"City","name":"Marcq-en-Barœul"},{"@type":"Country","name":"France"}],"identifier":{"@type":"PropertyValue","name":"SIRET","value":"10385513600018"},"founder":{"@type":"Person","name":"Hugo Mollet-Stivala","jobTitle":"Fondateur & Développeur web freelance"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Combien de temps faut-il pour créer un site web avec HMS Digital ?","acceptedAnswer":{"@type":"Answer","text":"Grâce à des templates prêts à personnaliser, votre site est en ligne en 7 jours ouvrés."}},{"@type":"Question","name":"Combien coûte la création d'un site web ?","acceptedAnswer":{"@type":"Answer","text":"Les tarifs sont fixes et transparents selon la formule choisie (Pack Essentiel Local ou Pack Sur-Mesure Visuel), disponibles en paiement unique ou sous forme d'abonnement."}},{"@type":"Question","name":"Intervenez-vous uniquement à Lille ?","acceptedAnswer":{"@type":"Answer","text":"HMS Digital intervient partout en France. Le travail se fait à distance. Pour les clients de la Métropole Lilloise, des rencontres physiques sont possibles."}},{"@type":"Question","name":"Qui héberge mon site ?","acceptedAnswer":{"@type":"Answer","text":"Les sites sont hébergés sur Vercel, une plateforme performante et fiable. L'hébergement is inclus de base. Vous payez uniquement votre nom de domaine (environ 10 à 15 € par an)."}},{"@type":"Question","name":"Puis-je modifier mon site après livraison ?","acceptedAnswer":{"@type":"Answer","text":"Oui. Si vous optez pour la formule avec abonnement, le Forfait Sérénité est inclus et comprend 1 heure de modification par mois pour faire évoluer votre site."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Combien de temps faut-il pour créer un site web avec HMS Digital ?","acceptedAnswer":{"@type":"Answer","text":"Grâce à des templates prêts à personnaliser, votre site est en ligne en 7 jours ouvrés."}},{"@type":"Question","name":"Combien coûte la création d'un site web ?","acceptedAnswer":{"@type":"Answer","text":"Les tarifs sont fixes et transparents selon la formule choisie (Pack Essentiel Local ou Pack Sur-Mesure Visuel), disponibles en paiement unique ou sous forme d'abonnement."}},{"@type":"Question","name":"Intervenez-vous uniquement à Lille ?","acceptedAnswer":{"@type":"Answer","text":"HMS Digital intervient partout en France. Le travail se fait à distance. Pour les clients de la Métropole Lilloise, des rencontres physiques sont possibles."}},{"@type":"Question","name":"Qui héberge mon site ?","acceptedAnswer":{"@type":"Answer","text":"Les sites sont hébergés sur Vercel, une plateforme performante et fiable. L'hébergement is inclus de base. Vous payez uniquement votre nom de domaine (environ 10 à 15 € par an)."}},{"@type":"Question","name":"Puis-je modifier mon site après livraison ?","acceptedAnswer":{"@type":"Answer","text":"Oui. Si vous optez pour la formule avec abonnement, le Forfait Sérénité is inclus et comprend 1 heure de modification par mois pour faire évoluer votre site."}}]}</script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
@@ -433,7 +433,7 @@ section { position: relative; overflow: hidden; }
 
 .about-badges { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
 .about-badge { font-size: 12px; font-weight: 500; color: var(--accent); background: var(--accent-dim); border: 1px solid rgba(59,130,246,0.2); border-radius: 999px; padding: 5px 14px; }
-.section-sub-text { font-size: 15px; color: var(--muted); line-height: 1.7; margin-top: 16px; }
+.section-sub-text font-size: 15px; color: var(--muted); line-height: 1.7; margin-top: 16px; }
 .section-sub-text strong { color: var(--text); }
 
 /* PRICING */
@@ -630,9 +630,12 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
   .process-steps::before { display: none; }
   .about-inner { grid-template-columns: 1fr; gap: 40px; }
   .about-float-card { position: static; box-shadow: none; width: 100%; }
-  .pricing-panels-container { min-height: auto; }
-  .pricing-cards { position: static; opacity: 1; pointer-events: auto; visibility: hidden; transform: none; display: none; }
-  .pricing-cards.active-panel { display: grid; grid-template-columns: 1fr; }
+  
+  /* Correction responsive pour la grille tarifaire sur mobile */
+  .pricing-panels-container { min-height: auto; height: auto; position: relative; }
+  .pricing-cards { position: relative; opacity: 1; pointer-events: auto; visibility: visible; transform: none; display: none; }
+  .pricing-cards.active-panel { display: grid; grid-template-columns: 1fr; gap: 24px; }
+  
   .contact-inner { grid-template-columns: 1fr; gap: 40px; }
   .contact-form { padding: 24px; }
   .legal-grid { grid-template-columns: 1fr; gap: 20px; }
@@ -986,7 +989,7 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
     <div class="serenite-card reveal">
       <div>
         <p class="serenite-title"><i class="fa-solid fa-shield-halved"></i> Forfait Sérénité — Inclus dans l'abonnement</p>
-        <p class="serenite-desc">Inclus d'office dans vos mensualités de 59 €/mois pour garder l'esprit tranquille :</p>
+        <p class="serenite-desc">Inclus d'office dans vos marchandises de 59 €/mois pour garder l'esprit tranquille :</p>
         <div class="serenite-pills">
           <span class="serenite-pill">Supervision de l'hébergement pro</span>
           <span class="serenite-pill">Maintenance technique &amp; correctifs</span>
