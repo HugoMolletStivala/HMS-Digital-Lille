@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<meta name="google-site-verification" content="wmvFZKY4h0OHEBNwzxcB_gyhFPECEw32T8LRx0yOLQk">
+<title>Création de site web à Lille en 7 jours | HMS Digital – Agence web Métropole Lilloise</title>
+<meta name="description" content="HMS Digital crée votre site web professionnel en 7 jours. Solution simple, rapide et abordable pour commerçants et indépendants de la Métropole Lilloise. Optimisé SEO local.">
+<link rel="canonical" href="https://hms-digital.fr/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://hms-digital.fr/">
+<meta property="og:title" content="Création de site web à Lille en 7 jours | HMS Digital">
+<meta property="og:description" content="Site web pro en 7 jours pour commerçants et indépendants. Simple, rapide, abordable. SEO local inclus.">
+<meta property="og:image" content="https://hms-digital.fr/og-image.jpg">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="HMS Digital">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":["LocalBusiness","ProfessionalService"],"name":"HMS Digital","description":"Création de sites web rapides, simples et optimisés SEO pour commerçants et indépendants.","url":"https://hms-digital.fr","telephone":"+33615101256","email":"hmsdigital.lille@gmail.com","priceRange":"€","address":{"@type":"PostalAddress","addressLocality":"Lille","addressRegion":"Hauts-de-France","postalCode":"59000","addressCountry":"FR"},"founder":{"@type":"Person","name":"Hugo Mollet-Stivala","jobTitle":"Fondateur & Développeur web freelance"}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+<style>
+/* Hero spécifique à l'accueil */
+.hero {
+  position: relative; min-height: 100vh;
+  display: flex; align-items: center; justify-content: center;
+  padding: 140px 48px 80px; overflow: hidden;
+}
+.hero-orb-1 { width: 700px; height: 700px; background: radial-gradient(circle, rgba(37,99,235,0.08) 0%, transparent 70%); top: -200px; left: -200px; }
+.hero-orb-2 { width: 500px; height: 500px; background: radial-gradient(circle, rgba(22,163,74,0.07) 0%, transparent 70%); bottom: -100px; right: -100px; }
+.hero-orb-3 { width: 400px; height: 400px; background: radial-gradient(circle, rgba(217,119,6,0.07) 0%, transparent 70%); top: 30%; right: -100px; }
+.hero-inner { position: relative; z-index: 1; text-align: center; max-width: 920px; width: 100%; }
+.hero-title { font-size: clamp(40px, 7vw, 86px); font-weight: 700; letter-spacing: -2.5px; line-height: 1.05; color: var(--text); margin-bottom: 16px; animation: fadeUp 0.7s 0.1s ease both; }
+.hero-title .accent-line { color: var(--accent); }
+.hero-sub { font-size: clamp(16px, 2vw, 19px); color: var(--muted); line-height: 1.7; max-width: 650px; margin: 0 auto 44px; animation: fadeUp 0.7s 0.2s ease both; }
+.hero-sub strong { color: var(--text); font-weight: 600; }
+.hero-badge { animation: fadeUp 0.7s ease both; }
+.hero-ctas { animation: fadeUp 0.7s 0.3s ease both; }
+.hero-zones { animation: fadeUp 0.7s 0.35s ease both; margin-bottom: 52px; margin-top: 52px; }
+.zones-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; }
+.zones-track { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+.zone-pill { font-size: 12px; font-weight: 500; color: var(--muted); background: var(--surface); border: 1px solid var(--border); border-radius: 999px; padding: 4px 14px; }
+.zone-pill.accent { color: var(--accent); border-color: rgba(59,130,246,0.3); background: var(--accent-dim); }
+.hero-stats-wrap { animation: fadeUp 0.7s 0.4s ease both; }
+.hero-scroll { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 8px; animation: fadeUp 1s 0.8s ease both; }
+.scroll-line { width: 1px; height: 48px; background: linear-gradient(to bottom, var(--accent), transparent); animation: scrollLine 2s ease-in-out infinite; }
+@keyframes scrollLine { 0% { transform: scaleY(0); transform-origin: top; } 50% { transform: scaleY(1); transform-origin: top; } 51% { transform-origin: bottom; } 100% { transform: scaleY(0); transform-origin: bottom; } }
+@media (max-width: 768px) { .hero { padding: 120px 24px 60px; min-height: auto; } }
+</style>
+</head>
+<body>
+
+<nav id="nav-bar">
+  <a href="index.html" class="brand"><img src="android-chrome-192x192.png" alt="HMS Digital" class="brand-logo"></a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">Accueil</a></li>
+    <li><a href="modeles.html">Nos Modèles</a></li>
+    <li><a href="tarifs.html">Tarifs</a></li>
+    <li><a href="a-propos.html">À propos</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="contact.html" class="btn-nav">Parlons de votre projet <i class="fa-solid fa-arrow-right"></i></a>
+  <button class="hamburger" id="hamburger" aria-label="Ouvrir le menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+  <a href="index.html" class="mobile-menu-link">Accueil</a>
+  <a href="modeles.html" class="mobile-menu-link">Nos Modèles</a>
+  <a href="tarifs.html" class="mobile-menu-link">Tarifs</a>
+  <a href="a-propos.html" class="mobile-menu-link">À propos</a>
+  <a href="contact.html" class="mobile-menu-link">Contact</a>
+  <a href="contact.html" class="mobile-menu-link mobile-cta">Parlons de votre projet</a>
+</div>
+
+<header class="hero">
+  <div class="bg-orb hero-orb-1"></div>
+  <div class="bg-orb hero-orb-2"></div>
+  <div class="bg-orb hero-orb-3"></div>
+  <div class="grid-bg"></div>
+
+  <div class="hero-inner">
+    <div class="hero-badge">Focus Métropole Lilloise · Interventions partout en France</div>
+    <h1 class="hero-title">
+      Votre site web est<br>
+      <span class="accent-line">déjà prêt.</span>
+    </h1>
+    <p class="hero-sub">
+      Simple, rapide et abordable pour les commerçants et indépendants de la <strong>Métropole Lilloise</strong>. Choisissez votre modèle sur mesure, je configure l'ensemble et votre présence en ligne prend vie.
+    </p>
+    <div class="hero-ctas">
+      <a href="modeles.html" class="btn-primary">Voir les modèles de site</a>
+      <a href="contact.html" class="btn-ghost">Discuter de mon projet</a>
+    </div>
+
+    <div class="hero-zones">
+      <p class="zones-label">Zones prioritaires</p>
+      <div class="zones-track">
+        <span class="zone-pill accent">Lille</span>
+        <span class="zone-pill">Roubaix</span>
+        <span class="zone-pill">Tourcoing</span>
+        <span class="zone-pill">Villeneuve-d'Ascq</span>
+        <span class="zone-pill">Marcq-en-Barœul</span>
+        <span class="zone-pill">Wasquehal</span>
+        <span class="zone-pill">Croix</span>
+        <span class="zone-pill">Hem</span>
+        <span class="zone-pill">Wattrelos</span>
+        <span class="zone-pill accent">+ toute la France 🇫🇷</span>
+      </div>
+    </div>
+
+    <div class="hero-stats-wrap">
+      <div class="hero-stats">
+        <div class="stat-item"><span class="stat-value">7</span><span class="stat-label">Jours de livraison</span></div>
+        <div class="stat-item"><span class="stat-value">4+</span><span class="stat-label">Structures prêtes</span></div>
+        <div class="stat-item"><span class="stat-value">100%</span><span class="stat-label">Adapté à votre image</span></div>
+        <div class="stat-item"><span class="stat-value"><i class="fa-solid fa-cloud"></i></span><span class="stat-label">Hébergement inclus</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll"><div class="scroll-line"></div></div>
+</header>
+
+<section class="why">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-label">Pourquoi choisir HMS Digital ?</span>
+      <h2 class="section-title">Une solution pensée pour les entrepreneurs<br>qui veulent une présence sérieuse.</h2>
+      <p class="section-sub">Sans investissement démesuré ni délais interminables.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card reveal reveal-delay-1">
+        <div class="why-icon"><i class="fa-solid fa-bolt"></i></div>
+        <h3 class="why-title">Rapide</h3>
+        <p class="why-desc"><strong>7 jours</strong> de la validation de la structure à la mise en ligne, grâce à des modèles pré-conçus ajustés entièrement selon votre identité visuelle.</p>
+      </div>
+      <div class="why-card reveal reveal-delay-2">
+        <div class="why-icon"><i class="fa-solid fa-bullseye"></i></div>
+        <h3 class="why-title">Simple</h3>
+        <p class="why-desc">Pas de panneau d'administration complexe. Vous profitez d'un site <strong>fluide et performant</strong>, et je prends en charge les modifications pour vous faire gagner du temps.</p>
+      </div>
+      <div class="why-card reveal reveal-delay-3">
+        <div class="why-icon"><i class="fa-solid fa-credit-card"></i></div>
+        <h3 class="why-title">Abordable</h3>
+        <p class="why-desc">L'approche par modèles réduit le temps de développement. Cette efficacité se traduit directement par un <strong>tarif fixe transparent</strong>, sans mauvaise surprise.</p>
+      </div>
+    </div>
+
+    <div class="reveal" style="margin-top:56px;">
+      <span class="section-label" style="text-align:center;display:block;margin-bottom:24px;">Ce qui est inclus dans chaque projet</span>
+      <div class="includes-grid">
+        <div class="include-item"><span class="include-check"><i class="fa-solid fa-check"></i></span>Intégration d'identité (logo, couleurs, textes, photos)</div>
+        <div class="include-item"><span class="include-check"><i class="fa-solid fa-check"></i></span>Hébergement cloud Vercel inclus</div>
+        <div class="include-item"><span class="include-check"><i class="fa-solid fa-check"></i></span>Nom de domaine annuel (~10–15 €/an à la charge du client)</div>
+        <div class="include-item"><span class="include-check"><i class="fa-solid fa-check"></i></span>Site 100% responsive (mobile, tablette, ordinateur)</div>
+        <div class="include-item"><span class="include-check"><i class="fa-solid fa-check"></i></span>Optimisation structurelle pour le SEO local</div>
+        <div class="include-item"><span class="include-check"><i class="fa-solid fa-check"></i></span>Formulaire de contact + carte dynamique intégrée</div>
+        <div class="include-item"><span class="include-check"><i class="fa-solid fa-check"></i></span>Suivi et maintenance inclus (selon option choisie)</div>
+        <div class="include-item"><span class="include-check"><i class="fa-solid fa-check"></i></span>Conformité RGPD et mentions légales</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="process">
+  <div class="container">
+    <div class="reveal" style="text-align:center;">
+      <span class="section-label">Notre méthode</span>
+      <h2 class="section-title">Comment ça marche ?</h2>
+      <p class="section-sub" style="margin:0 auto;">Une organisation claire en 3 étapes, pensée pour s'adapter à votre rythme.</p>
+    </div>
+    <div class="process-steps">
+      <div class="step-card reveal reveal-delay-1">
+        <div class="step-num">01</div>
+        <h3 class="step-title">Sélection du modèle</h3>
+        <p class="step-desc">Parcourez nos templates exclusifs et validez la structure qui correspond le mieux à l'affichage de votre activité.</p>
+        <span class="step-duration">Jour 1</span>
+      </div>
+      <div class="step-card reveal reveal-delay-2">
+        <div class="step-num">02</div>
+        <h3 class="step-title">Intégration &amp; Alignement</h3>
+        <p class="step-desc">J'adapte l'intégralité du contenu : charte graphique, textes, horaires et médias pour refléter fidèlement votre entreprise.</p>
+        <span class="step-duration">Jours 2–5</span>
+      </div>
+      <div class="step-card reveal reveal-delay-3">
+        <div class="step-num">03</div>
+        <h3 class="step-title">Déploiement J+7</h3>
+        <p class="step-desc">Votre site est mis en production sur Vercel, indexé sur les moteurs de recherche, et prêt à accueillir vos clients.</p>
+        <span class="step-duration">Jour 7</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section reveal">
+  <div class="container">
+    <h2>Prêt à digitaliser votre activité ?</h2>
+    <p>Choisissez votre modèle ou contactez-moi directement pour démarrer.</p>
+    <div class="cta-btns">
+      <a href="modeles.html" class="btn-primary">Voir les modèles</a>
+      <a href="contact.html" class="btn-ghost">Nous contacter</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <a href="index.html" class="brand"><img src="android-chrome-192x192.png" alt="HMS Digital" class="brand-logo"></a>
+    <ul class="footer-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="modeles.html">Nos Modèles</a></li>
+      <li><a href="tarifs.html">Tarifs</a></li>
+      <li><a href="a-propos.html">À propos</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="mentions-legales.html">Mentions légales</a></li>
+    </ul>
+    <div>
+      <p class="footer-copy">© 2026 HMS Digital — Hugo Mollet-Stivala · SIRET 103 855 136 000 18</p>
+      <p class="footer-sub">Conception &amp; Intégration Web · Métropole Lilloise &amp; National</p>
+    </div>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>

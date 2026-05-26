@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<title>Nos Modèles de Site | HMS Digital</title>
+<meta name="description" content="Découvrez les modèles de sites web HMS Digital : artisan, beauté, boutique, restaurant. Structures éprouvées, adaptées à votre image et livrées en 7 jours.">
+<link rel="canonical" href="https://hms-digital.fr/modeles.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+<style>
+.templates { padding: 80px 0 120px; background: #F0F4FB; }
+.templates-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; margin-top: 64px; }
+.template-card-large { border-radius: 24px; overflow: hidden; background: var(--bg); border: 1px solid var(--border); transition: all 0.3s ease; text-decoration: none; display: flex; flex-direction: column; }
+.template-card-large:hover { border-color: var(--border-hover); transform: translateY(-6px); box-shadow: 0 16px 48px rgba(37,99,235,0.12); }
+.template-preview-large { height: 240px; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; font-size: 52px; }
+.template-grid-texture { position: absolute; inset: 0; background-image: linear-gradient(rgba(37,99,235,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(37,99,235,0.06) 1px, transparent 1px); background-size: 15px 15px; opacity: 0.5; }
+.template-preview-large i { position: relative; z-index: 2; color: inherit; }
+.template-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 40%, rgba(250,250,248,0.95) 100%); }
+.tmpl-artisan { background: linear-gradient(135deg, #FDF6EC, #F5E6CC); color: #92400E; }
+.tmpl-beauty { background: linear-gradient(135deg, #FDF2F8, #FAE8F5); color: #9D174D; }
+.tmpl-boutique { background: linear-gradient(135deg, #EFF6FF, #DBEAFE); color: #1E40AF; }
+.tmpl-restaurant { background: linear-gradient(135deg, #F0FDF4, #DCFCE7); color: #166534; }
+.template-meta-large { padding: 28px 32px; flex: 1; display: flex; flex-direction: column; }
+.template-type { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+.template-name { font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 700; color: var(--text); margin-bottom: 12px; }
+.template-desc-long { font-size: 14px; color: var(--muted); line-height: 1.7; flex: 1; margin-bottom: 20px; }
+.template-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+.template-tag { font-size: 12px; font-weight: 500; color: var(--muted); background: var(--surface2); border: 1px solid var(--border); border-radius: 999px; padding: 4px 12px; }
+.template-link-btn { display: inline-flex; align-items: center; gap: 8px; font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 600; color: var(--accent); border: 1.5px solid rgba(59,130,246,0.4); border-radius: 10px; padding: 12px 20px; text-decoration: none; transition: all 0.2s; width: fit-content; }
+.template-link-btn:hover { background: var(--accent-dim); border-color: var(--accent); }
+.custom-block { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 40px; text-align: center; margin-top: 40px; }
+.custom-block h3 { font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 700; color: var(--text); margin-bottom: 12px; }
+.custom-block p { font-size: 15px; color: var(--muted); margin-bottom: 28px; max-width: 500px; margin-left: auto; margin-right: auto; }
+@media (max-width: 900px) { .templates-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<nav id="nav-bar">
+  <a href="index.html" class="brand"><img src="android-chrome-192x192.png" alt="HMS Digital" class="brand-logo"></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="modeles.html" class="active">Nos Modèles</a></li>
+    <li><a href="tarifs.html">Tarifs</a></li>
+    <li><a href="a-propos.html">À propos</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="contact.html" class="btn-nav">Parlons de votre projet <i class="fa-solid fa-arrow-right"></i></a>
+  <button class="hamburger" id="hamburger" aria-label="Ouvrir le menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+  <a href="index.html" class="mobile-menu-link">Accueil</a>
+  <a href="modeles.html" class="mobile-menu-link">Nos Modèles</a>
+  <a href="tarifs.html" class="mobile-menu-link">Tarifs</a>
+  <a href="a-propos.html" class="mobile-menu-link">À propos</a>
+  <a href="contact.html" class="mobile-menu-link">Contact</a>
+  <a href="contact.html" class="mobile-menu-link mobile-cta">Parlons de votre projet</a>
+</div>
+
+<div class="page-hero" style="background: linear-gradient(to bottom, #F0F4FB, #F8FAFF); padding-top: 140px;">
+  <div class="grid-bg"></div>
+  <div class="page-hero-inner">
+    <span class="section-label">Modèles disponibles</span>
+    <h1>Des structures éprouvées,<br>à adapter à votre image</h1>
+    <p>Mises en page, teintes, polices et blocs d'information configurés pour votre secteur. Chaque modèle est une base technique que j'ajuste entièrement selon votre identité.</p>
+  </div>
+</div>
+
+<section class="templates">
+  <div class="container">
+    <div class="templates-grid">
+
+      <a href="https://hugomolletstivala.github.io/TemplateArtisant/" target="_blank" rel="noopener noreferrer" class="template-card-large reveal reveal-delay-1">
+        <div class="template-preview-large tmpl-artisan">
+          <div class="template-grid-texture"></div>
+          <i class="fa-solid fa-hammer"></i>
+          <div class="template-overlay"></div>
+        </div>
+        <div class="template-meta-large">
+          <p class="template-type">Artisan &amp; Indépendant</p>
+          <h2 class="template-name">Services &amp; Proximité</h2>
+          <p class="template-desc-long">Pensé pour les plombiers, électriciens, peintres, menuisiers et tout professionnel du service à domicile. La structure met en avant vos compétences, votre zone d'intervention et un appel à l'action clair pour générer des demandes de devis.</p>
+          <div class="template-tags">
+            <span class="template-tag">Plomberie</span>
+            <span class="template-tag">Électricité</span>
+            <span class="template-tag">Peinture</span>
+            <span class="template-tag">Menuiserie</span>
+            <span class="template-tag">BTP</span>
+          </div>
+          <span class="template-link-btn">Consulter la démo <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+        </div>
+      </a>
+
+      <a href="https://hugomolletstivala.github.io/templateBeautyArtist/" target="_blank" rel="noopener noreferrer" class="template-card-large reveal reveal-delay-2">
+        <div class="template-preview-large tmpl-beauty">
+          <div class="template-grid-texture"></div>
+          <i class="fa-solid fa-wand-magic-sparkles"></i>
+          <div class="template-overlay"></div>
+        </div>
+        <div class="template-meta-large">
+          <p class="template-type">Soin &amp; Esthétique</p>
+          <h2 class="template-name">Beauty Artist</h2>
+          <p class="template-desc-long">Un style épuré et premium axé sur le visuel, idéal pour les instituts de beauté, salons de coiffure, esthéticiennes et spas. La galerie et la section prestations sont au cœur de la mise en page pour valoriser votre savoir-faire.</p>
+          <div class="template-tags">
+            <span class="template-tag">Coiffure</span>
+            <span class="template-tag">Institut de beauté</span>
+            <span class="template-tag">Spa</span>
+            <span class="template-tag">Nail art</span>
+          </div>
+          <span class="template-link-btn">Consulter la démo <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+        </div>
+      </a>
+
+      <a href="https://hugomolletstivala.github.io/TemplateBoutique/" target="_blank" rel="noopener noreferrer" class="template-card-large reveal reveal-delay-1">
+        <div class="template-preview-large tmpl-boutique">
+          <div class="template-grid-texture"></div>
+          <i class="fa-solid fa-bag-shopping"></i>
+          <div class="template-overlay"></div>
+        </div>
+        <div class="template-meta-large">
+          <p class="template-type">Commerce de détail</p>
+          <h2 class="template-name">Boutique Vitrine</h2>
+          <p class="template-desc-long">Une vitrine digitale élégante pour valoriser vos produits. Idéale pour les commerces de prêt-à-porter, fleuristes, épiceries fines ou tout commerce local. Les produits phares et l'ambiance de votre boutique sont mis en lumière.</p>
+          <div class="template-tags">
+            <span class="template-tag">Prêt-à-porter</span>
+            <span class="template-tag">Fleuriste</span>
+            <span class="template-tag">Épicerie</span>
+            <span class="template-tag">Artisanat</span>
+          </div>
+          <span class="template-link-btn">Consulter la démo <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+        </div>
+      </a>
+
+      <a href="https://hugomolletstivala.github.io/TemplateRestaurant/" target="_blank" rel="noopener noreferrer" class="template-card-large reveal reveal-delay-2">
+        <div class="template-preview-large tmpl-restaurant">
+          <div class="template-grid-texture"></div>
+          <i class="fa-solid fa-utensils"></i>
+          <div class="template-overlay"></div>
+        </div>
+        <div class="template-meta-large">
+          <p class="template-type">Restauration &amp; Bar</p>
+          <h2 class="template-name">Restaurant</h2>
+          <p class="template-desc-long">Mettez en avant votre carte, vos horaires et facilitez les réservations en ligne. Parfait pour les restaurants, bistrots, cafés et bars. La section menu et les photos de plats occupent une place centrale pour donner envie aux visiteurs.</p>
+          <div class="template-tags">
+            <span class="template-tag">Restaurant</span>
+            <span class="template-tag">Bistrot</span>
+            <span class="template-tag">Café</span>
+            <span class="template-tag">Bar</span>
+            <span class="template-tag">Traiteur</span>
+          </div>
+          <span class="template-link-btn">Consulter la démo <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+        </div>
+      </a>
+
+    </div>
+
+    <div class="custom-block reveal">
+      <h3>Votre activité ne correspond à aucun modèle ?</h3>
+      <p>Je peux concevoir une structure entièrement adaptée à votre secteur. Décrivez-moi votre besoin et nous construirons ensemble la bonne mise en page.</p>
+      <a href="contact.html" class="btn-primary">Discuter d'un modèle sur-mesure</a>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section" style="padding: 80px 0;">
+  <div class="container">
+    <h2>Une idée en tête ?</h2>
+    <p>Consultez nos tarifs ou prenez contact directement pour démarrer votre projet.</p>
+    <div class="cta-btns">
+      <a href="tarifs.html" class="btn-primary">Voir les tarifs</a>
+      <a href="contact.html" class="btn-ghost">Nous contacter</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <a href="index.html" class="brand"><img src="android-chrome-192x192.png" alt="HMS Digital" class="brand-logo"></a>
+    <ul class="footer-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="modeles.html">Nos Modèles</a></li>
+      <li><a href="tarifs.html">Tarifs</a></li>
+      <li><a href="a-propos.html">À propos</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="mentions-legales.html">Mentions légales</a></li>
+    </ul>
+    <div>
+      <p class="footer-copy">© 2026 HMS Digital — Hugo Mollet-Stivala · SIRET 103 855 136 000 18</p>
+      <p class="footer-sub">Conception &amp; Intégration Web · Métropole Lilloise &amp; National</p>
+    </div>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>
