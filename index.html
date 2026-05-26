@@ -132,12 +132,12 @@ nav {
 
 /* MOBILE MENU OVERLAY */
 .mobile-menu {
-  display: none; position: fixed; inset: 0; z-index: 1000;
+  display: flex; position: fixed; inset: 0; z-index: 1000;
   background: rgba(250,250,248,0.98); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
   flex-direction: column; align-items: center; justify-content: center; gap: 8px;
-  opacity: 0; transition: opacity 0.3s ease;
+  opacity: 0; pointer-events: none; visibility: hidden; transition: opacity 0.3s ease;
 }
-.mobile-menu.open { opacity: 1; }
+.mobile-menu.open { opacity: 1; pointer-events: auto; visibility: visible; }
 .mobile-menu a {
   font-family: 'Space Grotesk', sans-serif; font-size: 26px; font-weight: 600;
   color: var(--muted); text-decoration: none; padding: 14px 32px; border-radius: 14px;
@@ -650,6 +650,11 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
   .footer-inner { flex-direction: column; align-items: flex-start; gap: 16px; }
   .includes-grid { grid-template-columns: 1fr; }
   .form-grid { grid-template-columns: 1fr; }
+
+  .hero-ctas { flex-direction: column; align-items: stretch; }
+  .btn-primary, .btn-ghost { justify-content: center; padding: 16px 24px; min-height: 52px; }
+  .template-overlay { pointer-events: none; }
+.template-preview, .template-preview * { pointer-events: none; }
 }
 </style>
 </head>
@@ -673,12 +678,12 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
 </nav>
 
 <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
-  <a href="#comment">Comment ça marche</a>
-  <a href="#templates">Nos Modèles de Site</a>
-  <a href="#tarifs">Tarifs</a>
-  <a href="#faq">FAQ</a>
-  <a href="#about">À propos</a>
-  <a href="#contact" class="mobile-cta">Parlons de votre projet</a>
+  <a href="#comment" class="mobile-menu-link">Comment ça marche</a>
+  <a href="#templates" class="mobile-menu-link">Nos Modèles de Site</a>
+  <a href="#tarifs" class="mobile-menu-link">Tarifs</a>
+  <a href="#faq" class="mobile-menu-link">FAQ</a>
+  <a href="#about" class="mobile-menu-link">À propos</a>
+  <a href="#contact" class="mobile-menu-link mobile-cta">Parlons de votre projet</a>
 </div>
 
 <div id="top" style="position:absolute;top:0;left:0;width:0;height:0;pointer-events:none;" aria-hidden="true"></div>
