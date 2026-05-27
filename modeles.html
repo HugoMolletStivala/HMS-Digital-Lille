@@ -3,10 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/x-icon" href="favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <title>Nos Modèles de Site | HMS Digital</title>
 <meta name="description" content="Découvrez les modèles de sites web HMS Digital : artisan, beauté, boutique, restaurant. Structures éprouvées, adaptées à votre image et livrées en 7 jours.">
 <link rel="canonical" href="https://hms-digital.fr/modeles.html">
@@ -38,13 +34,22 @@
 .custom-block { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 40px; text-align: center; margin-top: 40px; }
 .custom-block h3 { font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 700; color: var(--text); margin-bottom: 12px; }
 .custom-block p { font-size: 15px; color: var(--muted); margin-bottom: 28px; max-width: 500px; margin-left: auto; margin-right: auto; }
-@media (max-width: 900px) { .templates-grid { grid-template-columns: 1fr; } }
+@media (max-width: 768px) {
+  .templates-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 24px; }
+  .template-preview-large { height: 120px; font-size: 32px; }
+  .template-meta-large { padding: 16px; }
+  .template-name { font-size: 15px; margin-bottom: 6px; }
+  .template-desc-long { display: none; }
+  .template-tags { display: none; }
+  .template-link-btn { font-size: 12px; padding: 9px 12px; }
+  .custom-block { padding: 24px 20px; }
+}
 </style>
 </head>
 <body>
 
 <nav id="nav-bar">
-  <a href="index.html" class="brand"><img src="android-chrome-192x192.png" alt="HMS Digital" class="brand-logo"></a>
+  <a href="index.html" class="brand"><em>HMS</em> DIGITAL</a>
   <ul class="nav-links">
     <li><a href="index.html">Accueil</a></li>
     <li><a href="modeles.html" class="active">Nos Modèles</a></li>
@@ -67,7 +72,8 @@
   <a href="contact.html" class="mobile-menu-link mobile-cta">Parlons de votre projet</a>
 </div>
 
-<div class="page-hero" style="background: linear-gradient(to bottom, #F0F4FB, #F8FAFF); padding-top: 140px;">
+<div class="page-hero" style="background: linear-gradient(to bottom, #F0F4FB, #F8FAFF); padding-top: 140px; padding-bottom: 40px;">
+  <style>@media(max-width:768px){.page-hero{padding-top:100px !important;padding-bottom:20px !important;}.page-hero h1{font-size:28px !important;margin-bottom:10px !important;}.page-hero p{font-size:14px !important;}}</style>
   <div class="grid-bg"></div>
   <div class="page-hero-inner">
     <span class="section-label">Modèles disponibles</span>
@@ -185,7 +191,7 @@
 
 <footer>
   <div class="footer-inner">
-    <a href="index.html" class="brand"><img src="android-chrome-192x192.png" alt="HMS Digital" class="brand-logo"></a>
+    <a href="index.html" class="brand"><em>HMS</em> DIGITAL</a>
     <ul class="footer-links">
       <li><a href="index.html">Accueil</a></li>
       <li><a href="modeles.html">Nos Modèles</a></li>
