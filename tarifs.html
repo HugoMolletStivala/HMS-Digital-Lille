@@ -1,15 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-HWPJY3CFZN"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-HWPJY3CFZN');
-</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -50,12 +41,122 @@
   <a href="contact.html" class="mobile-menu-link mobile-cta">Parlons de votre projet</a>
 </div>
 
+<!-- BANNIÈRE LANCEMENT -->
+<div class="promo-banner" id="promo-banner">
+  <div class="promo-banner-inner">
+    <span class="promo-fire">🔥</span>
+    <span class="promo-text"><strong>Offre de lancement HMS Digital</strong> — Tarifs exceptionnels &amp; limités pour nos premiers clients</span>
+    <span class="promo-countdown" id="promo-countdown">⏳ Offre limitée</span>
+    <button class="promo-close" id="promo-close" aria-label="Fermer">×</button>
+  </div>
+</div>
+
+<style>
+/* ===== PROMO BANNER ===== */
+.promo-banner {
+  background: linear-gradient(90deg, #1a1a2e 0%, #16213e 40%, #0f3460 100%);
+  color: #fff;
+  padding: 10px 20px;
+  position: relative;
+  z-index: 999;
+  border-bottom: 2px solid #e94560;
+  animation: promoPulse 3s ease-in-out infinite;
+}
+@keyframes promoPulse {
+  0%, 100% { border-bottom-color: #e94560; }
+  50% { border-bottom-color: #ff6b35; }
+}
+.promo-banner-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.promo-fire { font-size: 1.2rem; }
+.promo-text { font-size: 0.9rem; letter-spacing: 0.01em; }
+.promo-text strong { color: #ffd700; }
+.promo-countdown {
+  background: #e94560;
+  color: #fff;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  animation: countdownBlink 2s ease-in-out infinite;
+}
+@keyframes countdownBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+.promo-close {
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.6);
+  font-size: 1.3rem;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0 4px;
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.promo-close:hover { color: #fff; }
+
+/* ===== PROMO CARDS ===== */
+.promo-label-launch {
+  display: inline-block;
+  background: linear-gradient(90deg, #e94560, #ff6b35);
+  color: #fff !important;
+  font-size: 0.7rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 20px;
+  margin-bottom: 6px;
+}
+.price-old {
+  text-decoration: line-through;
+  color: #999;
+  font-size: 1.1rem;
+  margin-right: 6px;
+}
+.price-save {
+  display: inline-block;
+  background: #ffd700;
+  color: #1a1a2e;
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: 20px;
+  margin-left: 8px;
+  vertical-align: middle;
+  letter-spacing: 0.05em;
+}
+.promo-urgency {
+  font-size: 0.78rem;
+  color: #e94560;
+  font-weight: 600;
+  margin-top: 6px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+</style>
+
 <div class="page-hero" style="background: linear-gradient(to bottom, #FAFAF8, #F3F4F6); padding-top: 140px;">
   <div class="grid-bg"></div>
   <div class="page-hero-inner">
     <span class="section-label">Offres &amp; Tarifs</span>
+    <div class="promo-label-launch" style="margin-bottom:12px;">🚀 Offre de lancement — Places limitées</div>
     <h1>Des tarifs fixes,<br>sans surprise.</h1>
     <p>Découvrez nos formules à titre informatif. Nous validerons ensemble l'offre la plus adaptée lors de notre échange.</p>
+    <p style="margin-top:10px; font-size:0.9rem; color:#e94560; font-weight:600;">⚡ Prix de lancement exceptionnels pour nos premiers clients — disponibilité limitée.</p>
   </div>
 </div>
 
@@ -78,8 +179,10 @@
           <h2 class="price-name">Pack Essentiel Local</h2>
           <p class="price-desc">Template d'origine · Intégration pro</p>
           <div class="price-amount">
-            <span class="price-currency">€</span><span class="price-number">590</span>
+            <div><span class="price-old">590 €</span><span class="price-save">−80 %</span></div>
+            <span class="price-currency">€</span><span class="price-number">118</span>
             <p class="price-note">Facturation unique — sans frais récurrents</p>
+            <p class="promo-urgency"><i class="fa-solid fa-fire"></i> Offre de lancement limitée</p>
           </div>
           <hr class="price-divider">
           <ul class="price-features">
@@ -97,8 +200,10 @@
           <h2 class="price-name">Pack Sur-Mesure Visuel</h2>
           <p class="price-desc">Ajustements avancés · Blocs dédiés</p>
           <div class="price-amount">
-            <span class="price-currency">€</span><span class="price-number">990</span>
+            <div><span class="price-old">990 €</span><span class="price-save">−80 %</span></div>
+            <span class="price-currency">€</span><span class="price-number">198</span>
             <p class="price-note">Facturation unique — sans frais récurrents</p>
+            <p class="promo-urgency"><i class="fa-solid fa-fire"></i> Offre de lancement limitée</p>
           </div>
           <hr class="price-divider">
           <ul class="price-features">
@@ -118,8 +223,10 @@
           <h2 class="price-name">Pack Essentiel Local</h2>
           <p class="price-desc">Template d'origine · Modifications incluses</p>
           <div class="price-amount">
-            <span class="price-currency">€</span><span class="price-number">390</span>
+            <div><span class="price-old">390 €</span><span class="price-save">−80 %</span></div>
+            <span class="price-currency">€</span><span class="price-number">78</span>
             <p class="price-note">À la commande · puis <strong>59 €/mois</strong> (engagement 12 mois)</p>
+            <p class="promo-urgency"><i class="fa-solid fa-fire"></i> Offre de lancement limitée</p>
           </div>
           <hr class="price-divider">
           <ul class="price-features">
@@ -137,8 +244,10 @@
           <h2 class="price-name">Pack Sur-Mesure Visuel</h2>
           <p class="price-desc">Modifications de structure · Suivi complet</p>
           <div class="price-amount">
-            <span class="price-currency">€</span><span class="price-number">690</span>
+            <div><span class="price-old">690 €</span><span class="price-save">−80 %</span></div>
+            <span class="price-currency">€</span><span class="price-number">138</span>
             <p class="price-note">À la commande · puis <strong>59 €/mois</strong> (engagement 12 mois)</p>
+            <p class="promo-urgency"><i class="fa-solid fa-fire"></i> Offre de lancement limitée</p>
           </div>
           <hr class="price-divider">
           <ul class="price-features">
@@ -219,5 +328,37 @@
 </footer>
 
 <script src="main.js"></script>
+<script>
+// Promo banner close
+const closeBtn = document.getElementById('promo-close');
+if (closeBtn) {
+  closeBtn.addEventListener('click', () => {
+    document.getElementById('promo-banner').style.display = 'none';
+  });
+}
+
+// Countdown timer — ends 30 days from launch (stored in localStorage)
+const countdownEl = document.getElementById('promo-countdown');
+if (countdownEl) {
+  const KEY = 'hms_launch_end_v2';
+  let endDate = localStorage.getItem(KEY);
+  if (!endDate) {
+    const d = new Date();
+    d.setDate(d.getDate() + 60);
+    endDate = d.toISOString();
+    localStorage.setItem(KEY, endDate);
+  }
+  function updateCountdown() {
+    const diff = new Date(endDate) - new Date();
+    if (diff <= 0) { countdownEl.textContent = '⌛ Offre expirée'; return; }
+    const days = Math.floor(diff / 86400000);
+    const hours = Math.floor((diff % 86400000) / 3600000);
+    const mins = Math.floor((diff % 3600000) / 60000);
+    countdownEl.textContent = `⏳ Expire dans ${days}j ${hours}h ${mins}m`;
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 60000);
+}
+</script>
 </body>
 </html>
