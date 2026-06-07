@@ -7,7 +7,6 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-HWPJY3CFZN');
 </script>
 <meta charset="UTF-8">
@@ -21,10 +20,12 @@
 <link rel="stylesheet" href="style.css">
 <style>
 .templates { padding: 80px 0 120px; background: #F0F4FB; }
-.templates-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; margin-top: 64px; }
+.templates-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 64px; }
 .template-card-large { border-radius: 24px; overflow: hidden; background: var(--bg); border: 1px solid var(--border); transition: all 0.3s ease; text-decoration: none; display: flex; flex-direction: column; }
 .template-card-large:hover { border-color: var(--border-hover); transform: translateY(-6px); box-shadow: 0 16px 48px rgba(37,99,235,0.12); }
-.template-preview-large { height: 240px; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; font-size: 52px; }
+.template-preview-large { height: 160px; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; font-size: 40px; }
+.template-desc-long { display: none; }
+.template-tags { display: none; }
 .template-grid-texture { position: absolute; inset: 0; background-image: linear-gradient(rgba(37,99,235,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(37,99,235,0.06) 1px, transparent 1px); background-size: 15px 15px; opacity: 0.5; }
 .template-preview-large i { position: relative; z-index: 2; color: inherit; }
 .template-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 40%, rgba(250,250,248,0.95) 100%); }
@@ -43,15 +44,217 @@
 .custom-block { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 40px; text-align: center; margin-top: 40px; }
 .custom-block h3 { font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 700; color: var(--text); margin-bottom: 12px; }
 .custom-block p { font-size: 15px; color: var(--muted); margin-bottom: 28px; max-width: 500px; margin-left: auto; margin-right: auto; }
+
+/* ── Hero CTA Prévisualisation ── */
+.hero-preview-cta { margin-top: 28px; }
+.hero-preview-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  background: linear-gradient(135deg, #1E3A8A, #2563EB);
+  border-radius: 14px;
+  padding: 14px 22px 14px 16px;
+  text-decoration: none;
+  color: #fff;
+  box-shadow: 0 8px 28px rgba(37,99,235,0.3);
+  transition: all 0.25s ease;
+  max-width: 420px;
+}
+.hero-preview-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 36px rgba(37,99,235,0.4); }
+.hero-preview-btn-icon {
+  width: 40px; height: 40px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; flex-shrink: 0;
+}
+.hero-preview-btn-text { display: flex; flex-direction: column; gap: 2px; flex: 1; }
+.hero-preview-btn-text strong { font-family: 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 700; color: #fff; }
+.hero-preview-btn-text em { font-style: normal; font-size: 12px; color: rgba(255,255,255,0.7); }
+.hero-preview-btn-arrow { font-size: 14px; color: rgba(255,255,255,0.7); transition: transform 0.2s; flex-shrink: 0; }
+.hero-preview-btn:hover .hero-preview-btn-arrow { transform: translateX(4px); color: #fff; }
+@media (max-width: 768px) { .hero-preview-btn { max-width: 100%; } }
+
+/* ── Bloc CTA Prévisualisation ── */
+.preview-cta-block {
+  margin-top: 48px;
+  border-radius: 24px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  background: linear-gradient(135deg, #1E3A8A 0%, #2563EB 60%, #3B82F6 100%);
+  box-shadow: 0 20px 60px rgba(37,99,235,0.25);
+  position: relative;
+}
+.preview-cta-block::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 20px 20px;
+  pointer-events: none;
+}
+.preview-cta-inner {
+  padding: 48px 44px;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.preview-cta-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #93C5FD;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 999px;
+  padding: 5px 14px;
+  width: fit-content;
+  margin-bottom: 20px;
+}
+.preview-cta-inner h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.25;
+  margin-bottom: 14px;
+}
+.preview-cta-inner p {
+  font-size: 15px;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.65;
+  max-width: 420px;
+  margin-bottom: 32px;
+}
+.btn-preview-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #1E40AF;
+  background: #fff;
+  border-radius: 12px;
+  padding: 14px 26px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  width: fit-content;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+}
+.btn-preview-cta:hover {
+  background: #EFF6FF;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+}
+.btn-preview-cta i {
+  transition: transform 0.2s;
+}
+.btn-preview-cta:hover i {
+  transform: translateX(4px);
+}
+
+/* Illustration écran factice */
+.preview-cta-visual {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 32px 24px 0;
+  position: relative;
+  z-index: 2;
+}
+.preview-cta-screen {
+  width: 240px;
+  background: #fff;
+  border-radius: 12px 12px 0 0;
+  overflow: hidden;
+  box-shadow: 0 -8px 40px rgba(0,0,0,0.25);
+}
+.pcs-bar {
+  background: #F1F5F9;
+  padding: 8px 12px;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  border-bottom: 1px solid #E2E8F0;
+}
+.pcs-bar span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #CBD5E1;
+}
+.pcs-bar span:first-child { background: #FCA5A5; }
+.pcs-bar span:nth-child(2) { background: #FDE68A; }
+.pcs-bar span:nth-child(3) { background: #86EFAC; }
+.pcs-hero {
+  height: 72px;
+  background: linear-gradient(135deg, #DBEAFE, #EFF6FF);
+  position: relative;
+}
+.pcs-hero::after {
+  content: '';
+  position: absolute;
+  bottom: 10px;
+  left: 16px;
+  right: 16px;
+  height: 10px;
+  background: rgba(37,99,235,0.15);
+  border-radius: 4px;
+}
+.pcs-lines {
+  padding: 14px 16px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.pcs-line {
+  height: 7px;
+  background: #E2E8F0;
+  border-radius: 4px;
+}
+.pcs-line.w80 { width: 80%; }
+.pcs-line.w55 { width: 55%; }
+.pcs-line.w65 { width: 65%; }
+.pcs-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  padding: 10px 16px 16px;
+}
+.pcs-card {
+  height: 40px;
+  background: #F1F5F9;
+  border-radius: 6px;
+  border: 1px solid #E2E8F0;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .preview-cta-block { grid-template-columns: 1fr; }
+  .preview-cta-visual { display: none; }
+  .preview-cta-inner { padding: 36px 28px; }
+  .preview-cta-inner h3 { font-size: 22px; }
+}
+@media (max-width: 1024px) {
+  .templates-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+}
 @media (max-width: 768px) {
   .templates-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 24px; }
-  .template-preview-large { height: 120px; font-size: 32px; }
-  .template-meta-large { padding: 16px; }
-  .template-name { font-size: 15px; margin-bottom: 6px; }
-  .template-desc-long { display: none; }
-  .template-tags { display: none; }
-  .template-link-btn { font-size: 12px; padding: 9px 12px; }
+  .template-preview-large { height: 100px; font-size: 28px; }
   .custom-block { padding: 24px 20px; }
+  .preview-cta-inner { padding: 28px 20px; }
+  .preview-cta-inner h3 { font-size: 19px; }
+  .preview-cta-inner p { font-size: 14px; }
+  .btn-preview-cta { font-size: 14px; padding: 12px 20px; }
 }
 </style>
 </head>
@@ -88,6 +291,16 @@
     <span class="section-label">Modèles disponibles</span>
     <h1>Des structures éprouvées,<br>à adapter à votre image</h1>
     <p>Mises en page, teintes, polices et blocs d'information configurés pour votre secteur. Chaque modèle est une base technique que j'ajuste entièrement selon votre identité.</p>
+    <div class="hero-preview-cta">
+      <a href="previsualisation.html" class="hero-preview-btn">
+        <span class="hero-preview-btn-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></span>
+        <span class="hero-preview-btn-text">
+          <strong>Prévisualiser avec mes infos</strong>
+          <em>Entrez votre nom &amp; activité — aperçu instantané</em>
+        </span>
+        <i class="fa-solid fa-arrow-right hero-preview-btn-arrow"></i>
+      </a>
+    </div>
   </div>
 </div>
 
@@ -177,6 +390,35 @@
         </div>
       </a>
 
+    </div>
+
+    <!-- CTA Prévisualisation personnalisée -->
+    <div class="preview-cta-block reveal">
+      <div class="preview-cta-inner">
+        <div class="preview-cta-badge"><i class="fa-solid fa-wand-magic-sparkles"></i> Nouveauté</div>
+        <h3>Visualisez votre site<br>avant de vous lancer</h3>
+        <p>Entrez votre nom, votre activité et vos couleurs — et prévisualisez l'un de nos templates à votre image en quelques secondes, sans engagement.</p>
+        <a href="previsualisation.html" class="btn-preview-cta">
+          <span>Personnaliser &amp; prévisualiser</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+      <div class="preview-cta-visual" aria-hidden="true">
+        <div class="preview-cta-screen">
+          <div class="pcs-bar"><span></span><span></span><span></span></div>
+          <div class="pcs-hero"></div>
+          <div class="pcs-lines">
+            <div class="pcs-line w80"></div>
+            <div class="pcs-line w55"></div>
+            <div class="pcs-line w65"></div>
+          </div>
+          <div class="pcs-cards">
+            <div class="pcs-card"></div>
+            <div class="pcs-card"></div>
+            <div class="pcs-card"></div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="custom-block reveal">
