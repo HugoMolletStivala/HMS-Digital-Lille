@@ -59,6 +59,140 @@
 .scroll-line { width: 1px; height: 48px; background: linear-gradient(to bottom, var(--accent), transparent); animation: scrollLine 2s ease-in-out infinite; }
 @keyframes scrollLine { 0% { transform: scaleY(0); transform-origin: top; } 50% { transform: scaleY(1); transform-origin: top; } 51% { transform-origin: bottom; } 100% { transform: scaleY(0); transform-origin: bottom; } }
 @media (max-width: 768px) { .hero { padding: 120px 24px 60px; min-height: auto; } }
+
+/* ── Showcase modèles (mockups) ── */
+.showcase {
+  position: relative;
+  padding: 20px 0 100px;
+  overflow: hidden;
+}
+.showcase-head {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 56px;
+}
+.showcase-gallery {
+  position: relative;
+  max-width: 1180px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  padding: 0 48px;
+}
+.showcase-card {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  text-decoration: none;
+  display: block;
+  background: #EFE9DF;
+  box-shadow: 0 20px 50px -10px rgba(15,23,42,0.18);
+  transform: translateY(0) rotate(0deg);
+  transition: transform 0.5s cubic-bezier(0.16,1,0.3,1), box-shadow 0.5s ease;
+}
+.showcase-card:nth-child(1) { transform: translateY(18px) rotate(-1.2deg); }
+.showcase-card:nth-child(2) { transform: translateY(-10px) rotate(0.6deg); z-index: 2; }
+.showcase-card:nth-child(3) { transform: translateY(18px) rotate(1.2deg); }
+.showcase-card:hover {
+  transform: translateY(-10px) rotate(0deg) scale(1.03);
+  box-shadow: 0 32px 70px -12px rgba(37,99,235,0.28);
+  z-index: 5;
+}
+.showcase-card-media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+.showcase-card-media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform 0.6s cubic-bezier(0.16,1,0.3,1);
+}
+.showcase-card:hover .showcase-card-media img { transform: scale(1.05); }
+.showcase-card-media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(10,12,20,0.78) 0%, rgba(10,12,20,0.05) 45%, transparent 70%);
+}
+.showcase-card-tag {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 2;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #fff;
+  background: rgba(15,23,42,0.55);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 999px;
+  padding: 5px 12px;
+}
+.showcase-card-foot {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  z-index: 2;
+  padding: 18px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.showcase-card-foot strong {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: #fff;
+}
+.showcase-card-arrow {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.16);
+  border: 1px solid rgba(255,255,255,0.25);
+  display: flex; align-items: center; justify-content: center;
+  color: #fff;
+  font-size: 12px;
+  flex-shrink: 0;
+  transition: all 0.25s ease;
+}
+.showcase-card:hover .showcase-card-arrow {
+  background: #fff;
+  color: #1E40AF;
+  transform: translateX(2px);
+}
+.showcase-cta {
+  text-align: center;
+  margin-top: 64px;
+}
+.showcase-cta-sub {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+}
+
+@media (max-width: 1024px) {
+  .showcase-gallery { grid-template-columns: repeat(2, 1fr); gap: 20px; padding: 0 24px; }
+  .showcase-card:nth-child(3) { grid-column: span 2; }
+  .showcase-card:nth-child(1), .showcase-card:nth-child(2), .showcase-card:nth-child(3) { transform: none; }
+  .showcase-card:hover { transform: translateY(-8px) scale(1.02); }
+}
+@media (max-width: 640px) {
+  .showcase { padding: 0 0 70px; }
+  .showcase-head { margin-bottom: 32px; padding: 0 20px; }
+  .showcase-gallery { grid-template-columns: 1fr; padding: 0 20px; gap: 18px; }
+  .showcase-card:nth-child(3) { grid-column: span 1; }
+  .showcase-card-media { aspect-ratio: 16 / 11; }
+  .showcase-card-foot { padding: 14px 16px; }
+  .showcase-card-foot strong { font-size: 15px; }
+}
 </style>
 </head>
 <body>
@@ -134,6 +268,56 @@
   </div>
   <div class="hero-scroll"><div class="scroll-line"></div></div>
 </header>
+
+<section class="showcase">
+  <div class="container">
+    <div class="showcase-head reveal">
+      <span class="section-label">Aperçu de nos réalisations</span>
+      <h2 class="section-title">Des sites pensés pour chaque métier</h2>
+      <p class="section-sub" style="margin:0 auto;">Beauté, mode, restauration… chaque modèle est conçu pour mettre votre activité en valeur dès le premier regard.</p>
+    </div>
+
+    <div class="showcase-gallery">
+      <a href="https://hugomolletstivala.github.io/templateBeautyArtist/" target="_blank" rel="noopener noreferrer" class="showcase-card reveal reveal-delay-1">
+        <div class="showcase-card-media">
+          <img src="Mockup_beautyartist.png" alt="Modèle Beauty Artist HMS Digital" loading="lazy">
+        </div>
+        <span class="showcase-card-tag">Beauté &amp; Esthétique</span>
+        <div class="showcase-card-foot">
+          <strong>Beauty Artist</strong>
+          <span class="showcase-card-arrow"><i class="fa-solid fa-arrow-up-right"></i></span>
+        </div>
+      </a>
+
+      <a href="https://hugomolletstivala.github.io/TemplateBoutique/" target="_blank" rel="noopener noreferrer" class="showcase-card reveal reveal-delay-2">
+        <div class="showcase-card-media">
+          <img src="Mockup-boutique.png" alt="Modèle Boutique Vitrine HMS Digital" loading="lazy">
+        </div>
+        <span class="showcase-card-tag">Commerce &amp; Mode</span>
+        <div class="showcase-card-foot">
+          <strong>Boutique Vitrine</strong>
+          <span class="showcase-card-arrow"><i class="fa-solid fa-arrow-up-right"></i></span>
+        </div>
+      </a>
+
+      <a href="https://hugomolletstivala.github.io/TemplateRestaurant/" target="_blank" rel="noopener noreferrer" class="showcase-card reveal reveal-delay-3">
+        <div class="showcase-card-media">
+          <img src="Mockup_resto.png" alt="Modèle Restaurant HMS Digital" loading="lazy">
+        </div>
+        <span class="showcase-card-tag">Restauration &amp; Bar</span>
+        <div class="showcase-card-foot">
+          <strong>Restaurant</strong>
+          <span class="showcase-card-arrow"><i class="fa-solid fa-arrow-up-right"></i></span>
+        </div>
+      </a>
+    </div>
+
+    <div class="showcase-cta reveal">
+      <a href="modeles.html" class="btn-primary">Découvrir tous les modèles</a>
+      <p class="showcase-cta-sub">4 structures prêtes à être adaptées à votre identité visuelle.</p>
+    </div>
+  </div>
+</section>
 
 <section class="why">
   <div class="container">
