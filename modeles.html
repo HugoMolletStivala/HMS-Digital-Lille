@@ -32,29 +32,32 @@
   position: relative;
   overflow: hidden;
 }
+.tmpl-bg-beauty { background: #EFE3E0; }
+.tmpl-bg-boutique { background: #F1E9DC; }
+.tmpl-bg-resto { background: #E9E2D6; }
 .template-preview-large img {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: top;
+  object-fit: contain;
+  object-position: center;
   transition: transform 0.6s cubic-bezier(0.16,1,0.3,1);
 }
 .template-card-large:hover .template-preview-large img {
-  transform: scale(1.06);
+  transform: scale(1.03);
 }
 .template-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, rgba(0,0,0,0) 45%, rgba(10,14,26,0.85) 100%);
+  background: linear-gradient(to bottom, rgba(0,0,0,0) 70%, rgba(10,14,26,0.18) 100%);
   pointer-events: none;
 }
 .template-preview-large::after {
   content: '';
   position: absolute;
   inset: 0;
-  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.06);
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,0.06);
   pointer-events: none;
 }
 .template-zoom-badge {
@@ -354,7 +357,7 @@
     <div class="templates-grid">
 
       <a href="https://hugomolletstivala.github.io/templateBeautyArtist/" target="_blank" rel="noopener noreferrer" class="template-card-large reveal reveal-delay-1">
-        <div class="template-preview-large">
+        <div class="template-preview-large tmpl-bg-beauty">
           <img src="Mockup_beautyartist.png" alt="Aperçu du modèle Beauty Artist" loading="lazy">
           <div class="template-overlay"></div>
           <span class="template-zoom-badge"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
@@ -374,7 +377,7 @@
       </a>
 
       <a href="https://hugomolletstivala.github.io/TemplateBoutique/" target="_blank" rel="noopener noreferrer" class="template-card-large reveal reveal-delay-2">
-        <div class="template-preview-large">
+        <div class="template-preview-large tmpl-bg-boutique">
           <img src="Mockup-boutique.png" alt="Aperçu du modèle Boutique Vitrine" loading="lazy">
           <div class="template-overlay"></div>
           <span class="template-zoom-badge"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
@@ -394,7 +397,7 @@
       </a>
 
       <a href="https://hugomolletstivala.github.io/TemplateRestaurant/" target="_blank" rel="noopener noreferrer" class="template-card-large reveal reveal-delay-1">
-        <div class="template-preview-large">
+        <div class="template-preview-large tmpl-bg-resto">
           <img src="Mockup_resto.png" alt="Aperçu du modèle Restaurant" loading="lazy">
           <div class="template-overlay"></div>
           <span class="template-zoom-badge"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
