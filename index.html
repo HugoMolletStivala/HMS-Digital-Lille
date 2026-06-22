@@ -76,7 +76,7 @@
   max-width: 1180px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 28px;
   padding: 0 48px;
 }
@@ -91,9 +91,10 @@
   transform: translateY(0) rotate(0deg);
   transition: transform 0.5s cubic-bezier(0.16,1,0.3,1), box-shadow 0.5s ease;
 }
-.showcase-card:nth-child(1) { transform: translateY(18px) rotate(-1.2deg); }
-.showcase-card:nth-child(2) { transform: translateY(-10px) rotate(0.6deg); z-index: 2; }
-.showcase-card:nth-child(3) { transform: translateY(18px) rotate(1.2deg); }
+.showcase-card:nth-child(1) { transform: translateY(16px) rotate(-1deg); }
+.showcase-card:nth-child(2) { transform: translateY(-8px) rotate(0.5deg); z-index: 2; }
+.showcase-card:nth-child(3) { transform: translateY(16px) rotate(-0.5deg); }
+.showcase-card:nth-child(4) { transform: translateY(-8px) rotate(1deg); z-index: 2; }
 .showcase-card:hover {
   transform: translateY(-10px) rotate(0deg) scale(1.03);
   box-shadow: 0 32px 70px -12px rgba(37,99,235,0.28);
@@ -178,17 +179,20 @@
   margin-top: 14px;
 }
 
+@media (max-width: 1280px) {
+  .showcase-gallery { grid-template-columns: repeat(2, 1fr); gap: 20px; padding: 0 24px; }
+  .showcase-card:nth-child(1), .showcase-card:nth-child(2), .showcase-card:nth-child(3), .showcase-card:nth-child(4) { transform: none; }
+  .showcase-card:hover { transform: translateY(-8px) scale(1.02); }
+}
 @media (max-width: 1024px) {
   .showcase-gallery { grid-template-columns: repeat(2, 1fr); gap: 20px; padding: 0 24px; }
-  .showcase-card:nth-child(3) { grid-column: span 2; }
-  .showcase-card:nth-child(1), .showcase-card:nth-child(2), .showcase-card:nth-child(3) { transform: none; }
+  .showcase-card:nth-child(1), .showcase-card:nth-child(2), .showcase-card:nth-child(3), .showcase-card:nth-child(4) { transform: none; }
   .showcase-card:hover { transform: translateY(-8px) scale(1.02); }
 }
 @media (max-width: 640px) {
   .showcase { padding: 0 0 70px; }
   .showcase-head { margin-bottom: 32px; padding: 0 20px; }
   .showcase-gallery { grid-template-columns: 1fr; padding: 0 20px; gap: 18px; }
-  .showcase-card:nth-child(3) { grid-column: span 1; }
   .showcase-card-media { aspect-ratio: 16 / 11; }
   .showcase-card-foot { padding: 14px 16px; }
   .showcase-card-foot strong { font-size: 15px; }
@@ -260,7 +264,7 @@
     <div class="hero-stats-wrap">
       <div class="hero-stats">
         <div class="stat-item"><span class="stat-value">7</span><span class="stat-label">Jours de livraison</span></div>
-        <div class="stat-item"><span class="stat-value">4+</span><span class="stat-label">Structures prêtes</span></div>
+        <div class="stat-item"><span class="stat-value">5+</span><span class="stat-label">Structures prêtes</span></div>
         <div class="stat-item"><span class="stat-value">100%</span><span class="stat-label">Adapté à votre image</span></div>
         <div class="stat-item"><span class="stat-value"><i class="fa-solid fa-cloud"></i></span><span class="stat-label">Hébergement inclus</span></div>
       </div>
@@ -310,11 +314,22 @@
           <span class="showcase-card-arrow"><i class="fa-solid fa-arrow-up-right"></i></span>
         </div>
       </a>
+
+      <a href="https://hugomolletstivala.github.io/TemplateParamedic/" target="_blank" rel="noopener noreferrer" class="showcase-card reveal reveal-delay-4">
+        <div class="showcase-card-media">
+          <img src="mockup_paramedic.png" alt="Modèle Massage & Bien-être HMS Digital" loading="lazy">
+        </div>
+        <span class="showcase-card-tag">Bien-être &amp; Soin</span>
+        <div class="showcase-card-foot">
+          <strong>Massage &amp; Thérapie</strong>
+          <span class="showcase-card-arrow"><i class="fa-solid fa-arrow-up-right"></i></span>
+        </div>
+      </a>
     </div>
 
     <div class="showcase-cta reveal">
       <a href="modeles.html" class="btn-primary">Découvrir tous les modèles</a>
-      <p class="showcase-cta-sub">3 structures prêtes à être adaptées à votre identité visuelle.</p>
+      <p class="showcase-cta-sub">5 structures prêtes à être adaptées à votre identité visuelle.</p>
     </div>
   </div>
 </section>
