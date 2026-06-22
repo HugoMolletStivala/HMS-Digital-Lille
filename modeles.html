@@ -20,7 +20,7 @@
 <link rel="stylesheet" href="style.css">
 <style>
 .templates { padding: 80px 0 120px; background: #F0F4FB; }
-.templates-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 64px; }
+.templates-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 64px; }
 .template-card-large { border-radius: 24px; overflow: hidden; background: var(--bg); border: 1px solid var(--border); transition: all 0.35s cubic-bezier(0.16,1,0.3,1); text-decoration: none; display: flex; flex-direction: column; position: relative; }
 .template-card-large:hover { border-color: var(--border-hover); transform: translateY(-8px); box-shadow: 0 24px 60px rgba(37,99,235,0.18); }
 .template-desc-long { display: none; }
@@ -35,6 +35,7 @@
 .tmpl-bg-beauty { background: #EFE3E0; }
 .tmpl-bg-boutique { background: #F1E9DC; }
 .tmpl-bg-resto { background: #E9E2D6; }
+.tmpl-bg-paramedic { background: #E8DDD4; }
 .template-preview-large img {
   position: absolute;
   inset: 0;
@@ -292,6 +293,9 @@
   .preview-cta-inner { padding: 36px 28px; }
   .preview-cta-inner h3 { font-size: 22px; }
 }
+@media (max-width: 1280px) {
+  .templates-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+}
 @media (max-width: 1024px) {
   .templates-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
 }
@@ -412,6 +416,26 @@
             <span class="template-tag">Café</span>
             <span class="template-tag">Bar</span>
             <span class="template-tag">Traiteur</span>
+          </div>
+          <span class="template-link-btn">Consulter la démo <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+        </div>
+      </a>
+
+      <a href="https://hugomolletstivala.github.io/TemplateParamedic/" target="_blank" rel="noopener noreferrer" class="template-card-large reveal reveal-delay-2">
+        <div class="template-preview-large tmpl-bg-paramedic">
+          <img src="mockup_paramedic.png" alt="Aperçu du modèle Bien-être & Massage" loading="lazy">
+          <div class="template-overlay"></div>
+          <span class="template-zoom-badge"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+        </div>
+        <div class="template-meta-large">
+          <p class="template-type">Bien-être &amp; Soin</p>
+          <h2 class="template-name">Massage &amp; Thérapie</h2>
+          <p class="template-desc-long">Un template chaleureux et apaisant pour les praticiens du bien-être. Idéal pour les massothérapeutes, kinésithérapeutes, sophrologues et thérapeutes. La réservation en ligne et les soins proposés sont mis au premier plan.</p>
+          <div class="template-tags">
+            <span class="template-tag">Massage</span>
+            <span class="template-tag">Kiné</span>
+            <span class="template-tag">Sophrologie</span>
+            <span class="template-tag">Bien-être</span>
           </div>
           <span class="template-link-btn">Consulter la démo <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
         </div>
