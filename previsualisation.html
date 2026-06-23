@@ -498,18 +498,18 @@ body.preview-active .preview-topbar { display:flex; }
       <div class="tpl-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" width="14" height="14"><polyline points="20 6 9 17 4 12"/></svg></div>
     </div>
 
-    <div class="tpl-card" data-tpl="artisan">
-      <div class="tpl-thumb tpl-thumb-artisan">
-        🔧
-        <div class="tpl-thumb-deco"></div>
+    <div class="tpl-card" data-tpl="paramedic">
+      <div class="tpl-thumb" style="background:linear-gradient(135deg,#fdf5ee,#f0dfc8)">
+        💆
+        <div class="tpl-thumb-deco" style="background:#B07848"></div>
       </div>
       <div class="tpl-info">
-        <div class="tpl-name">Artisan</div>
-        <div class="tpl-desc">Plombier, électricien, menuisier. Design BTP industriel, bandeau urgence, section certifications, zone d'intervention.</div>
+        <div class="tpl-name">Paramedic</div>
+        <div class="tpl-desc">Massages bien-être, kinésithérapie, soins. Design éditorial chaleureux, galerie, accordéon soins, formulaire rendez-vous.</div>
         <div class="tpl-tags">
-          <span class="tpl-tag">Artisan</span>
-          <span class="tpl-tag">BTP</span>
-          <span class="tpl-tag">Urgence</span>
+          <span class="tpl-tag">Bien-être</span>
+          <span class="tpl-tag">Soins</span>
+          <span class="tpl-tag">RDV</span>
         </div>
       </div>
       <div class="tpl-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" width="14" height="14"><polyline points="20 6 9 17 4 12"/></svg></div>
@@ -757,12 +757,15 @@ const TPL_PHOTO_SLOTS = {
     {id:'g4',label:'Réal. 4'},
     {id:'g5',label:'Réal. 5'},
   ],
-  artisan: [
-    {id:'hero',label:'Photo chantier',ratio:'wide'},
-    {id:'artisan',label:'Portrait artisan',ratio:'square'},
-    {id:'s1',label:'Service 1',ratio:'square'},
-    {id:'s2',label:'Service 2',ratio:'square'},
-    {id:'s3',label:'Service 3',ratio:'square'},
+  paramedic: [
+    {id:'hero',label:'Photo hero',ratio:'wide'},
+    {id:'about',label:'Photo praticien',ratio:'square'},
+    {id:'g1',label:'Galerie 1'},
+    {id:'g2',label:'Galerie 2'},
+    {id:'g3',label:'Galerie 3'},
+    {id:'mosaic1',label:'Mosaïque 1',ratio:'wide'},
+    {id:'mosaic2',label:'Mosaïque 2',ratio:'square'},
+    {id:'contact',label:'Photo contact',ratio:'square'},
   ],
 };
 
@@ -790,11 +793,11 @@ function goToChoose() {
 
 function goToForm() {
   if (!selectedTpl) return;
-  const names = {boutique:'Boutique',restaurant:'Restaurant',beaute:'Beauté',artisan:'Artisan'};
+  const names = {boutique:'Boutique',restaurant:'Restaurant',beaute:'Beauté',paramedic:'Paramedic'};;
   document.getElementById('formTplName').textContent = names[selectedTpl];
   buildPhotoSlots();
   // Couleur par défaut selon template
-  const defaults = {boutique:'#C9A84C',restaurant:'#c48b2d',beaute:'#c27a63',artisan:'#f5a623'};
+  const defaults = {boutique:'#C9A84C',restaurant:'#c48b2d',beaute:'#c27a63',paramedic:'#B07848'};
   setColor(defaults[selectedTpl]);
   document.getElementById('previewBanner').style.display = 'none';
   document.querySelector('.preview-topbar').style.display = 'none';
@@ -2260,378 +2263,370 @@ ${'<'+'/script>'}
 }
 
 // ────────────────────────────────────
-// BUILD HTML — ARTISAN
+// BUILD HTML — PARAMEDIC
 // ────────────────────────────────────
-function buildArtisanHTML(data){
-  const nom = d(data.nom,'PlomberieExpress');
-  const slogan = d(data.slogan,"Urgence 24h/7j — Intervention en 30 min");
-  const tel = d(data.tel,'04 78 00 00 00');
-  const email = d(data.email,'contact@monartisan.fr');
-  const adresse = d(data.adresse,'Lille, 59000');
-  const horaires = d(data.horaires,'24h/24 · 7j/7 · Urgences incluses');
-  const desc = d(data.desc,'Artisan certifié, intervention rapide garantie. Devis gratuit, tarifs transparents, garantie décennale.');
-  const c = data.color;
-  const cDk = darken(c);
-  const telHref = 'tel:+33' + tel.replace(/[^0-9]/g,'').replace(/^0/,'');
-  const heroImg = img('hero','https://images.unsplash.com/photo-1581244277943-fe4a9c777189?auto=format&fit=crop&q=80&w=900');
-  const artisanImg = img('artisan','https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80&w=600');
-  const s1 = img('s1','https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=700');
-  const s2 = img('s2','https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&q=80&w=700');
-  const s3 = img('s3','https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&q=80&w=700');
+function buildParamedicHTML(data){
+  const nom      = d(data.nom,     'Harmonie');
+  const slogan   = d(data.slogan,  'Offrez-vous le droit de souffler');
+  const tel      = d(data.tel,     '03 XX XX XX XX');
+  const telHref  = 'tel:+33' + (data.tel||'03XXXXXXXX').replace(/[^0-9]/g,'').replace(/^0/,'');
+  const email    = d(data.email,   'contact@harmonie-massages.fr');
+  const adresse  = d(data.adresse, 'Pecquencourt');
+  const horaires = d(data.horaires,'Lun–Sam 9h–19h · Sur rendez-vous');
+  const desc     = d(data.desc,    'Un espace calme, des mains attentionnées, un moment entièrement pour vous.');
+  const c        = data.color || '#B07848';
 
-  return `<!DOCTYPE html>
+  const heroImg    = img('hero',    'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=1600&q=80');
+  const aboutImg   = img('about',   'https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=900&q=80');
+  const g1         = img('g1',      'https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=800&q=80');
+  const g2         = img('g2',      'https://images.unsplash.com/photo-1591343395082-e120087004b4?w=800&q=80');
+  const g3         = img('g3',      'https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=800&q=80');
+  const mosaic1    = img('mosaic1', 'https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=900&q=75');
+  const mosaic2    = img('mosaic2', 'https://images.unsplash.com/photo-1596755389378-c31d21fd1273?w=600&q=75');
+  const contactImg = img('contact', 'https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=900&q=80');
+
+  // Inject the full static Paramedic HTML with data merged in
+  const staticHTML = `<!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>${esc(nom)}</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>${esc(nom)} — ${esc(slogan)}</title>
+<meta name="description" content="${esc(desc)}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400&display=swap" rel="stylesheet">
 <style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 :root{
-  --dark:#111e28;--dark-2:#1a2b38;--dark-3:#243649;--mid:#4a6070;--muted:#7a96a8;
-  --bone:#dce8ef;--paper:#f0f4f7;--white:#f8fafc;
-  --yellow:${c};--yellow-dk:${cDk};--yellow-lt:${c}18;
-  --font-display:'Barlow Condensed',sans-serif;--font-body:'Barlow',sans-serif;
-  --r:4px;--r-md:6px;--sh:4px 4px 0 rgba(17,30,40,0.35);
+  --sand:#F5EDE0;--sand2:#EDE0CC;
+  --clay:${c};--clay2:${c}cc;
+  --dark:#2C1F13;--mid:#7A5C3A;
+  --sage:#8EA08A;--sage2:#C4D4C0;
+  --white:#FDFAF5;
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'Jost',system-ui,sans-serif;
+  --ease:cubic-bezier(.4,0,.2,1);
 }
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{font-family:var(--font-body);background:var(--paper);color:var(--dark);-webkit-font-smoothing:antialiased;overflow-x:hidden}
-body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");pointer-events:none;z-index:9999;opacity:.5;mix-blend-mode:multiply}
-.container{max-width:1140px;margin:0 auto;padding:0 24px}
-a{color:inherit;text-decoration:none}
-img{display:block;max-width:100%}
-.header{background:var(--dark);border-bottom:3px solid var(--yellow);position:sticky;top:0;z-index:100}
-.nav{display:flex;align-items:center;justify-content:space-between;height:62px;gap:16px}
-.logo{display:flex;align-items:center;gap:0;font-family:var(--font-display);font-size:1.5rem;font-weight:900;letter-spacing:-.5px;color:var(--bone);text-transform:uppercase;flex-shrink:0}
-.logo-mark{background:var(--yellow);color:var(--dark);width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;margin-right:10px;clip-path:polygon(0 0,100% 0,100% 75%,88% 100%,0 100%)}
-.logo em{color:var(--yellow);font-style:normal}
-.nav-links{display:flex;gap:0;list-style:none;align-items:center}
-.nav-links a{font-family:var(--font-display);font-weight:700;font-size:.95rem;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);padding:8px 14px;transition:color .15s;border-right:1px solid var(--dark-3)}
-.nav-links a:first-child{border-left:1px solid var(--dark-3)}
-.nav-links a:hover{color:var(--bone)}
-.btn-call-nav{background:var(--yellow)!important;color:var(--dark)!important;font-family:var(--font-display)!important;font-weight:800!important;font-size:1rem!important;letter-spacing:.05em;text-transform:uppercase;padding:10px 20px!important;border:none;cursor:pointer;clip-path:polygon(0 0,100% 0,100% 70%,96% 100%,0 100%);transition:background .15s!important}
-.btn-call-nav:hover{background:var(--yellow-dk)!important}
-.urgence-ribbon{background:var(--yellow);padding:8px 0;overflow:hidden}
-.ribbon-track{display:flex;gap:0;white-space:nowrap;animation:ribbon-scroll 22s linear infinite}
-.ribbon-item{font-family:var(--font-display);font-weight:800;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--dark);padding:0 28px;display:flex;align-items:center;gap:10px}
-.ribbon-item::before{content:'▶';font-size:.5rem;opacity:.5}
-@keyframes ribbon-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-.hero{background:var(--paper);position:relative;overflow:hidden;border-bottom:3px solid var(--bone)}
-.hero::after{content:'';position:absolute;top:0;right:0;width:46%;height:100%;background:var(--dark);clip-path:polygon(10% 0,100% 0,100% 100%,0% 100%);pointer-events:none}
-.hero-grid{display:grid;grid-template-columns:1fr 1fr;min-height:580px;position:relative;z-index:2}
-.hero-content{padding:72px 48px 72px 0;display:flex;flex-direction:column;justify-content:center}
-.avail-badge{display:inline-flex;align-items:center;gap:8px;background:var(--yellow-lt);border:1px solid ${c}66;color:${cDk};padding:6px 14px;margin-bottom:28px;font-family:var(--font-display);font-size:.8rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;width:fit-content}
-.avail-dot{width:7px;height:7px;background:#22c55e;border-radius:50%;animation:pulse 2s infinite;flex-shrink:0}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
-.hero h1{font-family:var(--font-display);font-size:clamp(2.8rem,6vw,5rem);font-weight:900;line-height:.95;letter-spacing:-1px;text-transform:uppercase;color:var(--dark);margin-bottom:24px}
-.hero h1 .line-orange{color:var(--yellow);display:block}
-.hero h1 .line-outline{-webkit-text-stroke:2px var(--dark);color:transparent;display:block}
-.hero-sub{font-size:1rem;color:var(--mid);line-height:1.65;max-width:400px;margin-bottom:36px}
-.hero-sub strong{color:var(--dark);font-weight:600}
-.hero-metrics{display:flex;gap:0;margin-bottom:40px;border:1px solid var(--bone);background:var(--white)}
-.hero-metric{flex:1;padding:14px 18px;border-right:1px solid var(--bone);min-width:0}
-.hero-metric:last-child{border-right:none}
-.hero-metric-num{font-family:var(--font-display);font-size:1.9rem;font-weight:900;color:var(--dark);line-height:1;letter-spacing:-1px}
-.hero-metric-num .star-clr{color:var(--yellow)}
-.hero-metric-label{font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-top:3px;font-weight:600}
-.cta-group{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
-.btn-primary{display:inline-flex;align-items:center;gap:10px;background:var(--yellow);color:var(--dark);font-family:var(--font-display);font-size:1.1rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase;padding:15px 30px;clip-path:polygon(0 0,100% 0,100% 72%,97% 100%,0 100%);transition:background .15s,transform .15s;box-shadow:var(--sh)}
-.btn-primary:hover{background:var(--yellow-dk);transform:translate(-2px,-2px)}
-.btn-secondary{display:inline-flex;align-items:center;gap:8px;color:var(--mid);font-family:var(--font-display);font-weight:700;font-size:.9rem;letter-spacing:.08em;text-transform:uppercase;padding:14px 22px;border:1px solid var(--bone);transition:border-color .15s,color .15s}
-.btn-secondary:hover{border-color:var(--mid);color:var(--dark)}
-.hero-visual{position:relative;display:flex;align-items:stretch;padding:32px 0 32px 32px}
-.hero-img{width:100%;height:100%;object-fit:cover;filter:sepia(5%) contrast(1.08);border:3px solid var(--dark-3)}
-.hero-badge{position:absolute;bottom:48px;left:16px;background:var(--yellow);color:var(--dark);padding:14px 18px;min-width:180px;border-left:4px solid var(--dark)}
-.hero-badge-title{font-family:var(--font-display);font-weight:800;font-size:1rem;text-transform:uppercase;letter-spacing:.03em}
-.hero-badge-sub{font-size:.78rem;opacity:.75;margin-top:2px}
-.trust-bar{background:var(--dark-2);border-top:1px solid var(--dark-3);border-bottom:1px solid var(--dark-3)}
-.trust-items{display:flex;justify-content:space-between;flex-wrap:wrap}
-.trust-item{display:flex;align-items:center;gap:12px;padding:20px 24px;border-right:1px solid var(--dark-3);flex:1;min-width:200px}
-.trust-item:last-child{border-right:none}
-.trust-icon{flex-shrink:0;width:40px;height:40px;display:flex;align-items:center;justify-content:center;background:var(--yellow);color:var(--dark);font-size:1.1rem}
-.trust-text strong{display:block;font-family:var(--font-display);font-weight:700;font-size:.9rem;color:var(--bone);text-transform:uppercase;letter-spacing:.04em}
-.trust-text small{font-size:.72rem;color:var(--muted)}
-.section-kicker{display:inline-block;font-family:var(--font-display);font-weight:700;font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:var(--yellow);margin-bottom:10px;padding-left:20px;position:relative}
-.section-kicker::before{content:'';position:absolute;left:0;top:50%;transform:translateY(-50%);width:12px;height:2px;background:var(--yellow)}
-.section-title{font-family:var(--font-display);font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;text-transform:uppercase;letter-spacing:-.5px;line-height:1.05;color:var(--dark);margin-bottom:16px}
-.section-title .accent{color:var(--yellow)}
-.section-who{padding:80px 0;background:var(--dark);position:relative;overflow:hidden}
-.who-grid{display:grid;grid-template-columns:340px 1fr;gap:64px;align-items:center;position:relative;z-index:1}
-.artisan-photo{width:100%;aspect-ratio:3/4;object-fit:cover;filter:sepia(10%) contrast(1.1);border:3px solid var(--dark-3)}
-.photo-label{position:absolute;bottom:0;left:0;right:0;background:var(--yellow);padding:12px 16px}
-.photo-label-name{font-family:var(--font-display);font-weight:900;font-size:1.2rem;text-transform:uppercase;color:var(--dark)}
-.photo-label-title{font-size:.78rem;color:rgba(17,30,40,.7);margin-top:1px}
-.who-photo-wrap{position:relative}
-.who-text{font-size:.95rem;color:var(--muted);line-height:1.75;margin-bottom:18px}
-.who-text strong{color:var(--bone)}
-.certs{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px}
-.cert-badge{font-family:var(--font-display);font-weight:700;font-size:.78rem;text-transform:uppercase;letter-spacing:.05em;padding:6px 12px;border:1px solid var(--dark-3);color:var(--muted);display:flex;align-items:center;gap:6px}
-.cert-badge.orange{border-color:${c}80;color:var(--yellow)}
-.section-services{padding:80px 0;background:var(--paper)}
-.section-head{margin-bottom:48px}
-.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
-.service-card{background:var(--white);position:relative;overflow:hidden;border:1px solid var(--bone);transition:transform .3s,box-shadow .3s}
-.service-card:hover{transform:translateY(-4px);box-shadow:6px 6px 0 var(--dark-3)}
-.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--yellow)}
-.service-img{width:100%;height:200px;object-fit:cover;filter:sepia(5%) contrast(1.05)}
-.service-body{padding:24px}
-.service-tag{display:inline-block;font-family:var(--font-display);font-weight:800;font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;background:var(--yellow);color:var(--dark);padding:3px 10px;margin-bottom:12px}
-.service-body h3{font-family:var(--font-display);font-size:1.4rem;font-weight:900;text-transform:uppercase;letter-spacing:-.3px;color:var(--dark);margin-bottom:10px;line-height:1.1}
-.service-body p{font-size:.88rem;color:var(--mid);line-height:1.65;margin-bottom:20px}
-.service-cta{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-display);font-weight:800;font-size:.85rem;text-transform:uppercase;letter-spacing:.06em;color:var(--dark-2);border:2px solid var(--dark-2);padding:9px 18px;transition:background .15s,color .15s}
-.service-cta:hover{background:var(--dark-2);color:var(--yellow)}
-.section-testimonials{padding:80px 0;background:var(--dark)}
-.testi-header{margin-bottom:48px}
-.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
-.testi-card{background:var(--dark-2);border:1px solid var(--dark-3);border-top:3px solid var(--yellow);padding:28px}
-.testi-stars{color:var(--yellow);letter-spacing:2px;font-size:.9rem;margin-bottom:16px}
-.testi-body{font-size:.9rem;color:var(--muted);line-height:1.75;margin-bottom:20px;font-style:italic}
-.testi-author{display:flex;align-items:center;gap:12px}
-.testi-avatar{width:38px;height:38px;background:var(--yellow);color:var(--dark);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:800;font-size:.85rem;flex-shrink:0}
-.testi-name{font-family:var(--font-display);font-weight:700;font-size:.9rem;color:var(--bone);text-transform:uppercase}
-.testi-loc{font-size:.72rem;color:var(--mid);margin-top:2px}
-.section-faq{padding:80px 0;background:var(--paper)}
-.faq-layout{display:grid;grid-template-columns:300px 1fr;gap:80px;align-items:start}
-.faq-list{display:flex;flex-direction:column;gap:2px}
-.faq-item{border:1px solid var(--bone);background:var(--white);overflow:hidden}
-.faq-item.open{border-color:var(--yellow)}
-.faq-question{width:100%;background:none;border:none;padding:18px 20px;text-align:left;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:12px;font-family:var(--font-display);font-size:1rem;font-weight:700;text-transform:uppercase;letter-spacing:.03em;color:var(--dark)}
-.faq-icon{width:26px;height:26px;background:var(--dark);color:var(--white);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:900;flex-shrink:0;transition:transform .25s,background .2s}
-.faq-item.open .faq-icon{transform:rotate(45deg);background:var(--yellow);color:var(--dark)}
-.faq-answer{max-height:0;overflow:hidden;transition:max-height .3s ease}
-.faq-answer p{padding:0 20px 18px;font-size:.9rem;color:var(--mid);line-height:1.7}
-.faq-item.open .faq-answer{max-height:300px}
-.section-zone{padding:80px 0;background:var(--paper)}
-.zone-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
-.zone-pills{display:flex;flex-wrap:wrap;gap:6px;margin-top:24px}
-.zone-pill{font-family:var(--font-display);font-weight:700;font-size:.82rem;text-transform:uppercase;letter-spacing:.06em;padding:7px 14px;border:1px solid var(--bone);color:var(--mid);display:flex;align-items:center;gap:6px;background:var(--white)}
-.zone-pill:first-child{border-color:var(--yellow);color:${cDk};background:var(--yellow-lt)}
-.info-cards{display:flex;flex-direction:column;gap:2px}
-.info-card{background:var(--white);padding:20px 24px;border:1px solid var(--bone);border-left:3px solid var(--yellow)}
-.info-card-title{font-family:var(--font-display);font-weight:800;font-size:.88rem;text-transform:uppercase;letter-spacing:.04em;color:var(--dark);display:flex;align-items:center;gap:8px;margin-bottom:6px}
-.info-card p{font-size:.88rem;color:var(--mid);line-height:1.65}
-.info-card a{color:${cDk};font-weight:600}
-.footer{background:var(--dark);border-top:3px solid var(--yellow);padding:60px 0 32px}
-.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;margin-bottom:48px}
-.footer-brand{font-family:var(--font-display);font-size:1.4rem;font-weight:900;text-transform:uppercase;letter-spacing:-.5px;color:var(--bone);margin-bottom:10px}
-.footer-brand em{color:var(--yellow);font-style:normal}
-.footer-desc{font-size:.85rem;color:var(--mid);line-height:1.65;margin-bottom:14px;max-width:260px}
-.footer-col-title{font-family:var(--font-display);font-weight:800;font-size:.75rem;text-transform:uppercase;letter-spacing:.12em;color:var(--yellow);margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid var(--dark-3)}
-.footer-links{list-style:none;display:flex;flex-direction:column;gap:6px}
-.footer-links a{font-size:.88rem;color:var(--mid);transition:color .15s;font-family:var(--font-display);font-weight:600}
-.footer-links a:hover{color:var(--yellow)}
-.footer-bottom{border-top:1px solid var(--dark-3);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:.75rem;color:var(--mid)}
-.reveal{opacity:0;transform:translateY(16px);transition:opacity .5s ease,transform .5s ease}
-.reveal.visible{opacity:1;transform:translateY(0)}
-@media(max-width:768px){.hero::after{display:none}.hero-grid{grid-template-columns:1fr}.hero-content{padding:48px 0 32px}.hero-visual{padding:0 0 48px;flex-direction:column}.hero-img{height:260px;width:100%}.hero-badge{position:static;margin-top:12px}.who-grid{grid-template-columns:1fr}.services-grid{grid-template-columns:1fr}.testi-grid{grid-template-columns:1fr}.zone-grid{grid-template-columns:1fr}.faq-layout{grid-template-columns:1fr;gap:36px}.footer-grid{grid-template-columns:1fr}.nav-links{display:none}}
+html{scroll-behavior:smooth;overflow-x:hidden;}
+body{font-family:var(--sans);background:var(--white);color:var(--dark);overflow-x:hidden;line-height:1.6;max-width:100vw;}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;width:100%;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 3rem;background:rgba(253,250,245,0);transition:background .4s,backdrop-filter .4s,border-color .4s;border-bottom:1px solid transparent;}
+nav.scrolled{background:rgba(253,250,245,0.93);backdrop-filter:blur(16px);border-color:rgba(44,31,19,0.08);}
+.nav-logo{font-family:var(--serif);font-size:1.1rem;font-weight:300;color:var(--white);letter-spacing:.06em;text-decoration:none;transition:color .3s;}
+nav.scrolled .nav-logo{color:var(--dark);}
+.nav-links{display:flex;gap:2.2rem;list-style:none;align-items:center;}
+.nav-links a{font-size:.8rem;font-weight:300;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.85);text-decoration:none;transition:color .2s;}
+nav.scrolled .nav-links a{color:var(--mid);}
+.nav-links a:hover,.nav-links a.cta{color:var(--white)!important;}
+.nav-links a.cta{background:var(--clay);padding:.55rem 1.35rem;border-radius:2rem;letter-spacing:.08em;transition:background .2s!important;}
+nav.scrolled .nav-links a.cta{color:var(--white)!important;}
+.nav-links a.cta:hover{background:var(--dark);}
+.hero{position:relative;height:100svh;min-height:600px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:8vh;overflow:hidden;width:100%;}
+.hero-bg{position:absolute;inset:0;z-index:0;background:url('${heroImg}') center/cover no-repeat;}
+.hero-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(to bottom,rgba(20,12,6,.55) 0%,rgba(20,12,6,.35) 35%,rgba(20,12,6,.82) 100%);}
+.hero-content{position:relative;z-index:3;text-align:center;padding:0 1.5rem;width:100%;}
+.hero-badge{display:inline-block;font-family:var(--sans);font-size:.68rem;font-weight:400;letter-spacing:.22em;text-transform:uppercase;color:var(--white);border:1px solid rgba(255,255,255,.55);padding:.45rem 1.2rem;border-radius:2rem;margin-bottom:1.75rem;}
+.hero-title{font-family:var(--serif);font-size:clamp(2.8rem,8vw,6.5rem);font-weight:300;color:var(--white);line-height:1.05;letter-spacing:-.01em;margin-bottom:1.5rem;}
+.hero-title em{font-style:italic;color:var(--clay2);}
+.hero-sub{font-family:var(--sans);font-size:1rem;font-weight:300;color:rgba(255,255,255,.92);max-width:46ch;margin:0 auto 2.5rem;line-height:1.75;}
+.hero-actions{display:flex;gap:1.25rem;justify-content:center;flex-wrap:wrap;}
+.btn-white{display:inline-flex;align-items:center;gap:.6rem;background:var(--white);color:var(--dark);font-size:.85rem;font-weight:400;letter-spacing:.06em;padding:.9rem 2rem;border-radius:3rem;text-decoration:none;transition:background .2s,transform .2s;}
+.btn-white:hover{background:var(--sand);transform:translateY(-2px);}
+.btn-outline-w{display:inline-flex;align-items:center;gap:.6rem;border:1.5px solid rgba(255,255,255,.7);color:var(--white);font-size:.85rem;font-weight:300;letter-spacing:.06em;padding:.9rem 2rem;border-radius:3rem;text-decoration:none;background:rgba(0,0,0,.15);transition:.2s;}
+.btn-outline-w:hover{border-color:var(--white);background:rgba(255,255,255,.15);transform:translateY(-2px);}
+.intro-band{background:var(--dark);overflow:hidden;position:relative;height:2.75rem;display:flex;align-items:center;border-top:1px solid rgba(176,120,72,.2);border-bottom:1px solid rgba(176,120,72,.2);}
+.intro-band-track{display:flex;align-items:center;animation:ticker 28s linear infinite;white-space:nowrap;min-width:max-content;}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.intro-band-item{display:inline-flex;align-items:center;gap:.6rem;color:rgba(232,210,185,.7);font-size:.72rem;font-weight:300;letter-spacing:.14em;text-transform:uppercase;padding:0 2.5rem;}
+.intro-band-item span{color:var(--clay2);}
+.intro-band-dot{width:3px;height:3px;border-radius:50%;background:rgba(176,120,72,.4);flex-shrink:0;}
+.s{padding:6rem 3rem;width:100%;}
+.s-narrow{max-width:1200px;margin:0 auto;}
+.split{display:grid;grid-template-columns:1fr 1fr;min-height:90vh;width:100%;overflow:hidden;}
+.split-img{position:relative;overflow:hidden;}
+.split-img img{width:100%;height:100%;object-fit:cover;display:block;}
+.split-img-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(44,31,19,.3),transparent);}
+.split-text{background:var(--sand);display:flex;flex-direction:column;justify-content:center;padding:5rem 4rem;}
+.eyebrow{font-size:.68rem;font-weight:300;letter-spacing:.2em;text-transform:uppercase;color:var(--clay);margin-bottom:1.25rem;}
+.h2{font-family:var(--serif);font-size:clamp(2rem,3.5vw,3.2rem);font-weight:300;line-height:1.15;color:var(--dark);margin-bottom:1.5rem;}
+.h2 em{font-style:italic;color:var(--clay);}
+.body-text{font-size:.95rem;font-weight:300;color:var(--mid);line-height:1.8;margin-bottom:2rem;max-width:44ch;}
+.sig{font-family:var(--serif);font-size:2rem;font-style:italic;font-weight:300;color:var(--clay);}
+.gallery{padding:0;display:grid;grid-template-columns:repeat(3,1fr);width:100%;overflow:hidden;}
+.gal-item{position:relative;overflow:hidden;aspect-ratio:3/4;}
+.gal-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease);}
+.gal-item:hover img{transform:scale(1.06);}
+.gal-item-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(44,31,19,.75) 0%,transparent 60%);display:flex;flex-direction:column;justify-content:flex-end;padding:2rem;opacity:0;transition:opacity .4s;}
+.gal-item:hover .gal-item-overlay{opacity:1;}
+.gal-label{font-family:var(--serif);font-size:1.5rem;font-weight:300;font-style:italic;color:var(--white);}
+.gal-sub{font-size:.78rem;font-weight:300;color:rgba(255,255,255,.7);letter-spacing:.08em;margin-top:.35rem;}
+.soins-section{background:var(--white);}
+.soins-header{text-align:center;margin-bottom:4rem;}
+.soins-header .h2{margin:0 auto 1rem;max-width:28ch;}
+.soins-header .body-text{margin:0 auto;text-align:center;}
+.soins-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--sand2);}
+.soin{background:var(--white);padding:3rem 2.5rem;transition:background .3s;position:relative;overflow:hidden;}
+.soin::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--clay2),var(--clay));transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease);}
+.soin:hover{background:var(--sand);}
+.soin:hover::after{transform:scaleX(1);}
+.soin-icon{width:3.5rem;height:3.5rem;margin-bottom:1.75rem;}
+.soin-name{font-family:var(--serif);font-size:1.6rem;font-weight:300;color:var(--dark);margin-bottom:.75rem;line-height:1.2;}
+.soin-desc{font-size:.88rem;font-weight:300;color:var(--mid);line-height:1.75;margin-bottom:1.75rem;}
+.soin-footer{display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--sand2);padding-top:1.25rem;}
+.soin-duree{font-size:.75rem;color:var(--mid);letter-spacing:.06em;}
+.soin-prix{font-family:var(--serif);font-size:1.4rem;color:var(--clay);font-weight:300;}
+.btn-soin{display:inline-flex;align-items:center;gap:.5rem;border:1.5px solid var(--clay);color:var(--clay);font-size:.75rem;font-weight:400;letter-spacing:.08em;text-transform:uppercase;padding:.6rem 1.4rem;border-radius:3rem;text-decoration:none;transition:.2s;margin-top:.75rem;}
+.btn-soin:hover{background:var(--clay);color:var(--white);transform:translateY(-1px);}
+.texture-break{position:relative;height:60vh;overflow:hidden;}
+.texture-break img{width:100%;height:100%;object-fit:cover;object-position:center 30%;}
+.texture-break-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(44,31,19,.5),rgba(44,31,19,.65));display:flex;align-items:center;justify-content:center;text-align:center;padding:3rem;}
+.texture-quote{font-family:var(--serif);font-size:clamp(1.6rem,4vw,3rem);font-weight:300;font-style:italic;color:var(--white);max-width:28ch;line-height:1.35;}
+.deroulement{background:var(--dark);padding:7rem 3rem;}
+.deroulement .eyebrow{color:var(--clay2);}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;margin-top:4rem;}
+.step{padding:2rem 1.75rem;background:rgba(255,255,255,.06);border:1px solid rgba(176,120,72,.18);border-radius:1rem;transition:background .3s;}
+.step:hover{background:rgba(255,255,255,.1);}
+.step-n{font-family:var(--serif);font-size:4rem;font-weight:300;color:rgba(176,120,72,.45);line-height:1;margin-bottom:1.25rem;}
+.step-t{font-family:var(--serif);font-size:1.2rem;font-weight:300;color:var(--sand);margin-bottom:.6rem;}
+.step-p{font-size:.83rem;font-weight:300;color:rgba(245,237,224,.92);line-height:1.7;}
+.mosaic{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(2,280px);gap:4px;padding:4px;width:100%;overflow:hidden;}
+.mosaic-item{overflow:hidden;position:relative;}
+.mosaic-item img{width:100%;height:100%;object-fit:cover;transition:transform .7s var(--ease);}
+.mosaic-item:hover img{transform:scale(1.06);}
+.mosaic-item.wide{grid-column:span 2;}
+.avis-section{background:var(--sand);}
+.avis-inner{max-width:1100px;margin:0 auto;}
+.avis-header{text-align:center;margin-bottom:4rem;}
+.avis-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.avis-card{background:var(--white);border-radius:1rem;padding:2rem 1.75rem;}
+.avis-stars{color:var(--clay);font-size:.9rem;letter-spacing:.1em;margin-bottom:.9rem;}
+.avis-text{font-family:var(--serif);font-size:1.05rem;font-style:italic;font-weight:300;color:var(--dark);line-height:1.65;margin-bottom:1.25rem;}
+.avis-author{font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--mid);}
+.contact-section{display:grid;grid-template-columns:1fr 1fr;min-height:80vh;width:100%;overflow:hidden;}
+.contact-img{position:relative;overflow:hidden;}
+.contact-img img{width:100%;height:100%;object-fit:cover;display:block;}
+.contact-img-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(44,31,19,.4),transparent);}
+.contact-form-side{background:var(--sand);padding:5rem 4rem;display:flex;flex-direction:column;justify-content:center;}
+.form-title{font-family:var(--serif);font-size:1.5rem;font-weight:300;color:var(--dark);margin-bottom:2rem;}
+.fg{display:flex;flex-direction:column;gap:.35rem;margin-bottom:1rem;}
+.fg label{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mid);}
+.fg input,.fg select,.fg textarea{background:var(--white);border:1.5px solid transparent;border-radius:.5rem;padding:.75rem 1rem;font-family:var(--sans);font-size:.9rem;font-weight:300;color:var(--dark);outline:none;transition:border-color .2s;-webkit-appearance:none;}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--clay);}
+.fg textarea{resize:vertical;min-height:90px;}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.fsub{width:100%;background:var(--clay);color:var(--white);border:none;border-radius:3rem;padding:.9rem;font-family:var(--sans);font-size:.85rem;font-weight:400;letter-spacing:.08em;cursor:pointer;margin-top:.5rem;transition:.2s;}
+.fsub:hover{background:var(--dark);transform:translateY(-1px);}
+footer{background:var(--dark);padding:3.5rem 3rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.5rem;width:100%;}
+.footer-brand{font-family:var(--serif);font-size:1rem;font-weight:300;color:var(--sand);letter-spacing:.04em;}
+.footer-links{display:flex;gap:2rem;list-style:none;}
+.footer-links a{font-size:.75rem;color:rgba(197,174,148,.45);text-decoration:none;letter-spacing:.06em;transition:color .2s;}
+.footer-links a:hover{color:var(--clay2);}
+.footer-copy{font-size:.72rem;color:rgba(197,174,148,.3);letter-spacing:.06em;}
+.r{opacity:0;transform:translateY(24px);transition:opacity .8s var(--ease),transform .8s var(--ease);}
+.r.vis{opacity:1;transform:none;}
+@media(max-width:900px){
+  nav{padding:1rem 1.5rem;}
+  .split{grid-template-columns:1fr;min-height:auto;}
+  .split-img{height:60vw;}
+  .split-text{padding:3rem 1.5rem;}
+  .soins-grid{grid-template-columns:1fr;}
+  .steps{grid-template-columns:1fr 1fr;}
+  .avis-grid{grid-template-columns:1fr;}
+  .contact-section{grid-template-columns:1fr;}
+  .contact-img{height:55vw;}
+  .contact-form-side{padding:3rem 1.5rem;}
+  .frow{grid-template-columns:1fr;}
+  footer{flex-direction:column;text-align:center;}
+  .s{padding:4rem 1.5rem;}
+  .deroulement{padding:4rem 1.5rem;}
+  .gallery{grid-template-columns:1fr;}
+  .mosaic{grid-template-columns:1fr 1fr;grid-template-rows:auto;}
+}
 </style>
 </head>
 <body>
-<div class="urgence-ribbon">
-  <div class="ribbon-track">
-    ${['Disponible 24h/24 — 7j/7','Intervention en 30 minutes','Devis gratuit avant travaux','Garantie décennale',esc(tel),'Disponible 24h/24 — 7j/7','Intervention en 30 minutes','Devis gratuit avant travaux','Garantie décennale',esc(tel)].map(t=>`<span class="ribbon-item">${t}</span>`).join('')}
-  </div>
-</div>
-<header class="header">
-  <div class="container nav">
-    <a href="/" class="logo"><div class="logo-mark">🔧</div>${esc(nom.split(' ').slice(0,1).join(''))}<em>${esc(nom.split(' ').slice(1).join(' ') || '')}</em></a>
-    <nav>
-      <ul class="nav-links">
-        <li><a href="#services">Services</a></li>
-        <li><a href="#equipe">L'Artisan</a></li>
-        <li><a href="#faq">FAQ</a></li>
-        <li><a href="#avis">Avis</a></li>
-        <li><a href="${telHref}" class="btn-call-nav">📞 ${esc(tel)}</a></li>
-      </ul>
-    </nav>
-  </div>
-</header>
+<nav id="nav">
+  <a href="#" class="nav-logo">${esc(nom)}</a>
+  <ul class="nav-links">
+    <li><a href="#soins">Soins</a></li>
+    <li><a href="#apropos">À propos</a></li>
+    <li><a href="#avis">Témoignages</a></li>
+    <li><a href="${telHref}">📞 ${esc(tel)}</a></li>
+    <li><a href="#contact" class="cta">Réserver</a></li>
+  </ul>
+</nav>
+
 <section class="hero">
-  <div class="container hero-grid">
-    <div class="hero-content">
-      <div class="avail-badge"><div class="avail-dot"></div>Disponible maintenant — ${esc(adresse)}</div>
-      <h1>Artisan<br/><span class="line-orange">d'urgence</span><span class="line-outline">sur place vite.</span></h1>
-      <p class="hero-sub">${esc(desc)}<br/><strong>${esc(horaires)}</strong></p>
-      <div class="hero-metrics">
-        <div class="hero-metric"><div class="hero-metric-num">320+</div><div class="hero-metric-label">Interventions</div></div>
-        <div class="hero-metric"><div class="hero-metric-num"><span class="star-clr">★</span> 4.9</div><div class="hero-metric-label">87 avis Google</div></div>
-        <div class="hero-metric"><div class="hero-metric-num">14<span style="font-size:1rem;color:var(--muted)"> ans</span></div><div class="hero-metric-label">d'expérience</div></div>
-      </div>
-      <div class="cta-group">
-        <a href="${telHref}" class="btn-primary">📞 ${esc(tel)}</a>
-        <a href="#services" class="btn-secondary">Voir les services →</a>
-      </div>
-    </div>
-    <div class="hero-visual">
-      <img src="${heroImg}" class="hero-img" alt="${esc(nom)}" fetchpriority="high"/>
-      <div class="hero-badge"><div class="hero-badge-title">🟢 Disponible maintenant</div><div class="hero-badge-sub">Prochain créneau : – de 30 min</div></div>
+  <div class="hero-bg" style="background-image:url('${heroImg}')"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge">${esc(nom)} · ${esc(adresse.split(',')[0]||adresse)}</div>
+    <h1 class="hero-title">${esc(slogan.split(' ').slice(0,3).join(' '))}<br><em>${esc(slogan.split(' ').slice(3).join(' ')||slogan)}</em></h1>
+    <p class="hero-sub">${esc(desc)}</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-white">Prendre rendez-vous</a>
+      <a href="#soins" class="btn-outline-w">Découvrir les soins</a>
     </div>
   </div>
 </section>
-<div class="trust-bar">
-  <div class="container">
-    <div class="trust-items">
-      <div class="trust-item"><div class="trust-icon">🛡</div><div class="trust-text"><strong>Garantie décennale</strong><small>Artisan assuré</small></div></div>
-      <div class="trust-item"><div class="trust-icon">📋</div><div class="trust-text"><strong>Agréé assurances</strong><small>Dégâts des eaux</small></div></div>
-      <div class="trust-item"><div class="trust-icon">🏅</div><div class="trust-text"><strong>Artisan certifié</strong><small>Chambre des Métiers</small></div></div>
-      <div class="trust-item"><div class="trust-icon">⚡</div><div class="trust-text"><strong>${esc(horaires)}</strong><small>Y compris jours fériés</small></div></div>
-    </div>
+
+<div class="intro-band">
+  <div class="intro-band-track">
+    <div class="intro-band-item"><span>✦</span> ${esc(nom)}</div>
+    <div class="intro-band-dot"></div>
+    <div class="intro-band-item"><span>✦</span> ${esc(horaires)}</div>
+    <div class="intro-band-dot"></div>
+    <div class="intro-band-item"><span>✦</span> ${esc(adresse)}</div>
+    <div class="intro-band-dot"></div>
+    <div class="intro-band-item"><span>✦</span> ${esc(tel)}</div>
+    <div class="intro-band-dot"></div>
+    <div class="intro-band-item"><span>✦</span> ${esc(nom)}</div>
+    <div class="intro-band-dot"></div>
+    <div class="intro-band-item"><span>✦</span> ${esc(horaires)}</div>
+    <div class="intro-band-dot"></div>
+    <div class="intro-band-item"><span>✦</span> ${esc(adresse)}</div>
+    <div class="intro-band-dot"></div>
+    <div class="intro-band-item"><span>✦</span> ${esc(tel)}</div>
+    <div class="intro-band-dot"></div>
   </div>
 </div>
-<section id="equipe" class="section-who">
-  <div class="container who-grid">
-    <div class="who-photo-wrap reveal">
-      <img src="${artisanImg}" class="artisan-photo" alt="${esc(nom)}" loading="lazy"/>
-      <div class="photo-label"><div class="photo-label-name">${esc(nom)}</div><div class="photo-label-title">Artisan certifié · Fondateur</div></div>
+
+<div class="gallery">
+  <div class="gal-item r"><img src="${g1}" alt="Soin 1" loading="lazy"><div class="gal-item-overlay"><div class="gal-label">Détente profonde</div><div class="gal-sub">Massage bien-être</div></div></div>
+  <div class="gal-item r"><img src="${g2}" alt="Soin 2" loading="lazy"><div class="gal-item-overlay"><div class="gal-label">Soins naturels</div><div class="gal-sub">Huiles & techniques douces</div></div></div>
+  <div class="gal-item r"><img src="${g3}" alt="Soin 3" loading="lazy"><div class="gal-item-overlay"><div class="gal-label">Espace zen</div><div class="gal-sub">Un cadre pensé pour vous</div></div></div>
+</div>
+
+<div class="split" id="apropos">
+  <div class="split-img">
+    <img src="${aboutImg}" alt="${esc(nom)}" loading="lazy">
+    <div class="split-img-overlay"></div>
+  </div>
+  <div class="split-text r">
+    <div class="eyebrow">À propos</div>
+    <h2 class="h2">Une approche <em>personnalisée</em></h2>
+    <p class="body-text">${esc(desc)}</p>
+    <p class="body-text" style="margin-bottom:2.5rem;">${esc(horaires)} · <a href="${telHref}" style="color:var(--clay);text-decoration:none;">${esc(tel)}</a></p>
+    <div class="sig">${esc(nom.split(' ')[0]||nom)}</div>
+  </div>
+</div>
+
+<section class="s soins-section" id="soins">
+  <div class="s-narrow">
+    <div class="soins-header r">
+      <div class="eyebrow">Les soins proposés</div>
+      <h2 class="h2">Choisissez ce dont <em>vous avez besoin</em></h2>
+      <p class="body-text">Un doute ? Contactez-nous, nous vous guidons.</p>
     </div>
-    <div class="reveal">
-      <div class="section-kicker">Notre artisan</div>
-      <h2 class="section-title" style="color:var(--bone)">Expertise &amp; <span class="accent">terrain.</span></h2>
-      <p class="who-text">${esc(desc)}</p>
-      <p class="who-text">Sa philosophie : <strong>transparence des prix avant toute intervention</strong>, travail soigné, et aucun client laissé sans solution.</p>
-      <div class="certs">
-        <div class="cert-badge orange">✅ Artisan certifié</div>
-        <div class="cert-badge orange">🛡️ Garantie décennale</div>
-        <div class="cert-badge">📋 Agréé assurances</div>
+    <div class="soins-grid">
+      <div class="soin r">
+        <svg class="soin-icon" viewBox="0 0 56 56" fill="none"><circle cx="28" cy="28" r="27" stroke="${c}22" stroke-width="1"/><path d="M28 10 C28 10, 42 22, 38 36 C34 46, 18 48, 16 36 C12 22, 28 10, 28 10Z" fill="${c}20"/><path d="M28 14 C28 14, 39 24, 36 35 C33 44, 20 45, 18 35 C15 24, 28 14, 28 14Z" stroke="${c}" stroke-width="1" fill="none"/></svg>
+        <div class="soin-name">Soin relaxant</div>
+        <p class="soin-desc">Mouvements doux et enveloppants pour libérer les tensions et apaiser le système nerveux. Idéal en cas de stress ou de fatigue.</p>
+        <div class="soin-footer"><span class="soin-duree">60 min</span><span class="soin-prix">à partir de 60 €</span></div>
+        <a href="#contact" class="btn-soin">Réserver ce soin →</a>
+      </div>
+      <div class="soin r">
+        <svg class="soin-icon" viewBox="0 0 56 56" fill="none"><circle cx="28" cy="28" r="27" stroke="${c}22" stroke-width="1"/><path d="M16 38 C16 28, 22 20, 28 18 C34 20, 40 28, 40 38" stroke="${c}" stroke-width="1.2" fill="none" stroke-linecap="round"/><circle cx="28" cy="16" r="3" fill="${c}" fill-opacity=".4"/></svg>
+        <div class="soin-name">Soin tonifiant</div>
+        <p class="soin-desc">Pressions et pétrissages en profondeur pour relancer la circulation et dénouer les tensions musculaires les plus résistantes.</p>
+        <div class="soin-footer"><span class="soin-duree">60 min</span><span class="soin-prix">à partir de 70 €</span></div>
+        <a href="#contact" class="btn-soin">Réserver ce soin →</a>
+      </div>
+      <div class="soin r">
+        <svg class="soin-icon" viewBox="0 0 56 56" fill="none"><circle cx="28" cy="28" r="27" stroke="${c}22" stroke-width="1"/><ellipse cx="22" cy="32" rx="5" ry="9" stroke="${c}" stroke-width="1" fill="none" transform="rotate(-20 22 32)"/><ellipse cx="34" cy="32" rx="5" ry="9" stroke="${c}" stroke-width="1" fill="none" transform="rotate(20 34 32)"/></svg>
+        <div class="soin-name">Soin premium</div>
+        <p class="soin-desc">L'alliance de la chaleur et du toucher pour une expérience sensorielle complète. Agit en profondeur là où les mains seules n'atteignent pas.</p>
+        <div class="soin-footer"><span class="soin-duree">90 min</span><span class="soin-prix">à partir de 90 €</span></div>
+        <a href="#contact" class="btn-soin">Réserver ce soin →</a>
       </div>
     </div>
   </div>
 </section>
-<section id="services" class="section-services">
-  <div class="container">
-    <div class="section-head reveal">
-      <div class="section-kicker">Nos expertises</div>
-      <h2 class="section-title">Ce qu'on fait,<br/>on le fait <span class="accent">bien.</span></h2>
-      <p style="font-size:.95rem;color:var(--mid);line-height:1.7;max-width:500px">Interventions d'urgence, devis gratuit remis avant tout travail, tarifs affichés sans surprise.</p>
-    </div>
-    <div class="services-grid">
-      <article class="service-card reveal">
-        <img src="${s1}" class="service-img" alt="Service 1" loading="lazy"/>
-        <div class="service-body">
-          <span class="service-tag">Urgence</span>
-          <h3>Dépannage urgent</h3>
-          <p>Intervention en moins de 30 minutes, 24h/24 et 7j/7 sur ${esc(adresse)} et environs.</p>
-          <a href="${telHref}" class="service-cta">Urgence → appeler</a>
-        </div>
-      </article>
-      <article class="service-card reveal">
-        <img src="${s2}" class="service-img" alt="Service 2" loading="lazy"/>
-        <div class="service-body">
-          <span class="service-tag">Dès 99 € HT</span>
-          <h3>Débouchage Express</h3>
-          <p>Tous types de canalisations, nuit et week-end compris. Devis gratuit avant travaux.</p>
-          <a href="${telHref}" class="service-cta">Appeler →</a>
-        </div>
-      </article>
-      <article class="service-card reveal">
-        <img src="${s3}" class="service-img" alt="Service 3" loading="lazy"/>
-        <div class="service-body">
-          <span class="service-tag">Devis gratuit</span>
-          <h3>Installation &amp; Remplacement</h3>
-          <p>Diagnostic et remplacement sur place — toutes marques, toutes configurations.</p>
-          <a href="${telHref}" class="service-cta">Demander un devis →</a>
-        </div>
-      </article>
+
+<div class="texture-break r">
+  <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=1600&q=75" alt="Ambiance soin" loading="lazy">
+  <div class="texture-break-overlay">
+    <p class="texture-quote">Prendre soin de soi n'est pas un luxe. C'est une nécessité que vous méritez.</p>
+  </div>
+</div>
+
+<section class="deroulement r">
+  <div class="s-narrow">
+    <div class="eyebrow">Comment ça se passe</div>
+    <h2 class="h2" style="color:var(--sand);">Simple, doux, <em style="color:var(--clay2)">sans surprise</em></h2>
+    <div class="steps">
+      <div class="step r"><div class="step-n">01</div><div class="step-t">On échange</div><p class="step-p">On parle de vos besoins, vos zones de tension, votre état du moment. Ce premier échange oriente tout le soin.</p></div>
+      <div class="step r"><div class="step-n">02</div><div class="step-t">On s'installe</div><p class="step-p">L'espace est calme et préparé pour vous. Vous prenez le temps qu'il faut pour vous sentir à l'aise.</p></div>
+      <div class="step r"><div class="step-n">03</div><div class="step-t">Le soin</div><p class="step-p">Chaque soin est adapté à votre ressenti du moment. N'hésitez pas à communiquer pendant la séance.</p></div>
+      <div class="step r"><div class="step-n">04</div><div class="step-t">La sortie</div><p class="step-p">On prend un moment après. Vous repartez à votre rythme, avec des conseils personnalisés si besoin.</p></div>
     </div>
   </div>
 </section>
-<section id="avis" class="section-testimonials">
-  <div class="container">
-    <div class="testi-header reveal">
-      <div class="section-kicker" style="color:var(--yellow)">Avis clients vérifiés</div>
-      <h2 class="section-title" style="color:var(--bone)">4.9/5 sur 87 avis <span class="accent">Google.</span></h2>
+
+<div class="mosaic">
+  <div class="mosaic-item wide r"><img src="${mosaic1}" alt="Espace soin" loading="lazy"></div>
+  <div class="mosaic-item r"><img src="${mosaic2}" alt="Détail soin" loading="lazy"></div>
+  <div class="mosaic-item r"><img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=75" alt="Ambiance" loading="lazy"></div>
+  <div class="mosaic-item r"><img src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=600&q=75" alt="Bien-être" loading="lazy"></div>
+  <div class="mosaic-item wide r"><img src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=900&q=75" alt="Massage relaxant" loading="lazy"></div>
+</div>
+
+<section class="s avis-section" id="avis">
+  <div class="avis-inner">
+    <div class="avis-header r">
+      <div class="eyebrow" style="justify-content:center;display:flex;">Ce qu'ils disent</div>
+      <h2 class="h2" style="text-align:center;margin:0 auto 1rem;max-width:28ch;">Des retours qui viennent <em>du cœur</em></h2>
     </div>
-    <div class="testi-grid">
-      <article class="testi-card reveal"><div class="testi-stars">★★★★★</div><p class="testi-body">"Intervention rapide et professionnelle. Prix conforme au devis. Je recommande sans hésiter !"</p><div class="testi-author"><div class="testi-avatar">ML</div><div><div class="testi-name">Marie L.</div><div class="testi-loc">📍 ${esc(adresse)}</div></div></div></article>
-      <article class="testi-card reveal"><div class="testi-stars">★★★★★</div><p class="testi-body">"Tarif correct et conforme au devis. Travail propre, chantier laissé impeccable. Très satisfait."</p><div class="testi-author"><div class="testi-avatar">TB</div><div><div class="testi-name">Thomas B.</div><div class="testi-loc">📍 ${esc(adresse)}</div></div></div></article>
-      <article class="testi-card reveal"><div class="testi-stars">★★★★★</div><p class="testi-body">"Problème réglé en moins d'une heure, tarif annoncé avant intervention. Notre artisan attitré !"</p><div class="testi-author"><div class="testi-avatar">SR</div><div><div class="testi-name">Sophie R.</div><div class="testi-loc">📍 ${esc(adresse)}</div></div></div></article>
-    </div>
-  </div>
-</section>
-<section id="faq" class="section-faq">
-  <div class="container">
-    <div class="faq-layout">
-      <div>
-        <div class="section-kicker">Questions fréquentes</div>
-        <h2 class="section-title">Tout ce qu'il faut savoir avant d'<span class="accent">appeler.</span></h2>
-        <p style="font-size:.95rem;color:var(--mid);line-height:1.7;max-width:500px;margin-top:16px">Une question ? Appelez-nous directement.</p>
-        <div style="margin-top:28px"><a href="${telHref}" class="btn-primary" style="font-size:.95rem;padding:13px 22px">📞 ${esc(tel)}</a></div>
-      </div>
-      <div class="faq-list">
-        <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)"><span>Quel est le délai d'intervention ?</span><div class="faq-icon">+</div></button><div class="faq-answer"><p>Intervention en <strong>moins de 30 minutes</strong> sur ${esc(adresse)} et alentours, 24h/24 et 7j/7.</p></div></div>
-        <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)"><span>Quels sont vos tarifs ?</span><div class="faq-icon">+</div></button><div class="faq-answer"><p>À partir de 89 € HT déplacement inclus. Devis gratuit remis avant tout travail. Tarifs transparents sans surprise.</p></div></div>
-        <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)"><span>Êtes-vous agréés par les assurances ?</span><div class="faq-icon">+</div></button><div class="faq-answer"><p>Oui. Titulaire d'une garantie décennale et agréé par les principaux assureurs pour la prise en charge des sinistres.</p></div></div>
-        <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)"><span>Intervenez-vous la nuit et le week-end ?</span><div class="faq-icon">+</div></button><div class="faq-answer"><p>${esc(horaires)}. Majoration de 20% entre 22h et 7h, annoncée avant toute intervention.</p></div></div>
-        <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)"><span>Quelles zones couvrez-vous ?</span><div class="faq-icon">+</div></button><div class="faq-answer"><p>${esc(adresse)} et toute la région environnante dans un rayon de 30 km.</p></div></div>
-      </div>
+    <div class="avis-grid">
+      <div class="avis-card r"><div class="avis-stars">★★★★★</div><p class="avis-text">"Intervention rapide et résultat au-delà de mes attentes. Un professionnalisme remarquable et une écoute rare."</p><div class="avis-author">— Marie L. · ${esc(adresse.split(',')[0]||adresse)}</div></div>
+      <div class="avis-card r"><div class="avis-stars">★★★★★</div><p class="avis-text">"Je recommande sans hésiter. Le cadre est apaisant, l'accueil chaleureux et le résultat vraiment efficace."</p><div class="avis-author">— Thomas B. · ${esc(adresse.split(',')[0]||adresse)}</div></div>
+      <div class="avis-card r"><div class="avis-stars">★★★★★</div><p class="avis-text">"Une approche personnalisée qui fait toute la différence. Je me suis senti pris en charge dès la première minute."</p><div class="avis-author">— Sophie R. · ${esc(adresse.split(',')[0]||adresse)}</div></div>
     </div>
   </div>
 </section>
-<section id="zone" class="section-zone">
-  <div class="container zone-grid">
-    <div class="reveal">
-      <div class="section-kicker">Zone d'intervention</div>
-      <h2 class="section-title">Toute la <span class="accent">région couverte.</span></h2>
-      <p style="font-size:.95rem;color:var(--mid);line-height:1.7">Plus de 50 communes dans un rayon de 30 km.</p>
-      <div class="zone-pills">
-        <div class="zone-pill">● ${esc(adresse.split(',')[0] || adresse)}</div>
-        <div class="zone-pill">● Communes limitrophes</div>
-        <div class="zone-pill">● Rayon 30 km</div>
-      </div>
-    </div>
-    <div class="info-cards">
-      <div class="info-card reveal"><div class="info-card-title">🕐 Horaires</div><p>${esc(horaires)}</p></div>
-      <div class="info-card reveal"><div class="info-card-title">💳 Paiement</div><p>Carte bancaire, virement, chèque. Paiement en plusieurs fois possible dès 500 €.</p></div>
-      <div class="info-card reveal"><div class="info-card-title">📞 Contact</div><p><a href="${telHref}">${esc(tel)}</a> — disponible ${esc(horaires)}<br/><a href="mailto:${esc(email)}">${esc(email)}</a></p></div>
-    </div>
+
+<div class="contact-section" id="contact">
+  <div class="contact-img">
+    <img src="${contactImg}" alt="${esc(nom)}" loading="lazy">
+    <div class="contact-img-overlay"></div>
   </div>
-</section>
-<footer class="footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div>
-        <div class="footer-brand">${esc(nom.split(' ').slice(0,1).join(''))}<em> ${esc(nom.split(' ').slice(1).join(' '))}</em></div>
-        <p class="footer-desc">${esc(desc)}</p>
-      </div>
-      <div>
-        <div class="footer-col-title">Services</div>
-        <ul class="footer-links">
-          <li><a href="#services">Urgences</a></li>
-          <li><a href="#services">Débouchage</a></li>
-          <li><a href="${telHref}">Devis gratuit</a></li>
-        </ul>
-      </div>
-      <div>
-        <div class="footer-col-title">Informations</div>
-        <ul class="footer-links">
-          <li><a href="#equipe">Notre artisan</a></li>
-          <li><a href="#avis">Avis clients</a></li>
-          <li><a href="#faq">FAQ</a></li>
-          <li><a href="${telHref}">${esc(tel)}</a></li>
-        </ul>
-      </div>
+  <div class="contact-form-side">
+    <div class="eyebrow">Prendre rendez-vous</div>
+    <h2 class="h2" style="margin-bottom:.75rem;">Quand voulez-vous <em>souffler ?</em></h2>
+    <p class="body-text" style="margin-bottom:2rem;">Contactez-nous, nous répondons rapidement pour trouver le créneau idéal.</p>
+    <div class="form-title">Votre message</div>
+    <div class="frow">
+      <div class="fg"><label>Prénom</label><input type="text" placeholder="Marie"></div>
+      <div class="fg"><label>Nom</label><input type="text" placeholder="Dupont"></div>
     </div>
-    <div class="footer-bottom">
-      <span>© ${new Date().getFullYear()} ${esc(nom)} · ${esc(adresse)}</span>
-      <span><a href="#">Mentions légales</a> · <a href="#">Confidentialité</a></span>
-    </div>
+    <div class="fg"><label>Email</label><input type="email" placeholder="marie@email.com"></div>
+    <div class="fg"><label>Message</label><textarea placeholder="Un contexte, une question, une disponibilité préférée…"></textarea></div>
+    <button type="button" class="fsub" onclick="window.location.href='mailto:${esc(email)}?subject=Demande+de+rendez-vous'">Envoyer ma demande →</button>
   </div>
+</div>
+
+<footer>
+  <div class="footer-brand">${esc(nom)} · ${esc(adresse.split(',')[0]||adresse)}</div>
+  <ul class="footer-links">
+    <li><a href="#">Mentions légales</a></li>
+    <li><a href="mailto:${esc(email)}">${esc(email)}</a></li>
+    <li><a href="${telHref}">${esc(tel)}</a></li>
+  </ul>
+  <div class="footer-copy">© ${new Date().getFullYear()} · ${esc(nom)}</div>
 </footer>
+
 <script>
-function toggleFaq(btn){
-  const item=btn.closest('.faq-item'),isOpen=item.classList.contains('open');
-  document.querySelectorAll('.faq-item.open').forEach(el=>{el.classList.remove('open');el.querySelector('.faq-question').setAttribute('aria-expanded','false')});
-  if(!isOpen){item.classList.add('open');btn.setAttribute('aria-expanded','true')}
-}
-if(!window.matchMedia('(prefers-reduced-motion:reduce)').matches){
-  const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.08});
-  document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%4)*.07+'s';obs.observe(el)});
-}else{document.querySelectorAll('.reveal').forEach(el=>el.classList.add('visible'))}
-window.addEventListener('scroll',()=>{document.querySelector('.header').classList.toggle('scrolled',scrollY>60)},{passive:true});
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+}, { passive: true });
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); io.unobserve(e.target); } });
+}, { threshold: .08 });
+document.querySelectorAll('.r').forEach(el => io.observe(el));
 ${'<'+'/script>'}
 </body></html>`;
+  return staticHTML;
 }
 
 // ────────────────────────────────────
@@ -2642,7 +2637,7 @@ function buildSiteHTML(tpl, data) {
     case 'boutique':   return buildBoutiqueHTML(data);
     case 'restaurant': return buildRestaurantHTML(data);
     case 'beaute':     return buildBeauteHTML(data);
-    case 'artisan':    return buildArtisanHTML(data);
+    case 'paramedic':  return buildParamedicHTML(data);
     default: return '<p>Template inconnu</p>';
   }
 }
